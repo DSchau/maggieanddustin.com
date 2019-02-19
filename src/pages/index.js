@@ -156,7 +156,7 @@ function Index() {
 
   return (
     <Layout>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO title="Proposal" keywords={[`gatsby`, `application`, `react`]} />
       <Hero
         content={
           <React.Fragment>
