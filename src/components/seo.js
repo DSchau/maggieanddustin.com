@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
-import { StaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 
 function SEO({ description, lang, meta, keywords, title }) {
-  return (
-    <StaticQuery
-      query={detailsQuery}
-      render={data => {
-        const metaDescription =
+  const data = useStaticQuery(detailsQuery)
+
+  const image = data.file.image.resize
+
+  const metaDescription =
           description || data.site.siteMetadata.description;
         return (
           <Helmet
@@ -49,6 +49,18 @@ function SEO({ description, lang, meta, keywords, title }) {
               {
                 name: `twitter:description`,
                 content: metaDescription
+              },
+              {
+                name: 'og:image',
+                content: `${data.site.siteMetadata.siteUrl}${image.src}`
+              },
+              {
+                name: 'og:image:height',
+                content: image.height
+              },
+              {
+                name: 'og:image:width',
+                content: image.width
               }
             ]
               .concat(
@@ -62,9 +74,6 @@ function SEO({ description, lang, meta, keywords, title }) {
               .concat(meta)}
           />
         );
-      }}
-    />
-  );
 }
 
 SEO.defaultProps = {
@@ -87,9 +96,22 @@ const detailsQuery = graphql`
   query DefaultSEOQuery {
     site {
       siteMetadata {
+        siteUrl
         title
         description
         author
+      }
+    }
+
+    file(relativePath:{
+      regex:"/proposal.jpg/"
+    }) {
+      image: childImageSharp {
+        resize(width: 1500) {
+          height
+          width
+          src
+        }
       }
     }
   }

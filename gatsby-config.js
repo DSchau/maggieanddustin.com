@@ -5,6 +5,7 @@ module.exports = {
     title: `Dustin and Maggie`,
     description: `Landing page for the wedding of Dustin Schau and Maggie Alcorn`,
     author: `schaudustin`,
+    siteUrl: process.env.DEPLOY_URL || 'https://proposal.maggieanddustin.com',
     social: {
       facebook: ['']
     }
