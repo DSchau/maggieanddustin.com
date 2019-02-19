@@ -12,7 +12,6 @@ const Message = styled.p`
   color: white;
   text-align: center;
 
-  font-family: Raleway, sans-serif;
   font-size: 1rem;
 
   padding: 0.5rem;

@@ -18,7 +18,6 @@ const down = keyframes`
 
 const Title = styled.h1`
   color: rgba(255, 255, 255, 0.85);
-  font-family: Raleway, sans-serif;
   font-weight: 900;
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
@@ -39,7 +38,6 @@ const Title = styled.h1`
 const And = styled.h2`
   color: white;
   font-size: 2rem;
-  font-family: Raleway, sans-serif;
   font-weight: 100;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.75);
@@ -89,7 +87,6 @@ const Message = styled.h2`
   align-items: center;
   color: white;
   margin: 0;
-  font-family: Raleway, sans-serif;
   font-size: 900;
 
   padding: 1rem;

@@ -1,6 +1,10 @@
 import Typography from "typography";
 
+const fontFamily = ['Raleway', 'sans-serif']
+
 const theme = {
+  headerFontFamily: fontFamily,
+  bodyFontFamily: fontFamily, 
   googleFonts: [
     {
       name: "Raleway",
