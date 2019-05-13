@@ -17,6 +17,7 @@ const Grid = styled.div`
     filter: grayscale(1);
     transition: 175ms ease-in-out;
     transform: scale(1);
+    overflow: hidden;
 
 
     :hover {
