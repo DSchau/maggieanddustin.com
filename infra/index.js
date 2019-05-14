@@ -24,7 +24,8 @@ const formatInvitee = invitee => ({
 
 exports.handler = async function handler(event, context) {
   log.debug({ event, context })
-  const { name, rsvps } = await bodyScheam.validate(JSON.parse(event.body))
+
+  const { name, rsvps } = await bodyScheam.validate(event.body || event)
 
   log.debug({ name, rsvps })
 
