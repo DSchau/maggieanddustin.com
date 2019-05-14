@@ -60,6 +60,7 @@ resource "aws_lambda_function" "rsvp_lambda" {
   function_name    = "${var.lambda_name}"
   role             = "${aws_iam_role.iam_for_rsvp_lambda.arn}"
   handler          = "index.handler"
+  timeout          = "10"
 
   depends_on    = ["aws_iam_role_policy_attachment.lambda_rsvp_logs", "aws_cloudwatch_log_group.lambda_rsvp_log_group"]
 

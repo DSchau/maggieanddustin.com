@@ -1,6 +1,7 @@
 const pify = require('pify')
 const yup = require('yup')
 const format = require('date-fns/format')
+const levenshtein = require('fast-levenshtein');
 
 const getApi = require('./api')
 const log = require('./log')
@@ -15,15 +16,15 @@ const bodyScheam = yup.object().shape({
 
 const formatInvitee = invitee => ({
   statusCode: 200,
-  body: JSON.stringify({
-    name: invitee.name,
+  body: {
+    name: invitee.invitee,
     guest: invitee.guest,
     attending: invitee.attending
-  })
+  }
 })
 
-exports.handler = async function handler(event, context) {
-  log.debug({ event, context })
+exports.handler = async function handler(event) {
+  log.debug(event)
 
   const { name, rsvps } = await bodyScheam.validate(event.body || event)
 
@@ -37,16 +38,16 @@ exports.handler = async function handler(event, context) {
 
   const rows = await api.getRows()
 
-  log.debug(`Found ${rows.length} rows`)
-
-  const invitee = rows.find(row => [row.invitee.name, row.invitee.guest].includes(name))
-
-  log.debug(invitee)
+  const invitee = rows.find(row => {
+    const names = [row.invitee, row.guest]
+    return names.includes(name) || names.some(guestName => levenshtein.get(guestName, name) === 1)
+  })
 
   if (!invitee) {
-    log.error({ message: `Unknown invitee`, name })
     throw new Error('Could not find a guest with that name. Maybe you meant: TODO: invitee name')
   }
+
+  log.debug(invitee)
 
   if (!rsvps) {
     return formatInvitee(invitee)
@@ -58,13 +59,13 @@ exports.handler = async function handler(event, context) {
     invitee.responddate = now
   }
 
-  const [main, guest = {}] = rsvps
+  const [main, guest = false] = rsvps
 
   invitee.lasteditdate = now
   invitee.attending = main.attending
 
-  if (guest && !guest.attending) {
-    invitee.guest = guest.name
+  if (guest) {
+    invitee.guest = guest.attending ? guest.name : ``
   }
 
   log.debug({ message: `Saving guest and invitee`, invitee })

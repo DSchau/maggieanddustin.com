@@ -2,8 +2,6 @@ const GoogleSpreadsheet = require('google-spreadsheet');
 const pify = require('pify')
 const yup = require('yup')
 
-const log = require('./log')
-
 const apiSchema = yup.object().shape({
   private_key: yup.string().transform(value => value.replace(/\\n/g, '\n')).required(),
   client_email: yup.string().email().required(),
@@ -11,12 +9,11 @@ const apiSchema = yup.object().shape({
 })
 
 module.exports = async function api(opts) {
-  log.debug(opts)
-  await apiSchema.validate(opts)
+  const normalizedOpts = await apiSchema.validate(opts)
 
   const sheet = new GoogleSpreadsheet(opts.spreadsheet_id)
 
-  await pify(sheet.useServiceAccountAuth)(opts)
+  await pify(sheet.useServiceAccountAuth)(normalizedOpts)
 
   const { worksheets } = await pify(sheet.getInfo)()
 
