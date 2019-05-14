@@ -6,15 +6,6 @@ executors:
         default: "10"
     docker:
       - image: circleci/node:<< parameters.image >>
-  terraform:
-    parameters:
-      image:
-        type: string
-        default: "light"
-    working_directory: ~/infra
-    docker:
-      - image: hashicorp/terraform:<< parameters.image >>
-      - image: circleci/node:10
 
 aliases:
   restore_cache: &restore_cache
@@ -41,8 +32,16 @@ commands:
       command:
         type: string
         default: "plan"
+    environment:
+      BASH_ENV: ~/.bashrc
     steps:
       - checkout
+      - run: echo 'export PATH=/tmp/tf:$PATH' >> $BASH_ENV
+      - run:
+          name: Install Terraform
+          command: |
+            wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
+            unzip terraform_0.11.13_linux_amd64.zip -d /tmp/tf/terraform
       - <<: *restore_cache
       - <<: *install_node_modules
       - <<: *persist_cache
@@ -64,13 +63,13 @@ jobs:
       - <<: *persist_cache
       - run: yarn build
   plan:
-    executor: terraform
+    executor: node
     steps:
       - tf:
           command: plan
 
   apply:
-    executor: terraform
+    executor: node
     steps:
       - tf:
           command: apply
