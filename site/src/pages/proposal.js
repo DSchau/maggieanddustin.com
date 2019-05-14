@@ -137,7 +137,7 @@ const fontsDate = {
 function Index() {
   const data = useStaticQuery(graphql`
     {
-      allFile(filter: {relativePath: {glob: "grid/*"}}, sort: {fields: relativePath, order: ASC}) {
+      allFile(filter: {relativePath: {glob: "engagement/*"}}, sort: {fields: relativePath, order: ASC}) {
         edges {
           node {
             childImageSharp {
