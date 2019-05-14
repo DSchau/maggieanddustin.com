@@ -32,8 +32,6 @@ commands:
       command:
         type: string
         default: "plan"
-    environment:
-      BASH_ENV: ~/.bashrc
     steps:
       - checkout
       - run: echo 'export PATH=/tmp/tf:$PATH' >> $BASH_ENV
