@@ -33,9 +33,9 @@ commands:
         type: string
         default: "plan"
     steps:
-      - checkout:
-          path: ~/terraform
+      - checkout
       - run: echo 'export PATH=/tmp/tf:$PATH' >> $BASH_ENV
+      - run: cd terraform
       - run:
           name: Install Terraform
           command: |
