@@ -40,7 +40,7 @@ commands:
           command: |
             mkdir -p /tmp/tf/
             wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
-            unzip terraform_0.11.13_linux_amd64.zip -d /tmp/tf/terraform
+            unzip terraform_0.11.13_linux_amd64.zip -d /tmp/tf
       - <<: *restore_cache
       - <<: *install_node_modules
       - <<: *persist_cache
