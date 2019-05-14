@@ -9,6 +9,8 @@ const apiSchema = yup.object().shape({
 })
 
 module.exports = async function api(opts) {
+  await apiSchema.validate(opts)
+
   const sheet = new GoogleSpreadsheet(opts.spreadsheet_id)
 
   await pify(sheet.useServiceAccountAuth)(opts)
