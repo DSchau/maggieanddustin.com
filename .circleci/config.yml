@@ -35,7 +35,6 @@ commands:
     steps:
       - checkout
       - run: echo 'export PATH=/tmp/tf:$PATH' >> $BASH_ENV
-      - run: cd terraform
       - run:
           name: Install Terraform
           command: |
@@ -51,6 +50,7 @@ commands:
             terraform << parameters.command >> -out tfplan.tf \
               -var='client_email=${CLIENT_EMAIL}'
               -var='private_key=${PRIVATE_KEY}'
+          working_directory: ~/project/terraform
 
 version: 2.1
 jobs:
