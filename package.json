@@ -10,6 +10,7 @@
     "build": "yarn workspaces run build"
   },
   "workspaces": [
-    "site"
+    "site",
+    "themes/*"
   ]
 }

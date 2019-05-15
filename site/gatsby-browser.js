@@ -1,4 +1,5 @@
 import SmoothScroll from 'smooth-scroll'
+import 'normalize.css'
 
 let scrolls = []
 

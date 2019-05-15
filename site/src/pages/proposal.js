@@ -4,10 +4,10 @@ import Image from 'gatsby-image'
 import styled from "@emotion/styled";
 import { keyframes } from '@emotion/core'
 import { FaChevronDown } from 'react-icons/fa'
+import Layout from 'gatsby-theme-wedding-ui/src/components/layout'
 
 import Hero from "../components/hero";
 import Footer from '../components/footer'
-import Layout from "../components/layout";
 import PhotoGrid from '../components/photo-grid'
 import SEO from "../components/seo";
 
