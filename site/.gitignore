@@ -67,10 +67,3 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
-
-# built files
-*.zip
-
-# terraform stuff
-.terraform
-*.tfvars

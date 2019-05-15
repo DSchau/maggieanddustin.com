@@ -74,7 +74,7 @@ function Hero({ content, footer }) {
 
   return (
     <Container>
-      <Image fluid={data.file.childImageSharp.fluid} />
+      <Image fluid={data.file.childImageSharp.fluid} critical={true} />
       <Content>{content}</Content>
       <Footer>{footer}</Footer>
     </Container>
