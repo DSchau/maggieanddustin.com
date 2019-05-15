@@ -24,8 +24,21 @@ function Footer() {
   return (
     <Container>
       <Message>
-        <span css={{ display: `block`, margin: `1rem 0`, fontStyle: `italic`, textDecoration: `underline`, textDecorationSkip: `ink` }}>For Maggie</span>
-        Made with <FaHeart color="#c74444" css={{ position: `relative`, top: 2 }} /> by Dustin</Message>
+        <span
+          css={{
+            display: `block`,
+            margin: `1rem 0`,
+            fontStyle: `italic`,
+            textDecoration: `underline`,
+            textDecorationSkip: `ink`,
+          }}
+        >
+          For Maggie
+        </span>
+        Made with{' '}
+        <FaHeart color="#c74444" css={{ position: `relative`, top: 2 }} /> by
+        Dustin
+      </Message>
     </Container>
   )
 }

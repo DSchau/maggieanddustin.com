@@ -1,11 +1,17 @@
-const GoogleSpreadsheet = require('google-spreadsheet');
+const GoogleSpreadsheet = require('google-spreadsheet')
 const pify = require('pify')
 const yup = require('yup')
 
 const apiSchema = yup.object().shape({
-  private_key: yup.string().transform(value => value.replace(/\\n/g, '\n')).required(),
-  client_email: yup.string().email().required(),
-  spreadsheet_id: yup.string().required()
+  private_key: yup
+    .string()
+    .transform(value => value.replace(/\\n/g, '\n'))
+    .required(),
+  client_email: yup
+    .string()
+    .email()
+    .required(),
+  spreadsheet_id: yup.string().required(),
 })
 
 module.exports = async function api(opts) {

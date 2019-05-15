@@ -9,7 +9,7 @@ function Footer() {
 }
 
 Footer.defaultProps = {
-  items: []
+  items: [],
 }
 
 export default Footer

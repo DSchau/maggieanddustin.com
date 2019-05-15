@@ -3,7 +3,10 @@ import React from 'react'
 export default function RsvpForm() {
   return (
     <>
-      <h1>Please override this form with component shadowing to implement yourself.</h1>
+      <h1>
+        Please override this form with component shadowing to implement
+        yourself.
+      </h1>
       <pre>{`
 src/
   gatsby-theme-wedding-ui/

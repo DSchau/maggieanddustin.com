@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 import { keyframes } from '@emotion/core'
 import { FaChevronDown } from 'react-icons/fa'
 import Layout from 'gatsby-theme-wedding-ui/src/components/layout'
 
-import Hero from "../components/hero";
+import Hero from '../components/hero'
 import Footer from '../components/footer'
 import PhotoGrid from '../components/photo-grid'
-import SEO from "../components/seo";
+import SEO from '../components/seo'
 
 const down = keyframes`
   0%, 100% {transform: translateY(0);}
@@ -33,7 +33,7 @@ const Title = styled.h1`
   @media only screen and (min-width: 768px) {
     font-size: 6rem;
   }
-`;
+`
 
 const And = styled.h2`
   color: white;
@@ -48,7 +48,7 @@ const And = styled.h2`
 
   &:before,
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -64,7 +64,7 @@ const And = styled.h2`
   &:after {
     right: 0;
   }
-`;
+`
 
 const CTA = styled.div`
   display: flex;
@@ -111,33 +111,35 @@ const MoreInfo = styled.div`
 
   background-color: #222;
   color: white;
-`;
+`
 
 const fonts = {
   fontSize: `1.5rem`,
   '@media only screen and (min-width: 500px)': {
-    fontSize: `3rem`
+    fontSize: `3rem`,
   },
   '@media only screen and (min-width: 768px)': {
-    fontSize: `5rem`
-  }
+    fontSize: `5rem`,
+  },
 }
 
 const fontsDate = {
   fontSize: `2rem`,
   '@media only screen and (min-width: 500px)': {
-    fontSize: `4rem`
+    fontSize: `4rem`,
   },
   '@media only screen and (min-width: 768px)': {
-    fontSize: `6rem`
-  }
-
+    fontSize: `6rem`,
+  },
 }
 
 function Index() {
   const data = useStaticQuery(graphql`
     {
-      allFile(filter: {relativePath: {glob: "engagement/*"}}, sort: {fields: relativePath, order: ASC}) {
+      allFile(
+        filter: { relativePath: { glob: "engagement/*" } }
+        sort: { fields: relativePath, order: ASC }
+      ) {
         edges {
           node {
             childImageSharp {
@@ -163,25 +165,56 @@ function Index() {
           </React.Fragment>
         }
         footer={
-            <CTA>
-              <Link data-scroll={true} href="#more-info"><Message><span>More info this way</span><Chevron /></Message></Link>
-            </CTA>
+          <CTA>
+            <Link data-scroll={true} href="#more-info">
+              <Message>
+                <span>More info this way</span>
+                <Chevron />
+              </Message>
+            </Link>
+          </CTA>
         }
       />
       <MoreInfo id="more-info">
         <div css={{ padding: '10rem 1rem', textAlign: `center` }}>
-          <h2 css={{ fontFamily: `Raleway, sans-serif`, display: `block`, whiteSpace: `nowrap`, margin: 0, padding: '2rem', border: `12px solid white`, borderLeftWidth: 0, borderRightWidth: 0, ...fonts }}>
+          <h2
+            css={{
+              fontFamily: `Raleway, sans-serif`,
+              display: `block`,
+              whiteSpace: `nowrap`,
+              margin: 0,
+              padding: '2rem',
+              border: `12px solid white`,
+              borderLeftWidth: 0,
+              borderRightWidth: 0,
+              ...fonts,
+            }}
+          >
             <span css={{ fontWeight: 100 }}>Wedding bells in&hellip;</span>
-            <span css={{ display: `block`, padding: `1rem`, fontWeight: 900, ...fontsDate }}>2020</span>
+            <span
+              css={{
+                display: `block`,
+                padding: `1rem`,
+                fontWeight: 900,
+                ...fontsDate,
+              }}
+            >
+              2020
+            </span>
           </h2>
         </div>
         <PhotoGrid>
-          {data.allFile.edges.map(({ node }) => <Image key={node.childImageSharp.fluid.src} fluid={node.childImageSharp.fluid} />)}
+          {data.allFile.edges.map(({ node }) => (
+            <Image
+              key={node.childImageSharp.fluid.src}
+              fluid={node.childImageSharp.fluid}
+            />
+          ))}
         </PhotoGrid>
         <Footer />
       </MoreInfo>
     </Layout>
-  );
+  )
 }
 
-export default Index;
+export default Index

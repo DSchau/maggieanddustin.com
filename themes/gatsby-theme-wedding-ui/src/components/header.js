@@ -5,14 +5,18 @@ function Header({ items }) {
   return (
     <header>
       <ul style={{ margin: 0, padding: 0 }}>
-        {items.map(item => <li key={item.label} style={{ display: `inline-block` }}><Link to={item.to}>{item.label}</Link></li>)}
+        {items.map(item => (
+          <li key={item.label} style={{ display: `inline-block` }}>
+            <Link to={item.to}>{item.label}</Link>
+          </li>
+        ))}
       </ul>
     </header>
   )
 }
 
 Header.defaultProps = {
-  items: []
+  items: [],
 }
 
 export default Header

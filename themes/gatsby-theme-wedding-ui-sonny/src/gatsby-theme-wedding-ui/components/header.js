@@ -37,7 +37,8 @@ const Link = styled(GatsbyLink)`
   padding: 0.25rem 0;
   border-bottom: 2px solid transparent;
 
-  &.active, :hover {
+  &.active,
+  :hover {
     color: #222;
     border-bottom-color: #aaa;
   }
@@ -47,15 +48,24 @@ export default function Header({ items, title }) {
   return (
     <Container>
       <Nav>
-        <Link css={{ fontSize: 18 }} to="/">{title}</Link>
+        <Link css={{ fontSize: 18 }} to="/">
+          {title}
+        </Link>
         <List>
-          {
-            items.map(item => (
-              <li css={{ display: `inline-block`, padding: `0.25rem 0.5rem`, margin: `0.25rem` }} key={item.label}>
-                <Link activeClassName="active" to={item.to}>{item.label}</Link>
-              </li>
-            ))
-          }
+          {items.map(item => (
+            <li
+              css={{
+                display: `inline-block`,
+                padding: `0.25rem 0.5rem`,
+                margin: `0.25rem`,
+              }}
+              key={item.label}
+            >
+              <Link activeClassName="active" to={item.to}>
+                {item.label}
+              </Link>
+            </li>
+          ))}
         </List>
       </Nav>
     </Container>
