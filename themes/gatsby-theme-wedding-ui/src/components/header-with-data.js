@@ -6,13 +6,9 @@ import Header from './header'
 export default function HeaderWithData() {
   const data = useStaticQuery(graphql`
     {
-      pages: allSitePage(filter:{
-        path:{
-          nin:["/dev-404-page/", "/"]
-        }
-      }) {
+      pages: allSitePage(filter: { path: { nin: ["/dev-404-page/", "/"] } }) {
         nodes {
-          to:path
+          to: path
           fields {
             label
           }
@@ -26,9 +22,13 @@ export default function HeaderWithData() {
       }
     }
   `)
-  return <Header title={data.site.siteMetadata.title} items={data.pages.nodes.map(node => ({
-    to: node.to,
-    label: node.fields.label
-  }))} />
+  return (
+    <Header
+      title={data.site.siteMetadata.title}
+      items={data.pages.nodes.map(node => ({
+        to: node.to,
+        label: node.fields.label,
+      }))}
+    />
+  )
 }
-

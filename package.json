@@ -12,5 +12,10 @@
   "workspaces": [
     "site",
     "themes/*"
-  ]
+  ],
+  "devDependencies": {
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.6",
+    "prettier": "^1.17.1"
+  }
 }

@@ -17,7 +17,13 @@ const Message = styled.p`
 export default function Footer() {
   return (
     <Container>
-      <Message>Made with <span role="img" aria-label="Heart emoji">❤️</span> by Dustin</Message>
+      <Message>
+        Made with{' '}
+        <span role="img" aria-label="Heart emoji">
+          ❤️
+        </span>{' '}
+        by Dustin
+      </Message>
     </Container>
   )
 }

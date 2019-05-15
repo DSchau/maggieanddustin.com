@@ -11,9 +11,9 @@ exports.createResolvers = function({ createResolvers }) {
                 city: `Minneapolis`,
                 state: `MN`,
                 name: `The Depot`,
-                phone: `712.212.3001`
-              }
-          ],
+                phone: `712.212.3001`,
+              },
+            ],
             date: `2018-04-20`,
             startTime: `2018-04-20 04:00`,
             endTime: `2019-04-20 10:00`,
@@ -22,11 +22,11 @@ exports.createResolvers = function({ createResolvers }) {
               city: `Minneapolis`,
               state: `MN`,
               name: `The Depot`,
-              uri: `https://venue.com`
-            }
+              uri: `https://venue.com`,
+            },
           }
         },
       },
-    }
+    },
   })
 }

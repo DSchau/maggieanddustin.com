@@ -7,18 +7,18 @@ module.exports = {
     author: `schaudustin`,
     siteUrl: process.env.DEPLOY_URL || 'https://proposal.maggieanddustin.com',
     social: {
-      facebook: ['']
-    }
+      facebook: [''],
+    },
   },
   __experimentalThemes: [
     {
       resolve: `gatsby-theme-wedding`,
-      options: {}
+      options: {},
     },
     {
       resolve: `gatsby-theme-wedding-ui-sonny`,
-      options: {}
-    }
+      options: {},
+    },
   ],
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -31,6 +31,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-emotion`
+    `gatsby-plugin-emotion`,
   ],
 }

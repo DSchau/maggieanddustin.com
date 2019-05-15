@@ -1,12 +1,15 @@
 const capitalize = str => {
-  const normalized = str.split('/').filter(Boolean).join('')
+  const normalized = str
+    .split('/')
+    .filter(Boolean)
+    .join('')
   return normalized.slice(0, 1).toUpperCase() + normalized.slice(1)
 }
 
 exports.onCreateNode = function({ actions, node }) {
   const lookup = {
     Rsvp: 'RSVP',
-    '': 'Home'
+    '': 'Home',
   }
 
   if (node.internal.type === `SitePage`) {
@@ -14,7 +17,7 @@ exports.onCreateNode = function({ actions, node }) {
     actions.createNodeField({
       node,
       name: `label`,
-      value: lookup[normalized] || normalized
+      value: lookup[normalized] || normalized,
     })
   }
 }

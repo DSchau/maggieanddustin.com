@@ -1,12 +1,12 @@
-import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import styled from "@emotion/styled";
-import GatsbyImage from "gatsby-image";
+import React from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
+import styled from '@emotion/styled'
+import GatsbyImage from 'gatsby-image'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-`;
+`
 
 const Content = styled.div`
   position: absolute;
@@ -21,7 +21,7 @@ const Content = styled.div`
 
   transform: translateY(-50%) translateX(-50%);
   text-align: center;
-`;
+`
 
 const Footer = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ const Footer = styled.div`
   width: 100%;
 
   text-align: center;
-`;
+`
 
 const Image = styled(GatsbyImage)`
   flex: 1;
@@ -42,7 +42,7 @@ const Image = styled(GatsbyImage)`
   width: 100vw;
 
   :after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -57,7 +57,7 @@ const Image = styled(GatsbyImage)`
     );
     background-blend-mode: color-burn;
   }
-`;
+`
 
 function Hero({ content, footer }) {
   const data = useStaticQuery(graphql`
@@ -70,7 +70,7 @@ function Hero({ content, footer }) {
         }
       }
     }
-  `);
+  `)
 
   return (
     <Container>
@@ -78,7 +78,7 @@ function Hero({ content, footer }) {
       <Content>{content}</Content>
       <Footer>{footer}</Footer>
     </Container>
-  );
+  )
 }
 
-export default Hero;
+export default Hero

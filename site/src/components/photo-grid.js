@@ -19,7 +19,6 @@ const Grid = styled.div`
     transform: scale(1);
     overflow: hidden;
 
-
     :hover {
       filter: none;
       transform: scale(1.1);

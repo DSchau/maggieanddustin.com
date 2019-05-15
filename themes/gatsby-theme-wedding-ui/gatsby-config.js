@@ -9,6 +9,6 @@ module.exports = function config() {
           path: path.join(__dirname, 'src', 'pages'),
         },
       },
-    ]
+    ],
   }
 }

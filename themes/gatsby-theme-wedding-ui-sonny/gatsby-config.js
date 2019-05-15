@@ -3,11 +3,9 @@ module.exports = function config() {
     __experimentalThemes: [
       {
         resolve: `gatsby-theme-wedding-ui`,
-        options: {}
-      }
+        options: {},
+      },
     ],
-    plugins: [
-      'gatsby-plugin-emotion'
-    ]
+    plugins: ['gatsby-plugin-emotion'],
   }
 }

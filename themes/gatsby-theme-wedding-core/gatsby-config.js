@@ -1,8 +1,8 @@
 module.exports = function config() {
   return {
     siteMetadata: {
-      title: `Wedding`
+      title: `Wedding`,
     },
-    plugins: []
+    plugins: [],
   }
 }
