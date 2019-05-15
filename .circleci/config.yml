@@ -32,6 +32,9 @@ commands:
       command:
         type: string
         default: "plan"
+      working_directory:
+        type: string
+        default: ~/project/terraform
     steps:
       - checkout
       - run: echo 'export PATH=/tmp/tf:$PATH' >> $BASH_ENV
@@ -45,12 +48,16 @@ commands:
       - <<: *install_node_modules
       - <<: *persist_cache
       - run:
+          name: Terraform Init
+          command: terraform init
+          working_directory: "<< parameters.working_directory >>"
+      - run:
           name: Terraform Plan
           command: |
             terraform << parameters.command >> -out tfplan.tf \
               -var='client_email=${CLIENT_EMAIL}'
               -var='private_key=${PRIVATE_KEY}'
-          working_directory: ~/project/terraform
+          working_directory: "<< parameters.working_directory >>"
 
 version: 2.1
 jobs:
