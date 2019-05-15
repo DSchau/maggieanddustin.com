@@ -1,4 +1,4 @@
 [build]
   publish = "site/public"
 
-  command = "yarn build"
+  command = "yarn workspaces @maggie-and-dustin/wedding run build"

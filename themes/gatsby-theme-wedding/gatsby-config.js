@@ -1,8 +1,5 @@
-module.exports = function config({ adapter }) {
+module.exports = function config() {
   return {
-    siteMetadata: {
-      title: `Wedding`
-    },
     __experimentalThemes: [
       {
         resolve: `gatsby-theme-wedding-core`
