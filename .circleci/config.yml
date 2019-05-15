@@ -39,6 +39,12 @@ commands:
       - checkout
       - run: echo 'export PATH=/tmp/tf:$PATH' >> $BASH_ENV
       - run:
+          name: Provide Terraform Variables
+          command: |
+            echo 'client_email=${CLIENT_EMAIL}' >> terraform.tfvars
+            echo 'private_key=${PRIVATE_KEY}' >> terraform.tfvars
+            cat terraform.tfvars
+      - run:
           name: Install Terraform
           command: |
             mkdir -p /tmp/tf/
@@ -57,10 +63,7 @@ commands:
           working_directory: "<< parameters.working_directory >>"
       - run:
           name: Terraform Plan
-          command: |
-            terraform << parameters.command >> -out tfplan.tf \
-              -var='client_email=${CLIENT_EMAIL}' \
-              -var='private_key=${PRIVATE_KEY}'
+          command: terraform << parameters.command >> -out tfplan.tf
           working_directory: "<< parameters.working_directory >>"
 
 version: 2.1
