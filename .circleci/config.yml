@@ -50,7 +50,7 @@ commands:
       - run:
           name: Build Lambda
           command: yarn build
-          working_directoory: ~/project/infra
+          working_directory: ~/project/infra
       - run:
           name: Terraform Init
           command: terraform init
