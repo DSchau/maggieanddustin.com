@@ -48,6 +48,10 @@ commands:
       - <<: *install_node_modules
       - <<: *persist_cache
       - run:
+          name: Build Lambda
+          command: yarn build
+          working_directoory: ~/project/infra
+      - run:
           name: Terraform Init
           command: terraform init
           working_directory: "<< parameters.working_directory >>"
