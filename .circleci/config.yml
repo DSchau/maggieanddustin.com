@@ -55,8 +55,8 @@ commands:
           name: Terraform Plan
           command: |
             terraform << parameters.command >> -out tfplan.tf \
-              -var='client_email=$CLIENT_EMAIL'
-              -var='private_key=$PRIVATE_KEY'
+              -var='client_email=${CLIENT_EMAIL}' \
+              -var='private_key=${PRIVATE_KEY}'
           working_directory: "<< parameters.working_directory >>"
 
 version: 2.1
