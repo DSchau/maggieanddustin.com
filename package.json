@@ -7,7 +7,7 @@
   "author": "Dustin Schau <dustinschau@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "yarn workspaces @maggie-and-dustin/wedding run build"
+    "build": "yarn workspace @maggie-and-dustin/wedding run build"
   },
   "workspaces": [
     "site",
