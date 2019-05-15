@@ -1,0 +1,10 @@
+{
+  "name": "gatsby-theme-wedding-ui",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Dustin Schau <dustinschau@gmail.com> (https://dustinschau.com)",
+  "license": "MIT",
+  "dependencies": {
+    "gatsby-plugin-page-creator": "^2.0.13"
+  }
+}

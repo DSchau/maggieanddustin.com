@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    title: `Dustin and Maggie`,
+    title: `Maggie and Dustin`,
     description: `Landing page for the wedding of Dustin Schau and Maggie Alcorn`,
     author: `schaudustin`,
     siteUrl: process.env.DEPLOY_URL || 'https://proposal.maggieanddustin.com',
@@ -10,6 +10,16 @@ module.exports = {
       facebook: ['']
     }
   },
+  __experimentalThemes: [
+    {
+      resolve: `gatsby-theme-wedding`,
+      options: {}
+    },
+    {
+      resolve: `gatsby-theme-wedding-ui-sonny`,
+      options: {}
+    }
+  ],
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -21,12 +31,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-emotion`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: path.resolve(`src/utils/typography.js`)
-      }
-    }
+    `gatsby-plugin-emotion`
   ],
 }

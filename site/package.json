@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "@maggie-and-dustin/wedding",
   "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
@@ -14,19 +14,15 @@
     "gatsby-plugin-offline": "^2.0.23",
     "gatsby-plugin-react-helmet": "^3.0.6",
     "gatsby-plugin-sharp": "^2.0.20",
-    "gatsby-plugin-typography": "^2.2.7",
     "gatsby-source-filesystem": "^2.0.20",
     "gatsby-transformer-sharp": "^2.1.13",
-    "minireset.css": "^0.0.4",
+    "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-helmet": "^5.2.0",
     "react-icons": "^3.4.0",
-    "react-typography": "^0.16.18",
-    "smooth-scroll": "^15.0.0",
-    "typography": "^0.16.18",
-    "typography-theme-funston": "^0.16.18"
+    "smooth-scroll": "^15.0.0"
   },
   "keywords": [
     "gatsby"
