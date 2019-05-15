@@ -54,6 +54,8 @@ commands:
       - <<: *restore_cache
       - <<: *install_node_modules
       - <<: *persist_cache
+      - attach_workspace:
+          at: terraform
       - run:
           name: Build Lambda
           command: yarn build
@@ -66,6 +68,12 @@ commands:
           name: Terraform Plan
           command: terraform << parameters.command >> -out tfplan.tf
           working_directory: "<< parameters.working_directory >>"
+      - persist_to_workspace:
+          root: terraform
+          paths:
+            - .terraform
+            - terraform.tfplan
+            - tfplan.tf
 
 version: 2.1
 jobs:
@@ -95,3 +103,10 @@ workflows:
     jobs:
       - build
       - plan
+      - apply:
+          requires:
+            - plan
+          filters:
+            branches:
+              only:
+                - master
