@@ -1,0 +1,18 @@
+{
+  "name": "gatsby-theme-wedding-ui-dustin-maggie",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Dustin Schau <dustinschau@gmail.com> (https://dustinschau.com)",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "^10.0.14",
+    "@emotion/styled": "^10.0.14",
+    "@mdx-js/react": "^1.0.27",
+    "@theme-ui/typography": "^0.2.23",
+    "gatsby-plugin-page-creator": "^2.1.5",
+    "gatsby-plugin-theme-ui": "^0.2.23",
+    "react-icons": "^3.7.0",
+    "theme-ui": "^0.2.23",
+    "typography-theme-moraga": "^0.16.19"
+  }
+}

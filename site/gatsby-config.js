@@ -27,7 +27,7 @@ module.exports = {
       options: {},
     },
     {
-      resolve: `gatsby-theme-wedding-ui-sonny`,
+      resolve: `gatsby-theme-wedding-ui-dustin-maggie`,
       options: {},
     },
   ],
