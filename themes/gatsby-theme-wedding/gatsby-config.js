@@ -1,10 +1,9 @@
 module.exports = function config() {
   return {
-    __experimentalThemes: [
+    plugins: [
       {
         resolve: `gatsby-theme-wedding-core`,
       },
     ],
-    plugins: [],
   }
 }

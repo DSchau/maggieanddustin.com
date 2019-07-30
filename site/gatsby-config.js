@@ -10,16 +10,6 @@ module.exports = {
       facebook: [''],
     },
   },
-  __experimentalThemes: [
-    {
-      resolve: `gatsby-theme-wedding`,
-      options: {},
-    },
-    {
-      resolve: `gatsby-theme-wedding-ui-sonny`,
-      options: {},
-    },
-  ],
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -32,5 +22,13 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-emotion`,
+    {
+      resolve: `gatsby-theme-wedding`,
+      options: {},
+    },
+    {
+      resolve: `gatsby-theme-wedding-ui-sonny`,
+      options: {},
+    },
   ],
 }

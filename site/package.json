@@ -5,24 +5,24 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@emotion/core": "^10.0.7",
-    "@emotion/styled": "^10.0.7",
-    "gatsby": "^2.1.4",
-    "gatsby-image": "^2.0.29",
-    "gatsby-plugin-emotion": "^4.0.3",
-    "gatsby-plugin-manifest": "^2.0.17",
-    "gatsby-plugin-offline": "^2.0.23",
-    "gatsby-plugin-react-helmet": "^3.0.6",
-    "gatsby-plugin-sharp": "^2.0.20",
-    "gatsby-source-filesystem": "^2.0.20",
-    "gatsby-transformer-sharp": "^2.1.13",
+    "@emotion/core": "^10.0.14",
+    "@emotion/styled": "^10.0.14",
+    "gatsby": "^2.13.42",
+    "gatsby-image": "^2.2.7",
+    "gatsby-plugin-emotion": "^4.1.2",
+    "gatsby-plugin-manifest": "^2.2.4",
+    "gatsby-plugin-offline": "^2.2.4",
+    "gatsby-plugin-react-helmet": "^3.1.2",
+    "gatsby-plugin-sharp": "^2.2.9",
+    "gatsby-source-filesystem": "^2.1.6",
+    "gatsby-transformer-sharp": "^2.2.5",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-helmet": "^5.2.0",
     "react-icons": "^3.4.0",
-    "smooth-scroll": "^15.0.0"
+    "smooth-scroll": "^16.1.0"
   },
   "keywords": [
     "gatsby"
@@ -43,7 +43,7 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "devDependencies": {
-    "fs-extra": "^7.0.1",
-    "sharp-cli": "^1.9.0"
+    "fs-extra": "^8.1.0",
+    "sharp-cli": "^1.10.0"
   }
 }

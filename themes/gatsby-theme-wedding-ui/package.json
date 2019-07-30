@@ -5,6 +5,6 @@
   "author": "Dustin Schau <dustinschau@gmail.com> (https://dustinschau.com)",
   "license": "MIT",
   "dependencies": {
-    "gatsby-plugin-page-creator": "^2.0.13"
+    "gatsby-plugin-page-creator": "^2.1.5"
   }
 }
