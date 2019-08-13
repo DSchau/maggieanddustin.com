@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
@@ -37,7 +39,7 @@ const Title = styled.h1`
 
 const And = styled.h2`
   color: white;
-  font-size: 2rem;
+  font-size: 5rem;
   font-weight: 100;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.75);
@@ -54,7 +56,7 @@ const And = styled.h2`
     transform: translateY(-50%);
     height: 3px;
     background: rgba(255, 255, 255, 0.5);
-    width: 5vw;
+    width: 10vw;
   }
 
   &:before {
@@ -158,11 +160,19 @@ function Index() {
       <SEO title="Proposal" keywords={[`gatsby`, `application`, `react`]} />
       <Hero
         content={
-          <React.Fragment>
+          <div sx={{ fontFamily: 'heading' }}>
             <Title>Maggie Alcorn</Title>
-            <And>and</And>
+            <And
+              sx={{
+                fontFamily: 'cursive',
+                fontStyle: 'italic',
+                fontWeight: 'body',
+              }}
+            >
+              &amp;
+            </And>
             <Title>Dustin Schau</Title>
-          </React.Fragment>
+          </div>
         }
         footer={
           <CTA>
@@ -178,8 +188,7 @@ function Index() {
       <MoreInfo id="more-info">
         <div css={{ padding: '10rem 1rem', textAlign: `center` }}>
           <h2
-            css={{
-              fontFamily: `Raleway, sans-serif`,
+            sx={{
               display: `block`,
               whiteSpace: `nowrap`,
               margin: 0,

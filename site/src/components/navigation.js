@@ -10,7 +10,6 @@ export default () => {
   return (
     <nav
       sx={{
-        backgroundColor: 'background',
         position: 'relative',
         borderTopColor: 'color',
         borderTopWidth: 6,
