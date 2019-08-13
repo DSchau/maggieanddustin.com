@@ -24,10 +24,12 @@ module.exports = {
     `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-theme-wedding`,
-      options: {},
+      options: {
+        contentPath: path.join(__dirname, '..', 'content'),
+      },
     },
     {
-      resolve: `gatsby-theme-wedding-ui-dustin-maggie`,
+      resolve: `gatsby-theme-wedding-ui-daggie`,
       options: {},
     },
   ],

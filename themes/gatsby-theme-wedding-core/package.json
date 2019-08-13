@@ -3,5 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Dustin Schau <dustinschau@gmail.com> (https://dustinschau.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "gatsby-source-filesystem": "^2.1.9",
+    "gatsby-transformer-yaml": "^2.2.4"
+  }
 }

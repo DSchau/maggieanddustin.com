@@ -1,11 +1,28 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
+import Registry from '../components/registry'
 
-export default function Registry() {
+function RegistryPage({ data }) {
   return (
     <Layout>
-      <h1>The registry will go here</h1>
+      <Registry {...data.contentYaml.registry} />
     </Layout>
   )
 }
+
+export const registryQuery = graphql`
+  {
+    contentYaml {
+      registry {
+        vendors {
+          name
+          url
+        }
+      }
+    }
+  }
+`
+
+export default RegistryPage
