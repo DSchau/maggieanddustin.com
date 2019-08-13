@@ -6,6 +6,7 @@ venue:
   phone: '612-375-1700'
   website: https://www.marriott.com/hotels/travel/mspdd-renaissance-minneapolis-hotel-the-depot/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2
   booking: https://www.marriott.com/hotels/travel/mspdd-renaissance-minneapolis-hotel-the-depot/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2
+  cover: images/depot.jpg
 wedding:
   date: 2019-08-08
   startTime: '2019-08-08T12:00:00Z'

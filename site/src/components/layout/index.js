@@ -2,7 +2,7 @@ import React from 'react'
 import { Styled } from 'theme-ui'
 import { Global } from '@emotion/core'
 
-import Navigation from './navigation'
+import Navigation from '../navigation'
 
 export default ({ children }) => (
   <Styled.root>
