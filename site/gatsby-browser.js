@@ -1,5 +1,7 @@
 import SmoothScroll from 'smooth-scroll'
 import 'normalize.css'
+import 'typeface-arvo'
+import 'typeface-cabin'
 
 let scrolls = []
 
