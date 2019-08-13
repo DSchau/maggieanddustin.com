@@ -6,9 +6,6 @@ module.exports = {
     description: `Landing page for the wedding of Dustin Schau and Maggie Alcorn`,
     author: `schaudustin`,
     siteUrl: process.env.DEPLOY_URL || 'https://proposal.maggieanddustin.com',
-    social: {
-      facebook: [''],
-    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -19,18 +16,16 @@ module.exports = {
         path: path.join(__dirname, `..`, `content`, `images`),
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-emotion`,
     {
-      resolve: `gatsby-theme-wedding`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        contentPath: path.join(__dirname, '..', 'content'),
+        name: `content`,
+        path: path.join(__dirname, `..`, `content`),
       },
     },
-    {
-      resolve: `gatsby-theme-wedding-ui-daggie`,
-      options: {},
-    },
+    `gatsby-transformer-yaml`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-theme-ui`,
   ],
 }
