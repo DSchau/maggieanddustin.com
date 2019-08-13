@@ -159,9 +159,9 @@ function Index() {
       <Hero
         content={
           <React.Fragment>
-            <Title>Dustin Schau</Title>
-            <And>and</And>
             <Title>Maggie Alcorn</Title>
+            <And>and</And>
+            <Title>Dustin Schau</Title>
           </React.Fragment>
         }
         footer={

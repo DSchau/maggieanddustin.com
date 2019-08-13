@@ -16,14 +16,14 @@ export default props => (
       borderBottomStyle: `solid`,
       borderBottomColor: `transparent`,
       '&:hover': {
-        color: 'primary',
+        color: 'text',
         opacity: 1,
-        borderColor: 'primary',
+        borderColor: 'text',
       },
       '&.active': {
-        color: 'primary',
+        color: 'text',
         opacity: 1,
-        borderColor: 'primary',
+        borderColor: 'text',
       },
     }}
   />
