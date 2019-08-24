@@ -103,7 +103,7 @@ workflows:
     jobs:
       - build
       - plan
-      - apply:
+      - plan_approval:
           type: approval
           requires:
             - plan
@@ -111,3 +111,6 @@ workflows:
             branches:
               only:
                 - master
+      - apply:
+          requires:
+            - plan_approval
