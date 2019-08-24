@@ -43,7 +43,6 @@ commands:
           command: |
             echo "client_email=\"${CLIENT_EMAIL}\"" >> terraform.tfvars
             echo "private_key=\"${PRIVATE_KEY}\"" >> terraform.tfvars
-            cat terraform.tfvars
           working_directory: "<< parameters.working_directory >>"
       - run:
           name: Install Terraform
