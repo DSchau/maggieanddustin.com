@@ -50,7 +50,7 @@ resource "aws_api_gateway_deployment" "maggieanddustin-api" {
   ]
 
   rest_api_id = "${aws_api_gateway_rest_api.maggieanddustin-api.id}"
-  stage_name  = "test"
+  stage_name  = "${var.environment}"
 }
 
 output "base_url" {

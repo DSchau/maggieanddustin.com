@@ -1,5 +1,9 @@
 variable "client_email" {}
 variable "private_key" {}
+variable "environment" {
+  default = "production"
+}
+
 variable "log_level" {
   default = "debug"
 }
