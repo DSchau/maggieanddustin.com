@@ -16,13 +16,13 @@ const bodyScheam = yup.object().shape({
   name: yup.string().required(),
 })
 
-const formatInvitee = invitee => ({
+const formatResponse = invitee => ({
   statusCode: 200,
-  body: {
+  body: JSON.stringify({
     name: invitee.invitee,
     guest: invitee.guest,
     attending: invitee.attending,
-  },
+  }),
 })
 
 exports.handler = async function handler(event) {
@@ -57,7 +57,7 @@ exports.handler = async function handler(event) {
   log.debug(invitee)
 
   if (!rsvps) {
-    return formatInvitee(invitee)
+    return formatResponse(invitee)
   }
 
   const now = format(new Date(), 'YYYY-MM-DD')
@@ -79,5 +79,5 @@ exports.handler = async function handler(event) {
 
   await pify(invitee.save)()
 
-  return formatInvitee(invitee)
+  return formatResponse(invitee)
 }
