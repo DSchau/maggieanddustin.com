@@ -1,3 +1,6 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 const path = require('path')
 
 module.exports = {
@@ -5,7 +8,7 @@ module.exports = {
     title: `Maggie and Dustin`,
     description: `Landing page for the wedding of Dustin Schau and Maggie Alcorn`,
     author: `schaudustin`,
-    siteUrl: process.env.DEPLOY_URL || 'https://proposal.maggieanddustin.com',
+    siteUrl: process.env.DEPLOY_URL || 'https://maggieanddustin.com',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -21,6 +24,14 @@ module.exports = {
       options: {
         name: `content`,
         path: path.join(__dirname, `..`, `content`),
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `q9xyvdnyk51g`,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        host: process.env.CONTENTFUL_HOST,
       },
     },
     `gatsby-transformer-yaml`,

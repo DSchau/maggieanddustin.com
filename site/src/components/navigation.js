@@ -49,9 +49,12 @@ export default () => {
           ['Wedding Party', '/wedding-party/'],
           ['Photos', '/photos/'],
           ['Proposal', '/proposal/'],
+          ['Blog', '/blog/'],
         ].map(([title, to]) => (
           <Li key={title} sx={{ padding: [1, 3] }}>
-            <Link to={to}>{title}</Link>
+            <Link to={to} partiallyActive={true}>
+              {title}
+            </Link>
           </Li>
         ))}
       </Styled.ul>
