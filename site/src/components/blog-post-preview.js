@@ -4,7 +4,14 @@ import { Link } from 'gatsby'
 
 import Image from './image'
 
-function BlogPost({ children, title, featuredImage, slug, summary }) {
+function BlogPost({
+  children,
+  title,
+  featuredImage,
+  readMore = true,
+  slug,
+  summary,
+}) {
   return (
     <Styled.div
       sx={{
@@ -15,33 +22,35 @@ function BlogPost({ children, title, featuredImage, slug, summary }) {
         borderStyle: 'solid',
       }}
     >
-      <Link to={slug} sx={{ color: 'text' }}>
+      {/* <Link to={slug} sx={{ color: 'text' }}>
         <Styled.h2 sx={{ textAlign: 'center' }}>{title}</Styled.h2>
-      </Link>
+      </Link> */}
       {featuredImage && <Image {...featuredImage} />}
       <Styled.p>{summary}</Styled.p>
       {children}
-      <Link
-        to={slug}
-        sx={{
-          display: 'block',
-          backgroundColor: 'text',
-          color: 'background',
-          textAlign: 'center',
-          textDecoration: 'none',
-          padding: 2,
-          borderWidth: 2,
-          borderStyle: 'solid',
-          borderColor: 'transparent',
-          ':hover': {
-            color: 'text',
-            backgroundColor: 'background',
-            borderColor: 'text',
-          },
-        }}
-      >
-        Read more
-      </Link>
+      {readMore && (
+        <Link
+          to={slug}
+          sx={{
+            display: 'block',
+            backgroundColor: 'text',
+            color: 'background',
+            textAlign: 'center',
+            textDecoration: 'none',
+            padding: 2,
+            borderWidth: 2,
+            borderStyle: 'solid',
+            borderColor: 'transparent',
+            ':hover': {
+              color: 'text',
+              backgroundColor: 'background',
+              borderColor: 'text',
+            },
+          }}
+        >
+          Read more
+        </Link>
+      )}
     </Styled.div>
   )
 }

@@ -49,7 +49,7 @@ export default () => {
           ['Wedding Party', '/wedding-party/'],
           ['Photos', '/photos/'],
           ['Proposal', '/proposal/'],
-          ['Blog', '/blog/'],
+          // ['Blog', '/blog/'],
         ].map(([title, to]) => (
           <Li key={title} sx={{ padding: [1, 3] }}>
             <Link to={to} partiallyActive={true}>

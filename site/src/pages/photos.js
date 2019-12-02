@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
@@ -15,7 +15,9 @@ function Photos({ data }) {
         <BlogPostPreview
           key={archive.fields.slug}
           {...archive}
-          featuredImage={null}
+          featuredImage={false}
+          summary={false}
+          readMore={false}
           slug={archive.fields.slug}
         >
           <Grid sx={{ mt: 4, mb: 4 }}>

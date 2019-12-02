@@ -1,23 +1,23 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import PropTypes from 'prop-types'
 
-function Input(props) {
+function Label(props) {
   return (
-    <input
+    <label
       sx={{
         boxSizing: 'border-box',
         display: 'block',
-        width: '100%',
-        fontSize: 4,
-        padding: 2,
+        mt: 2,
+        mb: 2,
       }}
       {...props}
     />
   )
 }
 
-Input.defaultProps = {
-  type: `text`,
+Label.propTypes = {
+  for: PropTypes.string.isRequired,
 }
 
-export { Input }
+export { Label }
