@@ -16,12 +16,18 @@ const HEADERS = new Array(6).fill(undefined).reduce((merged, _, index) => {
 
 const options = lang => ({
   renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: ({ data } = {}, children) => {
+    [BLOCKS.EMBEDDED_ASSET]: ({ data } = {}) => {
       if (!data || !data.target) {
         return null
       }
       const { file, title } = data.target.fields
-      return <Image src={file[lang].url} alt={title[lang]} />
+      return (
+        <Image
+          src={file[lang].url}
+          alt={title[lang]}
+          sx={{ marginTop: 8, marginBottom: 8 }}
+        />
+      )
     },
     [BLOCKS.PARAGRAPH]: (_, children) => <Styled.p>{children}</Styled.p>,
     ...HEADERS,

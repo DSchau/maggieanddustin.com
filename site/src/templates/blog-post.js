@@ -5,14 +5,15 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout/'
 import Grid from '../components/grid'
 import Image from '../components/image'
-import richTextRenderer from '../components/rich-text-renderer'
+import BlogPost from '../components/blog-post'
 
-function BlogPost({ data }) {
+function BlogPostPage({ data }) {
   const { post } = data
   return (
     <Layout>
       {post && (
-        <article
+        <BlogPost
+          as="article"
           sx={{
             maxWidth: '100%',
             margin: '0 auto',
@@ -21,10 +22,8 @@ function BlogPost({ data }) {
               maxWidth: '60%',
             },
           }}
+          {...post}
         >
-          <Styled.h1>{post.title}</Styled.h1>
-          <Styled.h2>{[post.startDate, post.endDate].join(' - ')}</Styled.h2>
-          {richTextRenderer(post.body.json)}
           {post.gallery && (
             <div
               sx={{
@@ -42,7 +41,7 @@ function BlogPost({ data }) {
               </Grid>
             </div>
           )}
-        </article>
+        </BlogPost>
       )}
     </Layout>
   )
@@ -51,12 +50,7 @@ function BlogPost({ data }) {
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     post: contentfulBlogPost(fields: { slug: { eq: $slug } }) {
-      title
-      startDate(formatString: "MMM Do, YYYY")
-      endDate(formatString: "MMM Do, YYYY")
-      body {
-        json
-      }
+      ...BlogPostDetails
       gallery {
         fluid(maxWidth: 1000) {
           ...GatsbyContentfulFluid
@@ -66,4 +60,4 @@ export const pageQuery = graphql`
   }
 `
 
-export default BlogPost
+export default BlogPostPage
