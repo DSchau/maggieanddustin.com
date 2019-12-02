@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Styled } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
@@ -7,6 +7,15 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Layout from '../components/layout/'
 import Grid from '../components/grid'
 import Image from '../components/image'
+
+const HEADERS = new Array(6).fill(undefined).reduce((merged, _, index) => {
+  const level = index + 1
+  merged[BLOCKS[`HEADING_${level}`]] = (__, children) => {
+    const Header = Styled[`h${level}`]
+    return <Header>{children}</Header>
+  }
+  return merged
+}, {})
 
 const options = lang => ({
   renderNode: {
@@ -17,6 +26,8 @@ const options = lang => ({
       const { file, title } = data.target.fields
       return <Image src={file[lang].url} alt={title[lang]} />
     },
+    [BLOCKS.PARAGRAPH]: (_, children) => <Styled.p>{children}</Styled.p>,
+    ...HEADERS,
   },
 })
 
@@ -35,8 +46,8 @@ function BlogPost({ data }) {
             },
           }}
         >
-          <h1>{post.title}</h1>
-          <h2>{[post.startDate, post.endDate].join(' - ')}</h2>
+          <Styled.h1>{post.title}</Styled.h1>
+          <Styled.h2>{[post.startDate, post.endDate].join(' - ')}</Styled.h2>
           {documentToReactComponents(post.body.json, options('en-US'))}
           {post.gallery && (
             <div
@@ -47,7 +58,7 @@ function BlogPost({ data }) {
                 borderTopStyle: 'solid',
               }}
             >
-              <h3>Gallery</h3>
+              <Styled.h3>Gallery</Styled.h3>
               <Grid>
                 {post.gallery.map(img => (
                   <Image {...img} />
