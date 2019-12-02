@@ -11,8 +11,10 @@ const Rule = () => (
   <Styled.hr
     sx={{
       height: '25vh',
-      width: 2,
-      backgroundColor: 'text',
+      width: 0,
+      borderWidth: 2,
+      borderStyle: `dashed`,
+      borderColor: 'text',
       margin: '0 auto',
       mt: 2,
       mb: 2,
@@ -31,8 +33,19 @@ function Story({ data }) {
           key={moment.title}
           sx={{ textAlign: 'center', mt: 2, mb: 2, padding: 2 }}
         >
-          <Styled.h2>{moment.title}</Styled.h2>
-          <Styled.h3>{moment.date}</Styled.h3>
+          <Styled.div
+            sx={{
+              borderRadius: `100%`,
+              display: `inline-block`,
+              padding: 4,
+              mb: 2,
+              backgroundColor: `text`,
+              color: `background`,
+            }}
+          >
+            <Styled.h2>{moment.title}</Styled.h2>
+            <Styled.h3 sx={{ mb: 0 }}>{moment.date}</Styled.h3>
+          </Styled.div>
           <Styled.p>{richTextRenderer(moment.description.json)}</Styled.p>
           {moment.photos.map(photo => (
             <Image
