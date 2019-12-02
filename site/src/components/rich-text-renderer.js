@@ -18,7 +18,7 @@ const HEADERS = new Array(6).fill(undefined).reduce((merged, _, index) => {
 const options = lang => ({
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: ({ data } = {}) => {
-      if (!data || !data.target) {
+      if (!data || !data.target || !data.target.fields) {
         return null
       }
       const { file, title } = data.target.fields
