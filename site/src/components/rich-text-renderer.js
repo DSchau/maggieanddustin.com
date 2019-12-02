@@ -15,7 +15,7 @@ const HEADERS = new Array(6).fill(undefined).reduce((merged, _, index) => {
   return merged
 }, {})
 
-const options = lang => ({
+const options = ({ lang = 'en-US', zoom } = {}) => ({
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: ({ data } = {}) => {
       if (!data || !data.target || !data.target.fields) {
@@ -26,6 +26,7 @@ const options = lang => ({
         <Image
           src={file[lang].url}
           alt={title[lang]}
+          zoom={zoom}
           sx={{ marginTop: 8, marginBottom: 8 }}
         />
       )
@@ -36,12 +37,10 @@ const options = lang => ({
       if (/^https?/.test(uri)) {
         return <a href={uri}>{children}</a>
       }
-      console.log('got here')
       return <Link to={uri}>{children}</Link>
     },
     ...HEADERS,
   },
 })
 
-export default (body, lang = 'en-US') =>
-  documentToReactComponents(body, options(lang))
+export default (body, opts) => documentToReactComponents(body, options(opts))

@@ -22,6 +22,7 @@ function BlogPostPage({ data }) {
               maxWidth: '60%',
             },
           }}
+          zoom={true}
           {...post}
         >
           {post.gallery && (
@@ -36,7 +37,7 @@ function BlogPostPage({ data }) {
               <Styled.h3>Gallery</Styled.h3>
               <Grid>
                 {post.gallery.map(img => (
-                  <Image {...img} />
+                  <Image zoom={true} {...img} />
                 ))}
               </Grid>
             </div>

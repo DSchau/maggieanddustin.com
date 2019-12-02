@@ -14,6 +14,7 @@ function BlogPost({
   featuredImage,
   endDate,
   body,
+  zoom,
   ...rest
 }) {
   const Wrapper = Styled[as] ? Styled[as] : as
@@ -38,7 +39,7 @@ function BlogPost({
         {[startDate, endDate].join(' - ')}
       </Styled.h2>
       {featuredImage && <Image {...featuredImage} />}
-      {richTextRenderer(body.json)}
+      {richTextRenderer(body.json, { zoom })}
       {children}
     </Wrapper>
   )
