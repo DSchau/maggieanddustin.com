@@ -35,12 +35,15 @@ function Story({ data }) {
         >
           <Styled.div
             sx={{
-              borderRadius: `100%`,
-              display: `inline-block`,
-              padding: 4,
+              borderWidth: 2,
+              borderLeftWidth: 0,
+              borderRightWidth: 0,
+              borderStyle: `solid`,
+              maxWidth: ['100%', '50%'],
+              padding: 3,
               mb: 2,
-              backgroundColor: `text`,
-              color: `background`,
+              mr: 'auto',
+              ml: 'auto',
             }}
           >
             <Styled.h2>{moment.title}</Styled.h2>
