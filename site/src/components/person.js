@@ -1,16 +1,16 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Styled } from 'theme-ui'
 import { graphql } from 'gatsby'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import richTextRenderer from './rich-text-renderer'
 
 import Image from './image'
 
 function Person({ name, image, bio }) {
   return (
     <div>
-      <h2>{name}</h2>
+      <Styled.h2>{name}</Styled.h2>
       <Image {...image} />
-      {documentToReactComponents(bio.json)}
+      {richTextRenderer(bio.json)}
     </div>
   )
 }

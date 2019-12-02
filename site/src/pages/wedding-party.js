@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Styled } from 'theme-ui'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layout/'
@@ -7,17 +7,17 @@ import Person from '../components/person'
 
 const Party = props => (
   <div>
-    <h1 sx={{ textAlign: 'center' }}>{props.title}</h1>
-    <ul sx={{ margin: 0, padding: 0 }}>
+    <Styled.h1 sx={{ textAlign: 'center' }}>{props.title}</Styled.h1>
+    <Styled.ul sx={{ margin: 0, padding: 0 }}>
       {props.party.map(person => (
-        <li
+        <Styled.li
           key={person.name}
           sx={{ listStyleType: 'none', margin: 0, padding: 0 }}
         >
           <Person {...person} />
-        </li>
+        </Styled.li>
       ))}
-    </ul>
+    </Styled.ul>
   </div>
 )
 
