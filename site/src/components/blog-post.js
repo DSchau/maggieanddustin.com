@@ -2,7 +2,7 @@
 import { jsx, Styled } from 'theme-ui'
 import { graphql } from 'gatsby'
 
-import Image from './Image'
+import Image from './image'
 import richTextRenderer from './rich-text-renderer'
 
 function BlogPost({
