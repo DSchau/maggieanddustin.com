@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import { BLOCKS } from '@contentful/rich-text-types'
+import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { Link } from 'gatsby'
 
 import Image from './image'
 
@@ -30,6 +31,14 @@ const options = lang => ({
       )
     },
     [BLOCKS.PARAGRAPH]: (_, children) => <Styled.p>{children}</Styled.p>,
+    [INLINES.HYPERLINK]: (node, children) => {
+      const { uri } = node.data
+      if (/^https?/.test(uri)) {
+        return <a href={uri}>{children}</a>
+      }
+      console.log('got here')
+      return <Link to={uri}>{children}</Link>
+    },
     ...HEADERS,
   },
 })

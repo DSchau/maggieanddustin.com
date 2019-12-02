@@ -30,10 +30,7 @@ function WeddingParty({ data }) {
       <div
         sx={{
           display: 'grid',
-          gridTemplateColumns: '1fr',
-          '@media only screen and (min-width: 768px)': {
-            gridTemplateColumns: 'repeat(2, 1fr)',
-          },
+          gridTemplateColumns: ['1fr', 'repeat(2, 1fr)'],
         }}
       >
         <Party title="Bride's Side" party={bride} />

@@ -47,7 +47,8 @@ export default () => {
           ['RSVP', '/rsvp/'],
           ['Venue', '/venue/'],
           ['Wedding Party', '/wedding-party/'],
-          ['Photos', '/photos/'],
+          ['Our Story', `/story/`],
+          // ['Photos', '/photos/'],
           ['Proposal', '/proposal/'],
           // ['Blog', '/blog/'],
         ].map(([title, to]) => (

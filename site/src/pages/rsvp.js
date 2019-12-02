@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import React, { useState } from 'react'
-import { Formik, validateYupSchema } from 'formik'
+import { Formik } from 'formik'
 import * as yup from 'yup'
 
 import Layout from '../components/layout/'
