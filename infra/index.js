@@ -69,7 +69,7 @@ exports.handler = async function handler(event) {
   const [main, guest = false] = rsvps
 
   invitee.lasteditdate = now
-  invitee.attending = main.attending
+  invitee.attending = main.attending === `TRUE`
 
   if (guest) {
     invitee.guest = guest.attending ? guest.name : ``
