@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, useColorMode } from 'theme-ui'
 
 import ColorMode from './color-mode'
 import Link from './link'
@@ -7,6 +7,8 @@ import Link from './link'
 const Li = Styled.li
 
 export default () => {
+  const [mode, setMode] = useColorMode('light')
+  const isDark = mode === 'dark'
   return (
     <nav
       sx={{
@@ -67,6 +69,10 @@ export default () => {
         ))}
       </Styled.ul>
       <ColorMode
+        isDark={isDark}
+        onClick={() =>
+          console.log(mode) || setMode(mode === 'dark' ? 'light' : 'dark')
+        }
         sx={{
           position: 'absolute',
           right: 0,
