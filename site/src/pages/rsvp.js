@@ -21,17 +21,27 @@ const formHandler = (step, actions) => {
     case 'INITIAL_NAME':
       return async (values, formik) => {
         // TODO: look up guest/attending status
-        const data = await api({
+        const { guest, ...rest } = await api({
           name: values.name,
         })
-        formik.setValues({
-          ...values,
-          guest: `Tina Whatever`,
-        })
+        if (guest) {
+          formik.setValues({
+            ...values,
+            ...rest,
+            guest,
+          })
+        }
         actions.setStep('GUEST_AND_RSVP')
       }
     case 'GUEST_AND_RSVP':
-      return async props => {
+      return async values => {
+        await api({
+          name: values.name,
+          rsvps: [values.name, values.guest].filter(Boolean).map(name => ({
+            name,
+            attending: values.attending,
+          })),
+        })
         // TODO: submit form
         actions.setStep('SUBMITTED')
       }

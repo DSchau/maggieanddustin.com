@@ -25,7 +25,7 @@ const formatResponse = invitee => ({
   body: JSON.stringify({
     name: invitee.invitee,
     guest: invitee.guest,
-    attending: invitee.attending,
+    attending: invitee.attending === `TRUE`,
   }),
 })
 
@@ -73,7 +73,7 @@ exports.handler = async function handler(event) {
   const [main, guest = false] = rsvps
 
   invitee.lasteditdate = now
-  invitee.attending = main.attending === `TRUE`
+  invitee.attending = main.attending
 
   if (guest) {
     invitee.guest = guest.attending ? guest.name : ``

@@ -64,9 +64,8 @@ resource "aws_lambda_function" "rsvp_lambda" {
 
   depends_on    = ["aws_iam_role_policy_attachment.lambda_rsvp_logs", "aws_cloudwatch_log_group.lambda_rsvp_log_group"]
 
-
   source_code_hash = "${filebase64sha256("../rsvp-handler.zip")}"
-  runtime          = "nodejs8.10"
+  runtime          = "nodejs12.x"
 
   environment {
     variables = {

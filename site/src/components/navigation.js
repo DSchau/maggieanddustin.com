@@ -46,6 +46,7 @@ export default () => {
           fontSize: 0,
           textAlign: 'center',
           whiteSpace: `nowrap`,
+          overflow: `hidden`,
           overflowX: `scroll`,
         }}
       >

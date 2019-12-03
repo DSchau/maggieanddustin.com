@@ -74,3 +74,9 @@ yarn-error.log
 # terraform stuff
 .terraform
 *.tfvars
+*.tpflan
+
+# env vars
+.env*
+!.env.sample
+
