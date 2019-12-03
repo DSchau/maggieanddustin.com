@@ -8,6 +8,7 @@ function Label(props) {
       sx={{
         boxSizing: 'border-box',
         display: 'block',
+        fontWeight: `bold`,
         mt: 2,
         mb: 2,
       }}

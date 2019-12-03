@@ -11,6 +11,7 @@
     "@emotion/styled": "^10.0.23",
     "@mdx-js/react": "^1.5.1",
     "@theme-ui/typography": "^0.2.46",
+    "autosize": "^4.0.2",
     "formik": "^2.0.6",
     "gatsby": "^2.18.5",
     "gatsby-image": "^2.2.34",

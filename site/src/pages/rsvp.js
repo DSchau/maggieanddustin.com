@@ -5,12 +5,13 @@ import { Formik } from 'formik'
 import * as yup from 'yup'
 
 import Layout from '../components/layout/'
-import { Button, Label, Input } from '../components/form'
+import { Button, Label, Input, Textarea } from '../components/form'
 
 const formSchema = yup.object().shape({
   attending: yup.bool(),
   email: yup.string().email(),
   name: yup.string().required(),
+  message: yup.string(),
   guest: yup.string(),
 })
 
@@ -59,6 +60,7 @@ function RSVP() {
               attending: false,
               email: '',
               name: '',
+              message: '',
               guest: '',
             }}
             validationSchema={formSchema}
@@ -111,6 +113,16 @@ function RSVP() {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.attending}
+                      />
+                    </Label>
+                    <Label for="message">
+                      Message (optional)
+                      <Textarea
+                        name="message"
+                        id="message"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.message}
                       />
                     </Label>
                   </React.Fragment>
