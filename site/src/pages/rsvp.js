@@ -6,6 +6,7 @@ import * as yup from 'yup'
 
 import Layout from '../components/layout/'
 import { Button, Label, Input, Textarea } from '../components/form'
+import { api } from '../utils/api'
 
 const formSchema = yup.object().shape({
   attending: yup.bool(),
@@ -20,6 +21,9 @@ const formHandler = (step, actions) => {
     case 'INITIAL_NAME':
       return async (values, formik) => {
         // TODO: look up guest/attending status
+        const data = await api({
+          name: values.name,
+        })
         formik.setValues({
           ...values,
           guest: `Tina Whatever`,

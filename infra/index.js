@@ -18,6 +18,10 @@ const bodyScheam = yup.object().shape({
 
 const formatResponse = invitee => ({
   statusCode: 200,
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json'
+  },
   body: JSON.stringify({
     name: invitee.invitee,
     guest: invitee.guest,
