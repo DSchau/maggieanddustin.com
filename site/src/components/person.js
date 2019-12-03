@@ -7,11 +7,11 @@ import Image from './image'
 
 function Person({ name, image, bio }) {
   return (
-    <div>
+    <Styled.div sx={{ textAlign: `center` }}>
       <Styled.h2>{name}</Styled.h2>
-      <Image {...image} />
+      <Image sx={{ borderRadius: `100%` }} {...image} />
       {richTextRenderer(bio.json)}
-    </div>
+    </Styled.div>
   )
 }
 

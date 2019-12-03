@@ -6,19 +6,12 @@ import Layout from '../components/layout/'
 import Person from '../components/person'
 
 const Party = props => (
-  <div>
+  <Styled.div>
     <Styled.h1 sx={{ textAlign: 'center' }}>{props.title}</Styled.h1>
-    <Styled.ul sx={{ margin: 0, padding: 0 }}>
-      {props.party.map(person => (
-        <Styled.li
-          key={person.name}
-          sx={{ listStyleType: 'none', margin: 0, padding: 0 }}
-        >
-          <Person {...person} />
-        </Styled.li>
-      ))}
-    </Styled.ul>
-  </div>
+    {props.party.map(person => (
+      <Person key={person.name} {...person} />
+    ))}
+  </Styled.div>
 )
 
 function WeddingParty({ data }) {

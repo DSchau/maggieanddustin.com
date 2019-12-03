@@ -16,7 +16,6 @@ function Textarea(props) {
         width: '100%',
         boxSizing: 'border-box',
         display: 'block',
-        width: '100%',
         fontSize: 4,
         padding: 2,
       }}
