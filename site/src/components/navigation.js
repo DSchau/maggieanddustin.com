@@ -4,9 +4,7 @@ import { jsx, Styled, useColorMode } from 'theme-ui'
 import ColorMode from './color-mode'
 import Link from './link'
 
-const Li = Styled.li
-
-export default () => {
+export default function Navigation() {
   const [mode, setMode] = useColorMode('light')
   const isDark = mode === 'dark'
   return (
@@ -61,11 +59,11 @@ export default () => {
           ['Proposal', '/proposal/'],
           // ['Blog', '/blog/'],
         ].map(([title, to]) => (
-          <Li key={title} sx={{ padding: [1, 3] }}>
+          <Styled.li key={title} sx={{ padding: [1, 3] }}>
             <Link to={to} partiallyActive={true}>
               {title}
             </Link>
-          </Li>
+          </Styled.li>
         ))}
       </Styled.ul>
       <ColorMode
@@ -75,8 +73,9 @@ export default () => {
         }
         sx={{
           position: 'absolute',
-          right: 0,
-          top: 2,
+          right: [0, 0, 2],
+          top: [2, 2, '50%'],
+          transform: [0, 0, 'translateY(-50%)'],
         }}
       />
     </nav>
