@@ -10,22 +10,26 @@ export default () => {
   return (
     <nav
       sx={{
+        display: [`block`, `block`, `flex`],
+        alignItems: `center`,
+        justifyContent: `center`,
         position: 'relative',
         borderTopColor: 'color',
         borderTopWidth: 6,
         borderTopStyle: 'solid',
-        padding: [1, 2],
+        padding: 2,
       }}
     >
       <Link
         to="/"
         sx={{
+          display: `block`,
           fontFamily: 'heading',
           fontWeight: 'heading',
-          position: 'absolute',
-          left: 0,
-          top: '50%',
-          transform: 'translateY(-50%)',
+          whiteSpace: `nowrap`,
+          position: [`relative`, `relative`, `absolute`],
+          left: [0, 3],
+          width: [`100%`, `100%`, `auto`],
         }}
       >
         <span sx={{ display: 'inline-block' }}>
@@ -36,11 +40,13 @@ export default () => {
       </Link>
       <Styled.ul
         sx={{
-          display: ['none', 'block'],
+          display: `flex`,
           margin: 0,
           fontFamily: 'heading',
           fontSize: 0,
           textAlign: 'center',
+          whiteSpace: `nowrap`,
+          overflowX: `scroll`,
         }}
       >
         {[
@@ -63,8 +69,7 @@ export default () => {
         sx={{
           position: 'absolute',
           right: 0,
-          top: '50%',
-          transform: 'translateY(-50%)',
+          top: 2,
         }}
       />
     </nav>

@@ -49,7 +49,7 @@ function Story({ data }) {
             <Styled.h2>{moment.title}</Styled.h2>
             <Styled.h3 sx={{ mb: 0 }}>{moment.date}</Styled.h3>
           </Styled.div>
-          <Styled.p>{richTextRenderer(moment.description.json)}</Styled.p>
+          {richTextRenderer(moment.description.json)}
           {moment.photos.map(photo => (
             <Image
               key={photo.fluid.src}
