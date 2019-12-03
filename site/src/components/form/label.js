@@ -18,7 +18,7 @@ function Label(props) {
 }
 
 Label.propTypes = {
-  for: PropTypes.string.isRequired,
+  htmlFor: PropTypes.string.isRequired,
 }
 
 export { Label }

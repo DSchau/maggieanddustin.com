@@ -9,44 +9,68 @@ import { Button, Label, Input, Textarea } from '../components/form'
 import { api } from '../utils/api'
 
 const formSchema = yup.object().shape({
-  attending: yup.bool(),
-  email: yup.string().email(),
   name: yup.string().required(),
-  message: yup.string(),
-  guest: yup.string(),
+  guests: yup.array().of(
+    yup.object().shape({
+      name: yup.string().required(),
+      attending: yup.bool().required(),
+    })
+  ),
 })
 
 const formHandler = (step, actions) => {
   switch (step) {
     case 'INITIAL_NAME':
       return async (values, formik) => {
+        formik.setSubmitting(true)
+        await new Promise(resolve => setTimeout(resolve, 2500))
         // TODO: look up guest/attending status
-        const { guest, ...rest } = await api({
-          name: values.name,
+        formik.setValues({
+          ...values,
+          guests: [
+            {
+              name: values.name,
+              attending: false, // TODO: lookup
+            },
+            {
+              name: `Cindy Rust`,
+              attending: false,
+            },
+            {
+              name: `Randy Rust`,
+              attending: false,
+            },
+          ],
         })
-        if (guest) {
-          formik.setValues({
-            ...values,
-            ...rest,
-            guest,
-          })
-        }
         actions.setStep('GUEST_AND_RSVP')
+        formik.setSubmitting(false)
       }
     case 'GUEST_AND_RSVP':
-      return async values => {
-        await api({
-          name: values.name,
-          rsvps: [values.name, values.guest].filter(Boolean).map(name => ({
-            name,
-            attending: values.attending,
-          })),
-        })
+      return async (values, formik) => {
+        formik.setSubmitting(true)
+        await new Promise(resolve => setTimeout(resolve, 2500))
+        // await api({
+        //   ...values,
+        //   rsvps: [values.name, values.guest].filter(Boolean).map(name => ({
+        //     name,
+        //     attending: values.attending,
+        //   })),
+        // })
         // TODO: submit form
         actions.setStep('SUBMITTED')
+        formik.setSubmitting(false)
       }
     default:
       return () => {}
+  }
+}
+
+const getButtonText = (step, { isSubmitting }) => {
+  switch (step) {
+    case 'INITIAL_NAME':
+      return isSubmitting ? 'Finding...' : 'Find your reservation'
+    case 'GUEST_AND_RSVP':
+      return isSubmitting ? 'Updating RSVP...' : 'Submit'
   }
 }
 
@@ -71,79 +95,72 @@ function RSVP() {
         ) : (
           <Formik
             initialValues={{
-              attending: false,
               email: '',
               name: '',
-              message: '',
-              guest: '',
+              comment: '',
+              guests: [],
             }}
             validationSchema={formSchema}
             onSubmit={formHandler(step, { setStep })}
-            children={({ handleBlur, handleChange, handleSubmit, values }) => (
+            children={({
+              handleBlur,
+              handleChange,
+              handleSubmit,
+              isSubmitting,
+              setFieldValue,
+              values,
+            }) => (
               <form onSubmit={handleSubmit}>
-                <Label for="name">
-                  Full name
-                  <Input
-                    type="text"
-                    name="name"
-                    id="name"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.name}
-                  />
-                </Label>
-                <Label for="email">
-                  Email (optional)
-                  <Input
-                    type="email"
-                    name="email"
-                    id="email"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email}
-                  />
-                </Label>
+                {step === `INITIAL_NAME` && (
+                  <Label htmlFor="name">
+                    Full name
+                    <Input
+                      type="text"
+                      name="name"
+                      id="name"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.name}
+                    />
+                  </Label>
+                )}
                 {step === `GUEST_AND_RSVP` && (
                   <React.Fragment>
-                    {values.guest && (
-                      <Label for="guest">
-                        Guest?
-                        <Input
-                          type="text"
-                          name="guest"
-                          id="guest"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.guest}
-                        />
-                      </Label>
-                    )}
-                    <Label for="attending">
-                      Attending
-                      <input
-                        type="checkbox"
-                        name="attending"
-                        id="attending"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.attending}
-                      />
-                    </Label>
-                    <Label for="message">
-                      Message (optional)
+                    {values.guests.map((guest, index) => (
+                      <React.Fragment key={guest.name}>
+                        <Label htmlFor={`${guest.name}-attending`}>
+                          <Input
+                            type="checkbox"
+                            sx={{ display: `inline-block`, width: `auto` }}
+                            name={`${guest.name}-attending`}
+                            id={`${guest.name}-attending`}
+                            checked={guest.attending}
+                            onChange={() =>
+                              setFieldValue(
+                                `guests[${index}].attending`,
+                                !values.guests[index].attending
+                              )
+                            }
+                          />
+                          {guest.name}
+                        </Label>
+                      </React.Fragment>
+                    ))}
+                    <Label htmlFor="comment">
+                      Comment (optional)
                       <Textarea
-                        name="message"
-                        id="message"
+                        name="comment"
+                        id="comment"
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        value={values.message}
+                        value={values.comment}
                       />
                     </Label>
                   </React.Fragment>
                 )}
 
-                <Button type="submit">
-                  {step === 'INITIAL_NAME' ? 'Next' : 'Submit'}
+                <Button type="submit" disabled={isSubmitting}>
+                  {getButtonText(step, { isSubmitting })}
                 </Button>
               </form>
             )}

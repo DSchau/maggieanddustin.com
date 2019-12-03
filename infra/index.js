@@ -6,7 +6,7 @@ const levenshtein = require('fast-levenshtein')
 const getApi = require('./api')
 const log = require('./log')
 
-const bodyScheam = yup.object().shape({
+const bodySchema = yup.object().shape({
   rsvps: yup.array(
     yup.object().shape({
       name: yup.string().required(),
@@ -14,43 +14,54 @@ const bodyScheam = yup.object().shape({
     })
   ),
   name: yup.string().required(),
+  email: yup.string().email(),
+  comment: yup.string()
 })
 
-const formatResponse = invitee => ({
+const formatResponse = guests => ({
   statusCode: 200,
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    name: invitee.invitee,
-    guest: invitee.guest,
-    attending: invitee.attending === `TRUE`,
+    rsvps: guests.map(guest => ({
+      ...guest,
+      attending: guest.attending === `TRUE`
+    }))
   }),
 })
 
 exports.handler = async function handler(event) {
   log.debug(event)
 
-  const { name, rsvps } = await bodyScheam.validate(event.body || event)
+  const { name, comment, email, rsvps } = await bodySchema.validate(event.body || event)
 
-  log.debug({ name, rsvps })
+  log.debug({ name, comment, email, rsvps })
 
   const api = await getApi({
     client_email: process.env.CLIENT_EMAIL,
     private_key: process.env.PRIVATE_KEY,
     spreadsheet_id: process.env.SPREADSHEET_ID,
+    spreadsheet_title: process.env.SPREADSHEET_TITLE
   })
 
   const rows = await api.getRows()
 
-  const invitee = rows.find(row => {
-    const names = [row.invitee, row.guest]
-    return (
-      names.includes(name) ||
-      names.some(guestName => levenshtein.get(guestName, name) === 1)
-    )
-  })
+  const partyIds = rows.reduce((merged, row) => {
+    if (!merged[row.uuid]) {
+      merged[row.uuid] = []
+    }
+    merged[row.uuid].push(row)
+    return merged
+  }, {})
+
+  const guest = rows.find(row => (
+    row.guest === name ||
+    levenshtein.get(row.guest, name) === 1
+  ))
+
+  const guests = partyIds[guest.uuid]
 
   if (!invitee) {
     throw new Error(
@@ -61,23 +72,16 @@ exports.handler = async function handler(event) {
   log.debug(invitee)
 
   if (!rsvps) {
-    return formatResponse(invitee)
+    return formatResponse(guests)
   }
 
-  const now = format(new Date(), 'YYYY-MM-DD')
+  await Promise.all(
+    guests.map(guest => {
+      
+    })
+  )
 
-  if (!invitee.responddate) {
-    invitee.responddate = now
-  }
-
-  const [main, guest = false] = rsvps
-
-  invitee.lasteditdate = now
-  invitee.attending = main.attending
-
-  if (guest) {
-    invitee.guest = guest.attending ? guest.name : ``
-  }
+  const now = format(new Date(), 'YYYY/MM/DD')
 
   log.debug({ message: `Saving guest and invitee`, invitee })
 

@@ -12,6 +12,7 @@ const apiSchema = yup.object().shape({
     .email()
     .required(),
   spreadsheet_id: yup.string().required(),
+  spreadsheet_title: yup.string().required()
 })
 
 module.exports = async function api(opts) {
@@ -23,7 +24,7 @@ module.exports = async function api(opts) {
 
   const { worksheets } = await pify(sheet.getInfo)()
 
-  const rsvp = worksheets.find(sheet => sheet.title === 'RSVPs')
+  const rsvp = worksheets.find(sheet => sheet.title === opts.spreadsheet_title)
 
   return pify(rsvp)
 }
