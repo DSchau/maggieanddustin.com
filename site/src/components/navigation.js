@@ -10,26 +10,24 @@ export default function Navigation() {
   return (
     <nav
       sx={{
-        display: [`block`, `block`, `flex`],
-        alignItems: `center`,
-        justifyContent: `center`,
         position: 'relative',
-        borderTopColor: 'color',
+        borderTopColor: 'text',
         borderTopWidth: 6,
         borderTopStyle: 'solid',
-        padding: 2,
       }}
     >
       <Link
         to="/"
         sx={{
+          borderBottomWidth: 0,
           display: `block`,
           fontFamily: 'heading',
           fontWeight: 'heading',
+          fontSize: 4,
           whiteSpace: `nowrap`,
-          position: [`relative`, `relative`, `absolute`],
-          left: [0, 3],
-          width: [`100%`, `100%`, `auto`],
+          margin: `0 auto`,
+          textAlign: `center`,
+          width: [`100%`, `50%`],
         }}
       >
         <span sx={{ display: 'inline-block' }}>
@@ -41,9 +39,12 @@ export default function Navigation() {
       <Styled.ul
         sx={{
           display: `flex`,
+          alignItems: `center`,
+          justifyContent: [`flex-start`, `center`],
           margin: 0,
           fontFamily: 'heading',
           fontSize: 0,
+          pb: [2, 0],
           textAlign: 'center',
           whiteSpace: `nowrap`,
           overflow: `hidden`,
