@@ -75,7 +75,6 @@ function Hero({ content, footer }) {
   return (
     <Container>
       <Image fluid={data.file.childImageSharp.fluid} loading="eager" />
-      <Content>{content}</Content>
       <Footer>{footer}</Footer>
     </Container>
   )

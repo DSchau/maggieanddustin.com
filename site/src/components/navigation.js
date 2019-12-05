@@ -58,6 +58,7 @@ export default function Navigation() {
           ['Our Story', `/story/`],
           // ['Photos', '/photos/'],
           ['Proposal', '/proposal/'],
+          ['Registry', `/registry/`],
           // ['Blog', '/blog/'],
         ].map(([title, to]) => (
           <Styled.li key={title} sx={{ padding: [1, 3] }}>

@@ -158,21 +158,6 @@ function Index() {
     <Layout>
       <SEO title="Proposal" keywords={[`gatsby`, `application`, `react`]} />
       <Hero
-        content={
-          <div sx={{ fontFamily: 'heading' }}>
-            <Title>Maggie Alcorn</Title>
-            <And
-              sx={{
-                fontFamily: 'cursive',
-                fontStyle: 'italic',
-                fontWeight: 'body',
-              }}
-            >
-              &amp;
-            </And>
-            <Title>Dustin Schau</Title>
-          </div>
-        }
         footer={
           <CTA>
             <Link data-scroll={true} href="#more-info">

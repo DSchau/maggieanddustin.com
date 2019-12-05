@@ -1,9 +1,10 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx, Styled } from 'theme-ui'
 
 import Layout from '../components/layout/'
 
 export default () => (
   <Layout>
-    <h1>Registry</h1>
+    <Styled.h1>Registry</Styled.h1>
   </Layout>
 )

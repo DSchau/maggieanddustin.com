@@ -68,7 +68,7 @@ const formHandler = (step, actions) => {
 const getButtonText = (step, { isSubmitting }) => {
   switch (step) {
     case 'INITIAL_NAME':
-      return isSubmitting ? 'Finding...' : 'Find your reservation'
+      return isSubmitting ? 'Finding...' : 'Find your RSVP'
     case 'GUEST_AND_RSVP':
       return isSubmitting ? 'Updating RSVP...' : 'Submit'
   }
@@ -81,12 +81,9 @@ function RSVP() {
     <Layout>
       <div
         sx={{
-          maxWidth: '100%',
+          maxWidth: ['100%', `60%`],
           margin: '0 auto',
-          '@media only screen and (min-width: 768px)': {
-            padding: '1rem',
-            maxWidth: '60%',
-          },
+          padding: [0, `1rem`],
         }}
       >
         <Styled.h1>Let us know if you're coming!</Styled.h1>
