@@ -12832,10 +12832,25 @@ typeface-arvo@^0.0.72:
   resolved "https://registry.yarnpkg.com/typeface-arvo/-/typeface-arvo-0.0.72.tgz#9cd62d092e46301f754067d98307bd01bbeaf429"
   integrity sha512-zwOkGXa0RugpL+8CP4kq8yBKfnJ2+cx1JUZ9hP8SguWkavFNkiQ5pD36eqKOafDgShMPo4VuVBzMNV0395TNJA==
 
+typeface-biorhyme@^0.0.71:
+  version "0.0.71"
+  resolved "https://registry.yarnpkg.com/typeface-biorhyme/-/typeface-biorhyme-0.0.71.tgz#a5c947b1ea6197b758fe56c5b25031740fe441fa"
+  integrity sha512-Q5ulF/tYKYRpuViMP/NEje3bWFeJGXkgtZ/gVCIS4CuFVBJQmQ7ArZio6Se2ExHVFh3JsYpkswBDnG0UFKgKIQ==
+
 typeface-cabin@^0.0.72:
   version "0.0.72"
   resolved "https://registry.yarnpkg.com/typeface-cabin/-/typeface-cabin-0.0.72.tgz#33667852f30d574b5136f6cd08d162384b19a0d2"
   integrity sha512-YN3MG1CaqyGygSekamQ8HnuZEv6hvn4XHITPf1N/v9sp0sCQ3VHM+e9xDjiIVPjsTyScC8s/TZ79xZvcOZYJ+g==
+
+typeface-parisienne@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-parisienne/-/typeface-parisienne-0.0.72.tgz#eb576935823d6b61eaffddc45e86a6a448586af8"
+  integrity sha512-HCCmiVOa8NjBop0Hog+po+wAGoTBBgV7L0DQKexbyEZ1N9a0rOq8/+VbEEz8ZFaSagr3I6Sl13gvZfmlTpN+3Q==
+
+typeface-vollkorn@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-vollkorn/-/typeface-vollkorn-0.0.72.tgz#eab29df42e6ae5ab96ff4a062f071ad439c27060"
+  integrity sha512-p2wWq3UH48kU6afKHLrWacJeKcqvZJvhbFKPpzOKd6c3hjyyqduYaixJ4cAZcSMrlaIgrqauqLmMqq1a3p9rMg==
 
 typography-breakpoint-constants@^0.16.19:
   version "0.16.19"

@@ -43,7 +43,7 @@ export default function Navigation() {
           justifyContent: [`flex-start`, `center`],
           margin: 0,
           fontFamily: 'heading',
-          fontSize: 0,
+          fontSize: [0, 1],
           pb: [2, 0],
           textAlign: 'center',
           whiteSpace: `nowrap`,

@@ -1,6 +1,8 @@
 import { toTheme } from '@theme-ui/typography'
 import doelgerTheme from 'typography-theme-doelger'
 
+doelgerTheme.headerFontFamily = ['BioRhyme', 'serif']
+
 const typography = toTheme(doelgerTheme)
 
 export default {

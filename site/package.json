@@ -35,7 +35,10 @@
     "smooth-scroll": "^16.1.0",
     "theme-ui": "^0.2.49",
     "typeface-arvo": "^0.0.72",
+    "typeface-biorhyme": "^0.0.71",
     "typeface-cabin": "^0.0.72",
+    "typeface-parisienne": "^0.0.72",
+    "typeface-vollkorn": "^0.0.72",
     "typography-theme-doelger": "^0.16.19",
     "yup": "^0.27.0"
   },

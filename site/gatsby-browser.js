@@ -2,6 +2,9 @@ import SmoothScroll from 'smooth-scroll'
 import 'normalize.css'
 import 'typeface-arvo'
 import 'typeface-cabin'
+import 'typeface-vollkorn'
+import 'typeface-biorhyme'
+import 'typeface-parisienne'
 
 let scrolls = []
 
