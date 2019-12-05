@@ -1,11 +1,12 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import { graphql, Link } from 'gatsby'
+import Image from 'gatsby-image'
 
 import Layout from '../components/layout/with-cover'
 
 export default ({ data }) => (
-  <Layout cover={data.contentfulAsset.fluid}>
+  <Layout>
     <Styled.div sx={{ textAlign: `center`, pt: `10vh`, pb: `10vh` }}>
       <Styled.h1
         sx={{ fontSize: 48, padding: 2, mb: 0, textTransform: `uppercase` }}
@@ -53,6 +54,7 @@ export default ({ data }) => (
         TODO: Hotel reservation link
       </Link>
     </Styled.div>
+    <Image {...data.contentfulAsset} />
   </Layout>
 )
 
