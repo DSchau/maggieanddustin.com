@@ -17,6 +17,15 @@ export default ({ data }) => (
       <Styled.h2 sx={{ fontFamily: `body`, fontSize: 40 }}>
         Renaissance Minneapolis Hotel, the Depot
       </Styled.h2>
+      {[
+        'Saturday, August 8th, 2020',
+        '225 3rd Ave S,',
+        'Minneapolis, MN 55401',
+      ].map(part => (
+        <Styled.p key={part} sx={{ fontSize: 4, pb: 0, mb: 0 }}>
+          {part}
+        </Styled.p>
+      ))}
       <Link
         to="/rsvp/"
         sx={{
@@ -37,7 +46,7 @@ export default ({ data }) => (
           pb: 3,
           pr: 4,
           pl: 4,
-          mt: 2,
+          mt: 4,
           mb: 2,
         }}
       >
