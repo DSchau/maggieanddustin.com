@@ -27,8 +27,8 @@ export default ({ data }) => (
           {part}
         </Styled.p>
       ))}
-      <Link
-        to="https://www.marriott.com/event-reservations/reservation-link.mi?id=1568837961848&key=GRP&app=resvlink"
+      <a
+        href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1568837961848&key=GRP&app=resvlink"
         sx={{
           ':hover': {
             borderColor: `text`,
@@ -52,7 +52,7 @@ export default ({ data }) => (
         }}
       >
         Book Hotel
-      </Link>
+      </a>
     </Styled.div>
     <Image {...data.contentfulAsset} />
   </Layout>
