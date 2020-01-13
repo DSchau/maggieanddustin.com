@@ -5,12 +5,12 @@ import richTextRenderer from './rich-text-renderer'
 
 import Image from './image'
 
-function Person({ name, image, bio }) {
+function Person({ className, name, image, bio }) {
   return (
-    <Styled.div sx={{ textAlign: `center` }}>
+    <Styled.div className={className} sx={{ textAlign: `center` }}>
       <Styled.h2>{name}</Styled.h2>
-      <Image sx={{ borderRadius: `100%` }} {...image} />
-      {richTextRenderer(bio.json)}
+      {image && <Image sx={{ borderRadius: `100%` }} {...image} />}
+      {bio && richTextRenderer(bio.json)}
     </Styled.div>
   )
 }
