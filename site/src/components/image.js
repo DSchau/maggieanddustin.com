@@ -7,12 +7,6 @@ import ImageWithZoom from 'react-medium-image-zoom'
 function Image({ fluid, fixed, src, zoom, ...rest }) {
   const [mode] = useColorMode()
   const Wrapper = fluid || fixed ? GatsbyImage : 'img'
-  const overlay = {
-    overlayBgColorStart:
-      mode === `light` ? `rgba(255, 255, 255, 0)` : `rgba(0, 0, 0, 0)`,
-    overlayBgColorEnd:
-      mode === `light` ? `rgba(255, 255, 255, 0.95)` : `rgba(0, 0, 0, 0.95)`,
-  }
   if (zoom) {
     return (
       <ImageWithZoom
