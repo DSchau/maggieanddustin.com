@@ -26,6 +26,7 @@ export default () => {
         className="zola-registry-embed"
         href="https://zola.com/registry/maggieanddustin2020"
         data-registry-key="maggieanddustin2020"
+        sx={{ display: `none` }}
       >
         Our Zola Wedding Registry is loading&hellip;
       </a>
