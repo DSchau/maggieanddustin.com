@@ -28,39 +28,44 @@ function Story({ data }) {
   } = data
   return (
     <Layout>
-      {moments.map((moment, index) => (
-        <Styled.div
-          key={moment.title}
-          sx={{ textAlign: 'center', mt: 2, mb: 2, padding: 2 }}
-        >
-          <Styled.div
-            sx={{
-              borderWidth: 2,
-              borderLeftWidth: 0,
-              borderRightWidth: 0,
-              borderStyle: `solid`,
-              maxWidth: ['100%', '50%'],
-              padding: 3,
-              mb: 2,
-              mr: 'auto',
-              ml: 'auto',
-            }}
-          >
-            <Styled.h2>{moment.title}</Styled.h2>
-            <Styled.h3 sx={{ mb: 0 }}>{moment.date}</Styled.h3>
-          </Styled.div>
-          {richTextRenderer(moment.description.json)}
-          {moment.photos.map(photo => (
-            <Image
-              key={photo.fluid.src}
-              sx={{ maxWidth: ['100%', '50%'], margin: '0 auto' }}
-              zoom={true}
-              {...photo}
-            />
-          ))}
-          {index + 1 < moments.length && <Rule />}
-        </Styled.div>
-      ))}
+      {moments.map(
+        (moment, index) =>
+          console.log(moment.photos) || (
+            <Styled.div
+              key={moment.title}
+              sx={{ textAlign: 'center', mt: 2, mb: 2, padding: 2 }}
+            >
+              <Styled.div
+                sx={{
+                  borderWidth: 2,
+                  borderLeftWidth: 0,
+                  borderRightWidth: 0,
+                  borderStyle: `solid`,
+                  maxWidth: ['100%', '50%'],
+                  padding: 3,
+                  mb: 2,
+                  mr: 'auto',
+                  ml: 'auto',
+                }}
+              >
+                <Styled.h2>{moment.title}</Styled.h2>
+                <Styled.h3 sx={{ mb: 0 }}>{moment.date}</Styled.h3>
+              </Styled.div>
+              <Styled.div sx={{ maxWidth: [`100%`, `75%`], margin: `0 auto` }}>
+                {richTextRenderer(moment.description.json)}
+              </Styled.div>
+              {moment.photos.map(photo => (
+                <Image
+                  key={photo.fluid.src}
+                  sx={{ maxWidth: ['100%', '50%'], margin: '0 auto' }}
+                  zoom={true}
+                  {...photo}
+                />
+              ))}
+              {index + 1 < moments.length && <Rule />}
+            </Styled.div>
+          )
+      )}
     </Layout>
   )
 }
