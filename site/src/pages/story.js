@@ -51,7 +51,7 @@ function Story({ data }) {
                 <Styled.h2>{moment.title}</Styled.h2>
                 <Styled.h3 sx={{ mb: 0 }}>{moment.date}</Styled.h3>
               </Styled.div>
-              <Styled.div sx={{ maxWidth: [`100%`, `75%`], margin: `0 auto` }}>
+              <Styled.div sx={{ maxWidth: [`100%`, `50%`], margin: `0 auto` }}>
                 {richTextRenderer(moment.description.json)}
               </Styled.div>
               {moment.photos.map(photo => (
