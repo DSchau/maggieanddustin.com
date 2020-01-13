@@ -5,10 +5,11 @@ import richTextRenderer from './rich-text-renderer'
 
 import Image from './image'
 
-function Person({ className, name, image, bio }) {
+function Person({ className, name, image, role, bio }) {
   return (
     <Styled.div className={className} sx={{ textAlign: `center` }}>
       <Styled.h2>{name}</Styled.h2>
+      <Styled.h3>{role}</Styled.h3>
       {image && (
         <Image sx={{ borderRadius: `100%`, mt: 2, mb: 2 }} {...image} />
       )}
@@ -20,6 +21,7 @@ function Person({ className, name, image, bio }) {
 export const personFragment = graphql`
   fragment PersonDetails on ContentfulPerson {
     name
+    role
     bio {
       json
     }
