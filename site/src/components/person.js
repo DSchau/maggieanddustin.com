@@ -9,7 +9,9 @@ function Person({ className, name, image, bio }) {
   return (
     <Styled.div className={className} sx={{ textAlign: `center` }}>
       <Styled.h2>{name}</Styled.h2>
-      {image && <Image sx={{ borderRadius: `100%` }} {...image} />}
+      {image && (
+        <Image sx={{ borderRadius: `100%`, mt: 2, mb: 2 }} {...image} />
+      )}
       {bio && richTextRenderer(bio.json)}
     </Styled.div>
   )
