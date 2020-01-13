@@ -50,6 +50,8 @@ export default ({ data }) => (
           mt: 4,
           mb: 2,
         }}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         Book Hotel
       </a>
