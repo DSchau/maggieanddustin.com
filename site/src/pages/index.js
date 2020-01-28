@@ -21,7 +21,7 @@ function Index({ data }) {
         <Styled.h1
           sx={{ fontSize: 48, padding: 2, mb: 0, textTransform: `uppercase` }}
         >
-          August 8th, 2020
+          August 8, 2020
         </Styled.h1>
         <Styled.h2
           sx={{ fontFamily: `body`, fontSize: 40, fontFamily: `Parisienne` }}
