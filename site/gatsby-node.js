@@ -14,6 +14,13 @@ exports.onCreateNode = function onCreateNode({ actions, node }) {
   }
 }
 
+exports.onCreatePage = function onCreatePage({ actions, page }) {
+  const showRsvp = process.env.GATSBY_SHOW_RSVP !== 'false'
+  if (!showRsvp && page.path === `/rsvp/`) {
+    actions.deletePage(page)
+  }
+}
+
 exports.createPages = async function createPages({ actions, graphql }) {
   const {
     data: { posts, pages },

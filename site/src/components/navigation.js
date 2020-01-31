@@ -52,7 +52,7 @@ export default function Navigation() {
         }}
       >
         {[
-          ['RSVP', '/rsvp/'],
+          process.env.SHOW_RSVP !== `false` && ['RSVP', '/rsvp/'],
           ['Venue', '/venue/'],
           ['Wedding Party', '/wedding-party/'],
           ['Our Story', `/story/`],
@@ -60,13 +60,15 @@ export default function Navigation() {
           ['Proposal', '/proposal/'],
           ['Registry', `/registry/`],
           // ['Blog', '/blog/'],
-        ].map(([title, to]) => (
-          <Styled.li key={title} sx={{ padding: [1, 3] }}>
-            <Link to={to} partiallyActive={true}>
-              {title}
-            </Link>
-          </Styled.li>
-        ))}
+        ]
+          .filter(Boolean)
+          .map(([title, to]) => (
+            <Styled.li key={title} sx={{ padding: [1, 3] }}>
+              <Link to={to} partiallyActive={true}>
+                {title}
+              </Link>
+            </Styled.li>
+          ))}
       </Styled.ul>
       <ColorMode
         isDark={isDark}
