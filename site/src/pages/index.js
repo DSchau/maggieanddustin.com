@@ -28,32 +28,34 @@ function Index({ data }) {
         >
           Minneapolis, MN
         </Styled.h2>
-        <Link
-          to="/rsvp/"
-          sx={{
-            ':hover': {
-              borderColor: `text`,
-              backgroundColor: `background`,
-              color: `text`,
-            },
-            borderWidth: 4,
-            borderColor: `transparent`,
-            borderStyle: `solid`,
-            display: `inline-block`,
-            fontSize: 32,
-            textDecoration: `none`,
-            backgroundColor: `text`,
-            color: `background`,
-            pt: 3,
-            pb: 3,
-            pr: 4,
-            pl: 4,
-            mt: 2,
-            mb: 2,
-          }}
-        >
-          RSVP
-        </Link>
+        {process.env.GATSBY_SHOW_RSVP !== `false` && (
+          <Link
+            to="/rsvp/"
+            sx={{
+              ':hover': {
+                borderColor: `text`,
+                backgroundColor: `background`,
+                color: `text`,
+              },
+              borderWidth: 4,
+              borderColor: `transparent`,
+              borderStyle: `solid`,
+              display: `inline-block`,
+              fontSize: 32,
+              textDecoration: `none`,
+              backgroundColor: `text`,
+              color: `background`,
+              pt: 3,
+              pb: 3,
+              pr: 4,
+              pl: 4,
+              mt: 2,
+              mb: 2,
+            }}
+          >
+            RSVP
+          </Link>
+        )}
       </Styled.div>
     </Layout>
   )
