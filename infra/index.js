@@ -2,9 +2,13 @@ const pify = require('pify')
 const yup = require('yup')
 const format = require('date-fns/format')
 const levenshtein = require('fast-levenshtein')
+const apolloServer = require('apollo-server-lambda')
+
+console.log(apolloServer)
 
 const getApi = require('./api')
 const log = require('./log')
+const server = require('./server')
 
 const bodySchema = yup.object().shape({
   rsvps: yup.array(
@@ -32,60 +36,67 @@ const formatResponse = guests => ({
   }),
 })
 
-exports.handler = async function handler(event) {
-  log.debug(event)
+exports.handler = server.createHandler({
+  cors: {
+    origin: '*',
+    credentials: true,
+  },
+})
 
-  const { name, comment, email, rsvps } = await bodySchema.validate(event.body || event)
+// exports.handler = async function handler(event) {
+//   log.debug(event)
 
-  log.debug({ name, comment, email, rsvps })
+//   const { name, comment, email, rsvps } = await bodySchema.validate(event.body || event)
 
-  const api = await getApi({
-    client_email: process.env.CLIENT_EMAIL,
-    private_key: process.env.PRIVATE_KEY,
-    spreadsheet_id: process.env.SPREADSHEET_ID,
-    spreadsheet_title: process.env.SPREADSHEET_TITLE
-  })
+//   log.debug({ name, comment, email, rsvps })
 
-  const rows = await api.getRows()
+//   const api = await getApi({
+//     client_email: process.env.CLIENT_EMAIL,
+//     private_key: process.env.PRIVATE_KEY,
+//     spreadsheet_id: process.env.SPREADSHEET_ID,
+//     spreadsheet_title: process.env.SPREADSHEET_TITLE
+//   })
 
-  const partyIds = rows.reduce((merged, row) => {
-    if (!merged[row.uuid]) {
-      merged[row.uuid] = []
-    }
-    merged[row.uuid].push(row)
-    return merged
-  }, {})
+//   const rows = await api.getRows()
 
-  const guest = rows.find(row => (
-    row.guest === name ||
-    levenshtein.get(row.guest, name) === 1
-  ))
+//   const partyIds = rows.reduce((merged, row) => {
+//     if (!merged[row.uuid]) {
+//       merged[row.uuid] = []
+//     }
+//     merged[row.uuid].push(row)
+//     return merged
+//   }, {})
 
-  const guests = partyIds[guest.uuid]
+//   const guest = rows.find(row => (
+//     row.guest === name ||
+//     levenshtein.get(row.guest, name) === 1
+//   ))
 
-  if (!invitee) {
-    throw new Error(
-      'Could not find a guest with that name. Maybe you meant: TODO: invitee name'
-    )
-  }
+//   const guests = partyIds[guest.uuid]
 
-  log.debug(invitee)
+//   if (!invitee) {
+//     throw new Error(
+//       'Could not find a guest with that name. Maybe you meant: TODO: invitee name'
+//     )
+//   }
 
-  if (!rsvps) {
-    return formatResponse(guests)
-  }
+//   log.debug(invitee)
 
-  await Promise.all(
-    guests.map(guest => {
+//   if (!rsvps) {
+//     return formatResponse(guests)
+//   }
+
+//   await Promise.all(
+//     guests.map(guest => {
       
-    })
-  )
+//     })
+//   )
 
-  const now = format(new Date(), 'YYYY/MM/DD')
+//   const now = format(new Date(), 'YYYY/MM/DD')
 
-  log.debug({ message: `Saving guest and invitee`, invitee })
+//   log.debug({ message: `Saving guest and invitee`, invitee })
 
-  await pify(invitee.save)()
+//   await pify(invitee.save)()
 
-  return formatResponse(invitee)
-}
+//   return formatResponse(invitee)
+// }

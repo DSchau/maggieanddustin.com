@@ -80,3 +80,6 @@ yarn-error.log
 .env*
 !.env.sample
 
+
+# Local Netlify folder
+.netlify
