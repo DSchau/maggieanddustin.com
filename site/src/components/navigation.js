@@ -52,7 +52,7 @@ export default function Navigation() {
         }}
       >
         {[
-          process.env.SHOW_RSVP !== `false` && ['RSVP', '/rsvp/'],
+          process.env.GATSBY_SHOW_RSVP !== `false` && ['RSVP', '/rsvp/'],
           ['Venue', '/venue/'],
           ['Wedding Party', '/wedding-party/'],
           ['Our Story', `/story/`],
