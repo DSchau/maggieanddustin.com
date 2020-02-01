@@ -6211,6 +6211,13 @@ gatsby-plugin-page-creator@2.1.38:
     lodash "^4.17.15"
     micromatch "^3.1.10"
 
+gatsby-plugin-preact@^3.1.25:
+  version "3.1.25"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-preact/-/gatsby-plugin-preact-3.1.25.tgz#0b11d550b59d6aa7935b6047616427ca8977e582"
+  integrity sha512-BRS553aZ2arDYoS2n5CMZAw2sgF8m+tYQAfDpmTMaLPc2gHOI+wJu6448TrWlS4eXesEMjUIMvQkIOJdV22Dpw==
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+
 gatsby-plugin-react-helmet@^3.1.16:
   version "3.1.16"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.1.16.tgz#479738d9f9ee2a312c620c01aa0882a9740537bf"
@@ -10712,6 +10719,11 @@ potrace@^2.1.2:
   integrity sha512-dNcUBapRgPkiv3j+70+rSlf0whtJJqEszC04g9a/Ll3p6kA7QVRV1Vsi3jg22voJr2jA9x9fjPbz5MdD+ngbUg==
   dependencies:
     jimp "^0.6.4"
+
+preact@^10.2.1:
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.2.1.tgz#b30eb4cdc455499ee2ff82e0fa1a16fc8e20f3a4"
+  integrity sha512-BUNvmQcVtNElku7mYHexIiM5JlGNSW2BY9O2t9xk1NqA43O8wbE0cah6PAlvT7PBHvyDRJ5TAj5Fewdi9DqLoQ==
 
 prebuild-install@^5.3.3:
   version "5.3.3"
