@@ -63,8 +63,10 @@ export default function Navigation() {
           ['Our Story', `/story/`],
           // ['Photos', '/photos/'],
           ['Proposal', '/proposal/'],
-          process.env.GATSBY_SHOW_REGISTRY !==
-            `false`[('Registry', `/registry/`)],
+          process.env.GATSBY_SHOW_REGISTRY !== `false` && [
+            'Registry',
+            `/registry/`,
+          ],
           // ['Blog', '/blog/'],
         ]
           .filter(Boolean)
