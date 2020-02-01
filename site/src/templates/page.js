@@ -6,6 +6,7 @@ import Image from 'gatsby-image'
 import Layout from '../components/layout'
 import Timeline from '../components/timeline'
 import Masonry from '../components/masonry'
+import SEO from '../components/seo'
 
 const flatten = arr => arr.reduce((merged, item) => merged.concat(item), [])
 
@@ -21,6 +22,10 @@ function Page({ data }) {
   }, {})
   return (
     <Layout>
+      <SEO
+        description="The wedding website for Maggie Alcorn and Dustin Schau. Save the date for August 8th, 2020 in Minneapolis, MN."
+        title="Wedding | August 8, 2020"
+      />
       {page.hero && <Image fluid={page.hero[0].fluid} />}
       {page.moments &&
         page.moments.map(moment => (
