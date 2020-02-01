@@ -1,9 +1,13 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
+import Image from 'gatsby-image'
 
 import Layout from '../components/layout'
 import Timeline from '../components/timeline'
+import Masonry from '../components/masonry'
+
+const flatten = arr => arr.reduce((merged, item) => merged.concat(item), [])
 
 function Page({ data }) {
   const page = data.page.contentBlocks.reduce((merged, block) => {
@@ -17,10 +21,18 @@ function Page({ data }) {
   }, {})
   return (
     <Layout>
+      {page.hero && <Image fluid={page.hero[0].fluid} />}
       {page.moments &&
         page.moments.map(moment => (
           <Timeline key={moment.id} moments={moment} />
         ))}
+      {page.photos && (
+        <Masonry>
+          {flatten(page.photos).map(photo => (
+            <Image key={photo.fluid.src} fluid={photo.fluid} />
+          ))}
+        </Masonry>
+      )}
     </Layout>
   )
 }
@@ -38,7 +50,7 @@ export const pageQuery = graphql`
           }
         }
         ... on ContentfulHero {
-          image {
+          hero: image {
             fluid {
               ...GatsbyContentfulFluid
             }
