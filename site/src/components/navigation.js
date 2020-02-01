@@ -26,8 +26,13 @@ export default function Navigation() {
           fontSize: 4,
           whiteSpace: `nowrap`,
           margin: `0 auto`,
+          pt: [2, 4],
+          pb: [2, 4],
+          pl: 0,
+          pr: 0,
           textAlign: `center`,
           width: [`100%`, `50%`],
+          maxWidth: `100%`,
         }}
       >
         <span sx={{ display: 'inline-block' }}>
@@ -58,12 +63,13 @@ export default function Navigation() {
           ['Our Story', `/story/`],
           // ['Photos', '/photos/'],
           ['Proposal', '/proposal/'],
-          ['Registry', `/registry/`],
+          process.env.GATSBY_SHOW_REGISTRY !==
+            `false`[('Registry', `/registry/`)],
           // ['Blog', '/blog/'],
         ]
           .filter(Boolean)
           .map(([title, to]) => (
-            <Styled.li key={title} sx={{ padding: [1, 3] }}>
+            <Styled.li key={title} sx={{ padding: [2, 3] }}>
               <Link to={to} partiallyActive={true}>
                 {title}
               </Link>

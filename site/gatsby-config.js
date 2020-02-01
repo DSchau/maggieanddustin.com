@@ -11,8 +11,8 @@ module.exports = {
     siteUrl: process.env.DEPLOY_URL || 'https://maggieanddustin.com',
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-preact`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

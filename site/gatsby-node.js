@@ -9,14 +9,19 @@ exports.onCreateNode = function onCreateNode({ actions, node }) {
     actions.createNodeField({
       node,
       name: `slug`,
-      value: `/${node.slug}/`,
+      value: node.slug === `/` ? node.slug : `/${node.slug}/`,
     })
   }
 }
 
 exports.onCreatePage = function onCreatePage({ actions, page }) {
   const showRsvp = process.env.GATSBY_SHOW_RSVP !== 'false'
+  const showRegistry = process.env.GATSBY_SHOW_REGISTRY !== 'false'
   if (!showRsvp && page.path === `/rsvp/`) {
+    actions.deletePage(page)
+  }
+
+  if (!showRegistry && page.path === '/registry/') {
     actions.deletePage(page)
   }
 }
