@@ -49,18 +49,18 @@ exports.createPages = async function createPages({ actions, graphql }) {
     }
   `)
 
-  posts.nodes.forEach(post => {
-    const {
-      fields: { slug },
-    } = post
-    actions.createPage({
-      component: require.resolve(`./src/templates/blog-post.js`),
-      path: slug,
-      context: {
-        slug,
-      },
-    })
-  })
+  // posts.nodes.forEach(post => {
+  //   const {
+  //     fields: { slug },
+  //   } = post
+  //   actions.createPage({
+  //     component: require.resolve(`./src/templates/blog-post.js`),
+  //     path: slug,
+  //     context: {
+  //       slug,
+  //     },
+  //   })
+  // })
 
   pages.nodes.forEach(page => {
     const {
