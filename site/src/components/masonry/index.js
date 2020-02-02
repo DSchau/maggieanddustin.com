@@ -16,7 +16,7 @@ export default function Masonry({
   const [spans, setSpans] = useState([])
 
   const computeSpans = () => {
-    if (ref.current) {
+    if (ref.current && ref.current.children) {
       const spans = []
       Array.from(ref.current.children).forEach(child => {
         const childHeight = Array.from(child.children).reduce(sumUp, 0)
