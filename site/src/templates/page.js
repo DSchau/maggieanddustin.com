@@ -7,6 +7,7 @@ import Image from 'gatsby-image'
 import Gallery from '../components/gallery'
 import Timeline from '../components/timeline'
 import Section from '../components/section'
+import WeddingParty from '../components/wedding-party'
 import SEO from '../components/seo'
 
 import partials from '../components/partials'
@@ -26,11 +27,15 @@ function Page({ data }) {
       case 'ContentfulHero':
         merged.hero = (merged.hero || []).concat(block)
         break
+      case 'ContentfulWeddingParty':
+        merged.party = (merged.party || []).concat(block)
+        break
       default:
         break
     }
     return merged
   }, {})
+  console.log(page)
   const Partial = partials[data.page.slug]
   return (
     <>
@@ -47,6 +52,8 @@ function Page({ data }) {
         ))}
       {page.section &&
         page.section.map(section => <Section key={section.id} {...section} />)}
+      {page.party &&
+        page.party.map(party => <WeddingParty key={party.id} {...party} />)}
       {page.gallery &&
         page.gallery.map(gallery => <Gallery key={gallery.id} {...gallery} />)}
     </>
@@ -85,6 +92,17 @@ export const pageQuery = graphql`
           moments {
             id
             ...MomentDetails
+          }
+        }
+
+        ... on ContentfulWeddingParty {
+          __typename
+          id
+          bridesParty {
+            ...PersonDetails
+          }
+          groomsParty {
+            ...PersonDetails
           }
         }
       }
