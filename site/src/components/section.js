@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 
 import richTextRenderer from './rich-text-renderer'
 
-function Section({ body, title }) {
+function Section({ body, fields, title }) {
   return (
     <Styled.div
       sx={{
@@ -15,7 +15,9 @@ function Section({ body, title }) {
         maxWidth: ['100%', '65ch'],
       }}
     >
-      <Styled.h2 sx={{ textAlign: 'center', fontSize: 32 }}>{title}</Styled.h2>
+      <Styled.h2 sx={{ textAlign: 'center', fontSize: 32 }} id={fields.slug}>
+        {title}
+      </Styled.h2>
       {richTextRenderer(body.json)}
     </Styled.div>
   )
@@ -25,6 +27,9 @@ export const sectionQuery = graphql`
   fragment SectionDetails on ContentfulSection {
     body {
       json
+    }
+    fields {
+      slug
     }
     title
   }
