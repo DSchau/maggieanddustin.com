@@ -8,9 +8,9 @@ import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 
 // TODO: swap with pose
-function Image({ zoom, ...props }) {
+function Image({ zoom, isZoomed = false, width = '85vw', ...props }) {
   const [mode] = useColorMode()
-  const [zoomed, setZoomed] = useState(false)
+  const [zoomed, setZoomed] = useState(isZoomed)
   const Wrapper = props.fluid || props.fixed ? GatsbyImage : 'img'
   const handleZoomChange = useCallback(shouldZoom => {
     setZoomed(shouldZoom)
@@ -33,7 +33,7 @@ function Image({ zoom, ...props }) {
           isZoomed={zoomed}
           onZoomChange={handleZoomChange}
         >
-          <Wrapper {...props} sx={{ display: 'block', width: '100vw' }} />
+          <Wrapper {...props} sx={{ display: 'block', width }} />
         </ControlledZoom>
       </button>
     )
