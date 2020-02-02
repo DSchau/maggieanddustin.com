@@ -1,24 +1,15 @@
 /** @jsx jsx */
 import { jsx, useColorMode } from 'theme-ui'
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import GatsbyImage from 'gatsby-image'
 
-import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
+import Zoom from 'react-medium-image-zoom'
 
 import 'react-medium-image-zoom/dist/styles.css'
 
 function Image({ zoom, isZoomed = false, width = '85vw', ...props }) {
   const [mode] = useColorMode()
-  const [zoomed, setZoomed] = useState(isZoomed)
-  const [browser, setBrowser] = useState(false)
   const Wrapper = props.fluid || props.fixed ? GatsbyImage : 'img'
-  const handleZoomChange = useCallback(shouldZoom => {
-    setZoomed(shouldZoom)
-  }, [])
-  useEffect(() => {
-    setBrowser(true)
-  }, [])
-  const ZoomElement = browser ? ControlledZoom : React.Fragment
   if (zoom) {
     const darkModeProps =
       mode === 'dark'
@@ -28,18 +19,9 @@ function Image({ zoom, isZoomed = false, width = '85vw', ...props }) {
           }
         : {}
     return (
-      <button
-        sx={{ background: 'transparent', border: 'none', fontSize: 0 }}
-        onClick={() => setZoomed(!zoomed)}
-      >
-        <ZoomElement
-          {...darkModeProps}
-          isZoomed={zoomed}
-          onZoomChange={handleZoomChange}
-        >
-          <Wrapper {...props} sx={{ display: 'block', width }} />
-        </ZoomElement>
-      </button>
+      <Zoom {...darkModeProps}>
+        <Wrapper {...props} sx={{ display: `block`, width }} />
+      </Zoom>
     )
   }
   return <Wrapper sx={{ display: 'block', maxWidth: '100%' }} {...props} />

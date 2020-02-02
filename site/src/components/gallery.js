@@ -2,9 +2,9 @@
 import { jsx, Styled } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
-import Image from 'gatsby-image'
 
-import Masonry from '../components/masonry'
+import Image from './image'
+import Masonry from './masonry'
 
 const flatten = arr => arr.reduce((merged, item) => merged.concat(item), [])
 
