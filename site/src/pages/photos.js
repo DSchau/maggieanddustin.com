@@ -5,12 +5,18 @@ import { graphql } from 'gatsby'
 
 import Grid from '../components/grid'
 import Image from '../components/image'
+import SEO from '../components/seo'
 import BlogPostPreview from '../components/blog-post-preview'
 
 function Photos({ data }) {
   const { archive } = data
   return (
     <>
+      <SEO
+        title="Photos"
+        description="An archive of photos for Maggie and Dustin"
+      />
+      s
       {archive.nodes.map(archive => (
         <BlogPostPreview
           key={archive.fields.slug}

@@ -2,6 +2,8 @@
 import React, { useEffect, useRef } from 'react'
 import { jsx } from 'theme-ui'
 
+import SEO from '../components/seo'
+
 export default () => {
   const embed = useRef(null)
   useEffect(() => {
@@ -20,6 +22,10 @@ export default () => {
   }, [])
   return (
     <>
+      <SEO
+        title="Wedding Registry"
+        description="The Zola gift registry for the wedding of Maggie Alcorn and Dustin Schau"
+      />
       <a
         className="zola-registry-embed"
         href="https://zola.com/registry/maggieanddustin2020"

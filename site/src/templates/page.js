@@ -38,10 +38,7 @@ function Page({ data }) {
   const Partial = partials[data.page.slug]
   return (
     <>
-      <SEO
-        description="The wedding website for Maggie Alcorn and Dustin Schau. Save the date for August 8th, 2020 in Minneapolis, MN."
-        title="Wedding | August 8, 2020"
-      />
+      <SEO description={data.page.description} title={data.page.title} />
       {page.hero &&
         page.hero.map(img => (
           <Image key={img.hero.id} {...img.hero.localFile.childImageSharp} />
@@ -66,6 +63,8 @@ export const pageQuery = graphql`
     page: contentfulPage(fields: { slug: { eq: $slug } }) {
       id
       slug
+      description
+      title
       contentBlocks {
         ... on ContentfulGallery {
           __typename

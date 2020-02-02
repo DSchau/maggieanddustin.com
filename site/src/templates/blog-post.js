@@ -5,12 +5,13 @@ import { graphql } from 'gatsby'
 
 import Gallery from '../components/gallery'
 import BlogPost from '../components/blog-post'
+import SEO from '../components/seo'
 
 function BlogPostPage({ data }) {
   const { post } = data
-  console.log(post.gallery)
   return (
     <>
+      <SEO title={`${post.title} | Blog`} description={post.summary} />
       {post && (
         <BlogPost
           as="article"

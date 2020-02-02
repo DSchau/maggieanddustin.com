@@ -42,15 +42,17 @@ function Moment({ children, date, description, title, photos }) {
         <Styled.h3 sx={{ mb: 2 }}>{date}</Styled.h3>
         {richTextRenderer(description.json)}
       </Styled.div>
-      {photos.map(photo => (
-        <Image
-          key={photo.localFile.id}
-          sx={{ margin: '0 auto' }}
-          width={[`100vw`, `75vw`, `60vw`]}
-          zoom={true}
-          {...photo.localFile.childImageSharp}
-        />
-      ))}
+      <Styled.div sx={{ overflowX: 'hidden' }}>
+        {photos.map(photo => (
+          <Image
+            key={photo.localFile.id}
+            sx={{ margin: '0 auto' }}
+            width={[`100vw`, `75vw`, `60vw`]}
+            zoom={true}
+            {...photo.localFile.childImageSharp}
+          />
+        ))}
+      </Styled.div>
       {children}
     </>
   )

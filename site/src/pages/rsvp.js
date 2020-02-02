@@ -5,6 +5,7 @@ import { Formik } from 'formik'
 import * as yup from 'yup'
 
 import { Button, Label, Input, Textarea } from '../components/form'
+import SEO from '../components/seo'
 import { api } from '../utils/api'
 
 const formSchema = yup.object().shape({
@@ -78,6 +79,10 @@ function RSVP() {
   const [step, setStep] = useState('INITIAL_NAME')
   return (
     <>
+      <SEO
+        title="RSVP to the Wedding"
+        description="Let us know if you're coming to the wedding of Maggie Alcorn and Dustin Schau with this RSVP form."
+      />
       <div
         sx={{
           maxWidth: ['100%', `60%`],
