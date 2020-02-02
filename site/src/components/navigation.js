@@ -9,8 +9,8 @@ export default function Navigation() {
   const [mode, setMode] = useColorMode('light')
   const data = useStaticQuery(graphql`
     {
-      pages: allContentfulPage(filter: { slug: { ne: "/" } }) {
-        nodes {
+      nav: contentfulNavigation {
+        items {
           title
           fields {
             slug
@@ -20,8 +20,7 @@ export default function Navigation() {
     }
   `)
   const isDark = mode === 'dark'
-  const pages = data.pages.nodes.map(node => [node.title, node.fields.slug])
-  console.log(pages)
+  const pages = data.nav.items.map(node => [node.title, node.fields.slug])
   return (
     <nav
       sx={{
