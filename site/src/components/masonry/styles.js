@@ -1,8 +1,10 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
+import React from 'react'
 
-export const Parent = props => (
+export const Parent = React.forwardRef((props, ref) => (
   <Styled.div
+    ref={ref}
     sx={{
       display: 'grid',
       gridTemplateColumns: `repeat(auto-fit, minmax(${props.colWidth}, 1fr))`,
@@ -11,7 +13,7 @@ export const Parent = props => (
     }}
     {...props}
   />
-)
+))
 
 export const Child = props => (
   <Styled.div
