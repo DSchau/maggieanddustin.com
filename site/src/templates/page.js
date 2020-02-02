@@ -43,7 +43,7 @@ function Page({ data }) {
       {page.sections &&
         page.sections.map(section => <Section key={section.id} {...section} />)}
       {page.photos && (
-        <Masonry>
+        <Masonry sx={{ pt: 4 }}>
           {flatten(page.photos).map(photo => (
             <Image key={photo.fluid.src} fluid={photo.fluid} />
           ))}
