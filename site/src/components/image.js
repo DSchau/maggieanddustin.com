@@ -10,14 +10,15 @@ import 'react-medium-image-zoom/dist/styles.css'
 function Image({ zoom, isZoomed = false, width = '85vw', ...props }) {
   const [mode] = useColorMode()
   const [zoomed, setZoomed] = useState(isZoomed)
-  const [ZoomElement, setZoomEl] = useState(React.Fragment)
+  const [browser, setBrowser] = useState(false)
   const Wrapper = props.fluid || props.fixed ? GatsbyImage : 'img'
   const handleZoomChange = useCallback(shouldZoom => {
     setZoomed(shouldZoom)
   }, [])
   useEffect(() => {
-    setZoomEl(ControlledZoom)
+    setBrowser(true)
   }, [])
+  const ZoomElement = browser ? ControlledZoom : React.Fragment
   if (zoom) {
     const darkModeProps =
       mode === 'dark'
