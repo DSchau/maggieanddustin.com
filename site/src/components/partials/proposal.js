@@ -15,8 +15,8 @@ export default function Proposal() {
         Granada, Spain
       </Styled.h2>
       <Styled.p>
-        Dustin proposed (and Maggie <em>shockingly</em> said yes!) with both of
-        their families on January 19th, 2020.
+        Dustin proposed (and Maggie said yes!) with both of their families on
+        January 19th, 2020.
       </Styled.p>
     </Styled.div>
   )

@@ -4,26 +4,7 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/layout/'
 import Person from '../components/person'
-
-const Party = props => (
-  <Styled.div sx={{ display: 'flex', flexDirection: 'column' }}>
-    <Styled.h1 sx={{ textAlign: 'center' }}>{props.title}</Styled.h1>
-    {props.party.map(person => (
-      <Person
-        sx={{
-          display: 'flex',
-          flex: 1,
-          height: '100%',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-        key={person.name}
-        {...person}
-      />
-    ))}
-  </Styled.div>
-)
+import SEO from '../components/seo'
 
 function WeddingParty({ data }) {
   const {
@@ -32,8 +13,17 @@ function WeddingParty({ data }) {
   const party = bridesParty.reduce((merged, member, index) => {
     return merged.concat(member).concat(groomsParty[index])
   }, [])
+  const names = party.map((member, index) =>
+    index + 1 === party.length ? `and ${member.name}` : member.name
+  )
   return (
     <Layout>
+      <SEO
+        description={`The wedding party for the wedding for Maggie Alcorn and Dustin Schau: ${names.join(
+          ', '
+        )}`}
+        title="Wedding Party"
+      />
       <div
         sx={{
           display: 'grid',

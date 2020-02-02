@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 
+import { getZIndex } from '../utils/get-z-index'
+
 // Adapted from: https://codepen.io/aaroniker/pen/KGpXZo and https://github.com/narative/gatsby-theme-novela/blob/master/%40narative/gatsby-theme-novela/src/components/Navigation/Navigation.Header.tsx
 const ColorModeToggle = ({ isDark, onClick, ...rest }) => (
   <button
@@ -24,6 +26,7 @@ const ColorModeToggle = ({ isDark, onClick, ...rest }) => (
       cursor: `pointer`,
       padding: 0,
       appearance: `none`,
+      zIndex: getZIndex('toggle'),
       '&:hover, &:focus': { opacity: 1 },
     }}
     {...rest}

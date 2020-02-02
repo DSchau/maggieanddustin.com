@@ -4,27 +4,31 @@ import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
 import Layout from '../components/layout'
+import Gallery from '../components/gallery'
 import Timeline from '../components/timeline'
-import Masonry from '../components/masonry'
 import Section from '../components/section'
 import SEO from '../components/seo'
 
 import partials from '../components/partials'
 
-const flatten = arr => arr.reduce((merged, item) => merged.concat(item), [])
-
 function Page({ data }) {
   const page = data.page.contentBlocks.reduce((merged, block) => {
-    if (block.body && block.title) {
-      merged.sections = (merged.sections || []).concat(block)
-      return merged
+    switch (block.__typename) {
+      case 'ContentfulTimeline':
+        merged.timeline = (merged.timeline || []).concat(block)
+        break
+      case 'ContentfulGallery':
+        merged.gallery = (merged.gallery || []).concat(block)
+        break
+      case 'ContentfulSection':
+        merged.section = (merged.section || []).concat(block)
+        break
+      case 'ContentfulHero':
+        merged.hero = (merged.hero || []).concat(block)
+        break
+      default:
+        break
     }
-    Object.keys(block).forEach(key => {
-      if (!merged[key]) {
-        merged[key] = []
-      }
-      merged[key].push(block[key])
-    })
     return merged
   }, {})
   const Partial = partials[data.page.slug]
@@ -34,21 +38,17 @@ function Page({ data }) {
         description="The wedding website for Maggie Alcorn and Dustin Schau. Save the date for August 8th, 2020 in Minneapolis, MN."
         title="Wedding | August 8, 2020"
       />
-      {page.hero && <Image fluid={page.hero[0].fluid} />}
+      {page.hero &&
+        page.hero.map(img => <Image key={img.hero.id} {...img.hero} />)}
       {Partial && <Partial />}
-      {page.moments &&
-        page.moments.map(moment => (
-          <Timeline key={moment.id} moments={moment} />
+      {page.timeline &&
+        page.timeline.map(timeline => (
+          <Timeline key={timeline.id} {...timeline} />
         ))}
-      {page.sections &&
-        page.sections.map(section => <Section key={section.id} {...section} />)}
-      {page.photos && (
-        <Masonry sx={{ pt: 4 }}>
-          {flatten(page.photos).map(photo => (
-            <Image key={photo.fluid.src} fluid={photo.fluid} />
-          ))}
-        </Masonry>
-      )}
+      {page.section &&
+        page.section.map(section => <Section key={section.id} {...section} />)}
+      {page.gallery &&
+        page.gallery.map(gallery => <Gallery key={gallery.id} {...gallery} />)}
     </Layout>
   )
 }
@@ -60,14 +60,14 @@ export const pageQuery = graphql`
       slug
       contentBlocks {
         ... on ContentfulGallery {
-          photos {
-            fluid {
-              ...GatsbyContentfulFluid
-            }
-          }
+          __typename
+          id
+          ...GalleryDetails
         }
         ... on ContentfulHero {
+          __typename
           hero: image {
+            id
             fluid(maxWidth: 600) {
               ...GatsbyContentfulFluid
             }
@@ -76,15 +76,17 @@ export const pageQuery = graphql`
 
         ... on ContentfulSection {
           id
+          __typename
           ...SectionDetails
         }
 
-        # ... on ContentfulTimeline {
-        #   moments {
-        #     id
-        #     ...MomentDetails
-        #   }
-        # }
+        ... on ContentfulTimeline {
+          __typename
+          moments {
+            id
+            ...MomentDetails
+          }
+        }
       }
     }
   }
