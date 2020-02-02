@@ -31,7 +31,7 @@ export const galleryFragment = graphql`
       localFile {
         id
         childImageSharp {
-          fluid(maxWidth: 320) {
+          fluid(maxWidth: 320, cropFocus: NORTH) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }

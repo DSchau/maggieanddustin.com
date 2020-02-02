@@ -35,7 +35,7 @@ function Page({ data }) {
     }
     return merged
   }, {})
-  const Partial = partials[data.page.slug]
+  const Partial = partials(data.page.slug)
   return (
     <>
       <SEO description={data.page.description} title={data.page.title} />
