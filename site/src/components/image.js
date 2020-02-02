@@ -1,19 +1,22 @@
 /** @jsx jsx */
 import { jsx, useColorMode } from 'theme-ui'
-import { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import GatsbyImage from 'gatsby-image'
 
 import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
 
 import 'react-medium-image-zoom/dist/styles.css'
 
-// TODO: swap with pose
 function Image({ zoom, isZoomed = false, width = '85vw', ...props }) {
   const [mode] = useColorMode()
   const [zoomed, setZoomed] = useState(isZoomed)
+  const [ZoomElement, setZoomEl] = useState(React.Fragment)
   const Wrapper = props.fluid || props.fixed ? GatsbyImage : 'img'
   const handleZoomChange = useCallback(shouldZoom => {
     setZoomed(shouldZoom)
+  }, [])
+  useEffect(() => {
+    setZoomEl(ControlledZoom)
   }, [])
   if (zoom) {
     const darkModeProps =
@@ -28,13 +31,13 @@ function Image({ zoom, isZoomed = false, width = '85vw', ...props }) {
         sx={{ background: 'transparent', border: 'none', fontSize: 0 }}
         onClick={() => setZoomed(!zoomed)}
       >
-        <ControlledZoom
+        <ZoomElement
           {...darkModeProps}
           isZoomed={zoomed}
           onZoomChange={handleZoomChange}
         >
           <Wrapper {...props} sx={{ display: 'block', width }} />
-        </ControlledZoom>
+        </ZoomElement>
       </button>
     )
   }
