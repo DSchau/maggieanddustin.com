@@ -11,8 +11,8 @@ const sumUp = (acc, node) => acc + node.scrollHeight
  */
 export default function Masonry({
   children,
-  rowHeight = 40,
-  colWidth = '17em',
+  rowHeight = 50,
+  colWidth = '17.5em',
   ...rest
 }) {
   const ref = useRef(null)
