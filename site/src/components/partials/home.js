@@ -6,7 +6,9 @@ import { Link } from 'gatsby'
 export default function Home() {
   return (
     <React.Fragment>
-      <Styled.div sx={{ textAlign: `center`, pt: `10vh`, pb: `10vh` }}>
+      <Styled.div
+        sx={{ textAlign: `center`, pt: `10vh`, pb: `calc(10vh - 38px)` }}
+      >
         <Styled.p
           sx={{ fontStyle: `italic`, fontSize: 24, fontFamily: `heading` }}
         >
