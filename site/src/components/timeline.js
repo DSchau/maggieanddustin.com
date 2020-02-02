@@ -31,7 +31,7 @@ function Moment({ children, date, description, title, photos }) {
           borderLeftWidth: 0,
           borderRightWidth: 0,
           borderStyle: `solid`,
-          maxWidth: ['100%', '75%'],
+          maxWidth: ['100%', '75%', '60%'],
           padding: 3,
           mb: 2,
           mr: 'auto',
@@ -46,7 +46,7 @@ function Moment({ children, date, description, title, photos }) {
         <Image
           key={photo.fluid.src}
           sx={{ margin: '0 auto' }}
-          width={[`100vw`, `75vw`]}
+          width={[`100vw`, `75vw`, `60vw`]}
           zoom={true}
           {...photo}
         />
