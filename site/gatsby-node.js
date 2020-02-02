@@ -1,3 +1,5 @@
+const slugify = require('limax')
+
 exports.onCreateNode = function onCreateNode({ actions, node }) {
   if (node.internal.type === 'ContentfulBlogPost') {
     actions.createNodeField({
@@ -10,6 +12,12 @@ exports.onCreateNode = function onCreateNode({ actions, node }) {
       node,
       name: `slug`,
       value: node.slug === `/` ? node.slug : `/${node.slug}/`,
+    })
+  } else if (node.internal.type === `ContentfulSection`) {
+    actions.createNodeField({
+      node,
+      name: `slug`,
+      value: slugify(node.title),
     })
   }
 }
