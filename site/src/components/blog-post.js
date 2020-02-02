@@ -38,7 +38,7 @@ function BlogPost({
       >
         {[startDate, endDate].join(' - ')}
       </Styled.h2>
-      {featuredImage && <Image {...featuredImage} />}
+      {featuredImage && <Image {...featuredImage.localFile.childImageSharp} />}
       {richTextRenderer(body.json, { zoom })}
       {children}
     </Wrapper>
@@ -51,8 +51,12 @@ export const blogPostFragment = graphql`
       slug
     }
     featuredImage {
-      fluid {
-        ...GatsbyContentfulFluid
+      localFile {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
       }
     }
     summary

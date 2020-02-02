@@ -22,7 +22,10 @@ function Photos({ data }) {
         >
           <Grid sx={{ mt: 4, mb: 4 }}>
             {archive.gallery.map(photo => (
-              <Image key={photo.fluid.src} {...photo} />
+              <Image
+                key={photo.localFile.id}
+                {...photo.localFile.childImageSharp}
+              />
             ))}
           </Grid>
         </BlogPostPreview>
@@ -39,8 +42,13 @@ export const photosQuery = graphql`
       nodes {
         ...BlogPostDetails
         gallery {
-          fluid {
-            ...GatsbyContentfulFluid
+          localFile {
+            id
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
           }
         }
       }

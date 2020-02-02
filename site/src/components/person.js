@@ -11,7 +11,10 @@ function Person({ className, name, image, role, bio }) {
       <Styled.h2>{name}</Styled.h2>
       <Styled.h3>{role}</Styled.h3>
       {image && (
-        <Image sx={{ borderRadius: `100%`, mt: 2, mb: 2 }} {...image} />
+        <Image
+          sx={{ borderRadius: `100%`, mt: 2, mb: 2 }}
+          {...image.localFile.childImageSharp}
+        />
       )}
       {bio && richTextRenderer(bio.json)}
     </Styled.div>
@@ -26,8 +29,12 @@ export const personFragment = graphql`
       json
     }
     image {
-      fixed(width: 150) {
-        ...GatsbyContentfulFixed
+      localFile {
+        childImageSharp {
+          fixed(width: 150) {
+            ...GatsbyImageSharpFixed
+          }
+        }
       }
     }
   }

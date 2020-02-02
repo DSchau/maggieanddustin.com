@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, useColorMode } from 'theme-ui'
+import { graphql } from 'gatsby'
 import { useCallback, useState } from 'react'
 import GatsbyImage from 'gatsby-image'
 
@@ -26,5 +27,15 @@ function Image({ zoom, isZoomed = false, width = '75vw', ...props }) {
   }
   return <Wrapper sx={{ display: 'block', maxWidth: '100%' }} {...props} />
 }
+
+export const imageFragment = graphql`
+  fragment LocalImageFluid on File {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+`
 
 export default Image

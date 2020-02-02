@@ -35,7 +35,6 @@ function Page({ data }) {
     }
     return merged
   }, {})
-  console.log(page)
   const Partial = partials[data.page.slug]
   return (
     <>
@@ -44,7 +43,9 @@ function Page({ data }) {
         title="Wedding | August 8, 2020"
       />
       {page.hero &&
-        page.hero.map(img => <Image key={img.hero.id} {...img.hero} />)}
+        page.hero.map(img => (
+          <Image key={img.hero.id} {...img.hero.localFile.childImageSharp} />
+        ))}
       {Partial && <Partial />}
       {page.timeline &&
         page.timeline.map(timeline => (
@@ -75,8 +76,12 @@ export const pageQuery = graphql`
           __typename
           hero: image {
             id
-            fluid(maxWidth: 600) {
-              ...GatsbyContentfulFluid
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
             }
           }
         }

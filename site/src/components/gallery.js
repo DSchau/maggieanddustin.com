@@ -14,7 +14,10 @@ function Gallery({ title, photos }) {
       <Styled.h2 sx={{ textAlign: 'center' }}>{title}</Styled.h2>
       <Masonry>
         {flatten(photos).map(photo => (
-          <Image key={photo.fluid.src} fluid={photo.fluid} />
+          <Image
+            key={photo.localFile.id}
+            fluid={photo.localFile.childImageSharp.fluid}
+          />
         ))}
       </Masonry>
     </Styled.div>
@@ -25,8 +28,9 @@ export const galleryFragment = graphql`
   fragment GalleryDetails on ContentfulGallery {
     title
     photos {
-      fluid {
-        ...GatsbyContentfulFluid
+      localFile {
+        id
+        ...LocalImageFluid
       }
     }
   }

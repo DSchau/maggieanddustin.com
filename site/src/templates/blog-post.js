@@ -3,12 +3,12 @@ import { jsx, Styled } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Grid from '../components/grid'
-import Image from '../components/image'
+import Gallery from '../components/gallery'
 import BlogPost from '../components/blog-post'
 
 function BlogPostPage({ data }) {
   const { post } = data
+  console.log(post.gallery)
   return (
     <>
       {post && (
@@ -35,11 +35,7 @@ function BlogPostPage({ data }) {
               }}
             >
               <Styled.h3>Gallery</Styled.h3>
-              <Grid>
-                {post.gallery.map(img => (
-                  <Image zoom={true} {...img} />
-                ))}
-              </Grid>
+              <Gallery title="Images" photos={[post.gallery]} />
             </div>
           )}
         </BlogPost>
@@ -53,8 +49,13 @@ export const pageQuery = graphql`
     post: contentfulBlogPost(fields: { slug: { eq: $slug } }) {
       ...BlogPostDetails
       gallery {
-        fluid(maxWidth: 1000) {
-          ...GatsbyContentfulFluid
+        localFile {
+          id
+          childImageSharp {
+            fluid(maxWidth: 1000) {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
       }
     }
