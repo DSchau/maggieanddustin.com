@@ -110,7 +110,7 @@ export const pageQuery = graphql`
         }
         ... on ContentfulHero {
           hero: image {
-            fluid {
+            fluid(maxWidth: 600) {
               ...GatsbyContentfulFluid
             }
           }
