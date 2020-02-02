@@ -6,7 +6,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 function SEO({ description, lang, meta, keywords, title }) {
   const data = useStaticQuery(detailsQuery)
 
-  const image = data.file.image.resize
+  const image = data.card.resize
 
   const metaDescription = description || data.site.siteMetadata.description
   return (
@@ -102,13 +102,11 @@ const detailsQuery = graphql`
       }
     }
 
-    file(relativePath: { regex: "/proposal.jpg/" }) {
-      image: childImageSharp {
-        resize(width: 1500) {
-          height
-          width
-          src
-        }
+    card: contentfulAsset(title: { eq: "Save the Date | August 8, 2020" }) {
+      resize(width: 1500) {
+        height
+        width
+        src
       }
     }
   }
