@@ -6,6 +6,9 @@ import { Parent, Child } from './styles'
 
 const sumUp = (acc, node) => acc + node.scrollHeight
 
+/*
+ * Legend: https://github.com/rachelandrew/cssgrid-ama/issues/19#issuecomment-438652177
+ */
 export default function Masonry({
   children,
   rowHeight = 40,
