@@ -31,7 +31,7 @@ function Moment({ children, date, description, title, photos }) {
           borderLeftWidth: 0,
           borderRightWidth: 0,
           borderStyle: `solid`,
-          maxWidth: ['100%', '50%'],
+          maxWidth: ['100%', '75%'],
           padding: 3,
           mb: 2,
           mr: 'auto',
@@ -39,13 +39,14 @@ function Moment({ children, date, description, title, photos }) {
         }}
       >
         <Styled.h2>{title}</Styled.h2>
-        <Styled.h3 sx={{ mb: 0 }}>{date}</Styled.h3>
+        <Styled.h3 sx={{ mb: 2 }}>{date}</Styled.h3>
+        {richTextRenderer(description.json)}
       </Styled.div>
-      {richTextRenderer(description.json)}
       {photos.map(photo => (
         <Image
           key={photo.fluid.src}
           sx={{ margin: '0 auto' }}
+          width={[`100vw`, `75vw`]}
           zoom={true}
           {...photo}
         />
