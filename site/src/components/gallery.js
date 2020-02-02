@@ -30,7 +30,11 @@ export const galleryFragment = graphql`
     photos {
       localFile {
         id
-        ...LocalImageFluid
+        childImageSharp {
+          fluid(maxWidth: 320) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
       }
     }
   }
