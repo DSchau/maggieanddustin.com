@@ -46,7 +46,7 @@ export const photosQuery = graphql`
             id
             childImageSharp {
               fluid {
-                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }

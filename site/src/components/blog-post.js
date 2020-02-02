@@ -54,7 +54,7 @@ export const blogPostFragment = graphql`
       localFile {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
