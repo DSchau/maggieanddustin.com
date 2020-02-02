@@ -3,7 +3,9 @@ import { jsx, Styled } from 'theme-ui'
 
 export default function Venue() {
   return (
-    <Styled.div sx={{ textAlign: `center`, pt: `10vh`, pb: `10vh` }}>
+    <Styled.div
+      sx={{ textAlign: `center`, pt: `10vh`, pb: `calc(10vh - 38px)` }}
+    >
       <Styled.h1
         sx={{ fontSize: 48, padding: 2, mb: 0, textTransform: `uppercase` }}
       >
