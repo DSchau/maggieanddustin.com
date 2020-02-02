@@ -45,7 +45,7 @@ function Moment({ children, date, description, title, photos }) {
       {photos.map(photo => (
         <Image
           key={photo.fluid.src}
-          sx={{ maxWidth: ['100%', '50%'], margin: '0 auto' }}
+          sx={{ margin: '0 auto' }}
           zoom={true}
           {...photo}
         />

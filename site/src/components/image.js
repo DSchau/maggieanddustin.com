@@ -1,45 +1,29 @@
 /** @jsx jsx */
 import { jsx, useColorMode } from 'theme-ui'
 import GatsbyImage from 'gatsby-image'
-import ImageWithZoom from 'react-medium-image-zoom'
+
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
 // TODO: swap with pose
-function Image({ fluid, fixed, src, zoom, ...rest }) {
+function Image({ zoom, ...props }) {
   const [mode] = useColorMode()
-  const Wrapper = fluid || fixed ? GatsbyImage : 'img'
+  const Wrapper = props.fluid || props.fixed ? GatsbyImage : 'img'
   if (zoom) {
+    const darkModeProps =
+      mode === 'dark'
+        ? {
+            overlayBgColorStart: 'rgba(0, 0, 0, 0)',
+            overlayBgColorEnd: 'rgba(0, 0, 0, 0.95)',
+          }
+        : {}
     return (
-      <ImageWithZoom
-        image={{
-          className: rest.className,
-          alt: rest.alt,
-          src: fluid ? fluid.src : src,
-          style: { maxWidth: '100%' },
-        }}
-        zoomImage={{
-          alt: rest.alt,
-          src: fluid ? fluid.src : src,
-        }}
-        defaultStyles={{
-          overlay: {
-            backgroundColor:
-              mode === `light`
-                ? `rgba(255, 255, 255, 0.95)`
-                : `rgba(0, 0, 0, 0.95)`,
-          },
-        }}
-      />
+      <Zoom {...darkModeProps}>
+        <Wrapper {...props} sx={{ display: 'block', width: '100vw' }} />
+      </Zoom>
     )
   }
-  return (
-    <Wrapper
-      fluid={fluid}
-      fixed={fixed}
-      src={src}
-      sx={{ display: 'block', maxWidth: '100%' }}
-      {...rest}
-    />
-  )
+  return <Wrapper sx={{ display: 'block', maxWidth: '100%' }} {...props} />
 }
 
 export default Image
