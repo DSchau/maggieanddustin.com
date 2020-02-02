@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import React from 'react'
 import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
-import Layout from '../components/layout'
 import Gallery from '../components/gallery'
 import Timeline from '../components/timeline'
 import Section from '../components/section'
@@ -33,7 +33,7 @@ function Page({ data }) {
   }, {})
   const Partial = partials[data.page.slug]
   return (
-    <Layout>
+    <>
       <SEO
         description="The wedding website for Maggie Alcorn and Dustin Schau. Save the date for August 8th, 2020 in Minneapolis, MN."
         title="Wedding | August 8, 2020"
@@ -49,7 +49,7 @@ function Page({ data }) {
         page.section.map(section => <Section key={section.id} {...section} />)}
       {page.gallery &&
         page.gallery.map(gallery => <Gallery key={gallery.id} {...gallery} />)}
-    </Layout>
+    </>
   )
 }
 

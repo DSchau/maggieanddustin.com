@@ -2,7 +2,8 @@ import React from 'react'
 import { Styled } from 'theme-ui'
 import { Global } from '@emotion/core'
 
-import Navigation from '../navigation'
+import Navigation from '../components/navigation'
+import Banner from '../components/banner'
 
 export default ({ children }) => (
   <Styled.root>
@@ -13,6 +14,7 @@ export default ({ children }) => (
         },
       }}
     />
+    <Banner id="announcement" />
     <Navigation />
     {children}
   </Styled.root>

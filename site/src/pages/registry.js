@@ -1,8 +1,6 @@
 /** @jsx jsx */
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { jsx } from 'theme-ui'
-
-import Layout from '../components/layout/'
 
 export default () => {
   const embed = useRef(null)
@@ -21,7 +19,7 @@ export default () => {
     }
   }, [])
   return (
-    <Layout>
+    <>
       <a
         className="zola-registry-embed"
         href="https://zola.com/registry/maggieanddustin2020"
@@ -31,6 +29,6 @@ export default () => {
         Our Zola Wedding Registry is loading&hellip;
       </a>
       <div ref={embed} />
-    </Layout>
+    </>
   )
 }

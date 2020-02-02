@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 
-import Layout from '../components/layout/'
 import { Button, Label, Input, Textarea } from '../components/form'
 import { api } from '../utils/api'
 
@@ -78,7 +77,7 @@ const getButtonText = (step, { isSubmitting }) => {
 function RSVP() {
   const [step, setStep] = useState('INITIAL_NAME')
   return (
-    <Layout>
+    <>
       <div
         sx={{
           maxWidth: ['100%', `60%`],
@@ -164,7 +163,7 @@ function RSVP() {
           />
         )}
       </div>
-    </Layout>
+    </>
   )
 }
 

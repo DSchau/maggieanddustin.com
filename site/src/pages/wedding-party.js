@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
+import React from 'react'
 import { graphql } from 'gatsby'
 
-import Layout from '../components/layout/'
 import Person from '../components/person'
 import SEO from '../components/seo'
 
@@ -17,7 +17,7 @@ function WeddingParty({ data }) {
     index + 1 === party.length ? `and ${member.name}` : member.name
   )
   return (
-    <Layout>
+    <>
       <SEO
         description={`The wedding party for the wedding for Maggie Alcorn and Dustin Schau: ${names.join(
           ', '
@@ -38,7 +38,7 @@ function WeddingParty({ data }) {
           />
         ))}
       </div>
-    </Layout>
+    </>
   )
 }
 

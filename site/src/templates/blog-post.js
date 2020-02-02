@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
+import React from 'react'
 import { graphql } from 'gatsby'
 
-import Layout from '../components/layout/'
 import Grid from '../components/grid'
 import Image from '../components/image'
 import BlogPost from '../components/blog-post'
@@ -10,7 +10,7 @@ import BlogPost from '../components/blog-post'
 function BlogPostPage({ data }) {
   const { post } = data
   return (
-    <Layout>
+    <>
       {post && (
         <BlogPost
           as="article"
@@ -44,7 +44,7 @@ function BlogPostPage({ data }) {
           )}
         </BlogPost>
       )}
-    </Layout>
+    </>
   )
 }
 

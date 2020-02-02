@@ -25,9 +25,6 @@ export default function Navigation() {
     <nav
       sx={{
         position: 'relative',
-        borderTopColor: 'text',
-        borderTopWidth: 6,
-        borderTopStyle: 'solid',
       }}
     >
       <Link

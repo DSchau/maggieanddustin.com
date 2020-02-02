@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import React from 'react'
 import { graphql } from 'gatsby'
 
-import Layout from '../components/layout'
 import Grid from '../components/grid'
 import Image from '../components/image'
 import BlogPostPreview from '../components/blog-post-preview'
@@ -10,7 +10,7 @@ import BlogPostPreview from '../components/blog-post-preview'
 function Photos({ data }) {
   const { archive } = data
   return (
-    <Layout>
+    <>
       {archive.nodes.map(archive => (
         <BlogPostPreview
           key={archive.fields.slug}
@@ -27,7 +27,7 @@ function Photos({ data }) {
           </Grid>
         </BlogPostPreview>
       ))}
-    </Layout>
+    </>
   )
 }
 

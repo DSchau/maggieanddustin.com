@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import styled from '@emotion/styled'
 import { keyframes } from '@emotion/core'
 import { FaChevronDown } from 'react-icons/fa'
 
-import Layout from '../components/layout/'
 import Hero from '../components/hero'
 import Footer from '../components/footer'
 import PhotoGrid from '../components/photo-grid'
@@ -155,7 +155,7 @@ function Index() {
   `)
 
   return (
-    <Layout>
+    <>
       <SEO title="Proposal" keywords={[`gatsby`, `application`, `react`]} />
       <Hero
         footer={
@@ -206,7 +206,7 @@ function Index() {
         </PhotoGrid>
         <Footer />
       </MoreInfo>
-    </Layout>
+    </>
   )
 }
 
