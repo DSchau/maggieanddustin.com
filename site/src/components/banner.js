@@ -72,7 +72,7 @@ const availableBanners = {
   announcement: {
     contents: (
       <>
-        We can't wait to see you! August 8th, 2020
+        We can't wait to see you! August 8th, 2020{' '}
         <span sx={{ display: [`none`, `inline-block`] }}>
           {' '}
           &bull; Minneapolis, MN
