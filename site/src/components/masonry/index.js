@@ -39,6 +39,7 @@ export default function Masonry({
     return () => {
       window.removeEventListener('resize', computeSpans)
     }
+    /* eslint-disable-next-line */
   }, [])
 
   return (

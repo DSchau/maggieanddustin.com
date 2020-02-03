@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 
+/* eslint-disable */
 function Label(props) {
   return (
     <label
@@ -16,6 +17,7 @@ function Label(props) {
     />
   )
 }
+/* eslint-enable */
 
 Label.propTypes = {
   htmlFor: PropTypes.string.isRequired,
