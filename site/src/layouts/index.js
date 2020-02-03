@@ -4,6 +4,8 @@ import { Global } from '@emotion/core'
 
 import Navigation from '../components/navigation'
 import Banner from '../components/banner'
+/* TODO: SkipNavLink, SkipNavContent */
+/* TODO: import "@reach/skip-nav/styles.css"; */
 
 export default ({ children }) => (
   <Styled.root>

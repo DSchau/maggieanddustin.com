@@ -1611,6 +1611,18 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
+"@reach/skip-nav@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@reach/skip-nav/-/skip-nav-0.8.0.tgz#2ceba810569ea55c65c058f899afeffe18d5ab3e"
+  integrity sha512-ucff4rMrUL9aoXhooqI6IYZvTD8JQw2DbAUCkGnwrsYbY1W/jJtyBzCLU3DrzuF2thtqsik7cc+hWaAoeAh8TQ==
+  dependencies:
+    "@reach/utils" "^0.8.0"
+
+"@reach/utils@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.8.0.tgz#8610590a42bf713d5686e357271609c713bb5c24"
+  integrity sha512-NjOjrFdf7VS6zyTAyXzYgRwLfluECrWe7XLb5Nh9HQA81+9lkvzkR5U9TP07lDDBCup/rFIF56S1XNB/StRrfA==
+
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"

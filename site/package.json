@@ -10,6 +10,7 @@
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
     "@mdx-js/react": "^1.5.5",
+    "@reach/skip-nav": "^0.8.0",
     "@theme-ui/typography": "^0.3.0",
     "autosize": "^4.0.2",
     "formik": "^2.1.3",
