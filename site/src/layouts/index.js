@@ -1,9 +1,13 @@
 import React from 'react'
 import { Styled } from 'theme-ui'
 import { Global } from '@emotion/core'
+import { SkipNavLink } from '@reach/skip-nav'
 
 import Navigation from '../components/navigation'
 import Banner from '../components/banner'
+
+import "@reach/skip-nav/styles.css";
+
 /* TODO: SkipNavLink, SkipNavContent */
 /* TODO: import "@reach/skip-nav/styles.css"; */
 
@@ -17,6 +21,7 @@ export default ({ children }) => (
       }}
     />
     <Banner id="announcement" />
+    <SkipNavLink />
     <Navigation />
     {children}
   </Styled.root>

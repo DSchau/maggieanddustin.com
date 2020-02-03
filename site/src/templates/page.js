@@ -3,6 +3,8 @@ import { jsx } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
+import { SkipNavContent } from '@reach/skip-nav'
+
 
 import Gallery from '../components/gallery'
 import Timeline from '../components/timeline'
@@ -43,17 +45,19 @@ function Page({ data }) {
         page.hero.map(img => (
           <Image key={img.hero.id} {...img.hero.localFile.childImageSharp} />
         ))}
-      {Partial && <Partial />}
-      {page.timeline &&
-        page.timeline.map(timeline => (
-          <Timeline key={timeline.id} {...timeline} />
-        ))}
-      {page.section &&
-        page.section.map(section => <Section key={section.id} {...section} />)}
-      {page.party &&
-        page.party.map(party => <WeddingParty key={party.id} {...party} />)}
-      {page.gallery &&
-        page.gallery.map(gallery => <Gallery key={gallery.id} {...gallery} />)}
+      <SkipNavContent>
+        {Partial && <Partial />}
+        {page.timeline &&
+          page.timeline.map(timeline => (
+            <Timeline key={timeline.id} {...timeline} />
+          ))}
+        {page.section &&
+          page.section.map(section => <Section key={section.id} {...section} />)}
+        {page.party &&
+          page.party.map(party => <WeddingParty key={party.id} {...party} />)}
+        {page.gallery &&
+          page.gallery.map(gallery => <Gallery key={gallery.id} {...gallery} />)}
+      </SkipNavContent>
     </React.Fragment>
   )
 }
