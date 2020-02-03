@@ -27,7 +27,7 @@ export default function Home() {
         <Styled.h2 sx={{ fontSize: 40, fontFamily: `Parisienne` }}>
           Minneapolis, MN
         </Styled.h2>
-        {process.env.GATSBY_SHOW_RSVP !== `false` && (
+        {process.env.GATSBY_SHOW_RSVP === `true` && (
           <Link
             to="/rsvp/"
             sx={{
