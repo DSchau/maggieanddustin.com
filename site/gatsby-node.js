@@ -23,8 +23,8 @@ exports.onCreateNode = function onCreateNode({ actions, node }) {
 }
 
 exports.onCreatePage = function onCreatePage({ actions, page }) {
-  const showRsvp = process.env.GATSBY_SHOW_RSVP !== 'false'
-  const showRegistry = process.env.GATSBY_SHOW_REGISTRY !== 'false'
+  const showRsvp = process.env.GATSBY_SHOW_RSVP === 'true'
+  const showRegistry = process.env.GATSBY_SHOW_REGISTRY === 'true'
   if (!showRsvp && page.path === `/rsvp/`) {
     actions.deletePage(page)
   }

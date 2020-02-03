@@ -67,10 +67,10 @@ export default function Navigation() {
           overflowX: `scroll`,
         }}
       >
-        {[process.env.GATSBY_SHOW_RSVP !== `false` && ['RSVP', '/rsvp/']]
+        {[process.env.GATSBY_SHOW_RSVP === `true` && ['RSVP', '/rsvp/']]
           .concat(pages)
           .concat(
-            process.env.GATSBY_SHOW_REGISTRY !== `false`
+            process.env.GATSBY_SHOW_REGISTRY === `true`
               ? [['Registry', `/registry/`]]
               : []
           )
