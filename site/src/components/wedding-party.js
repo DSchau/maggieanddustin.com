@@ -2,7 +2,7 @@
 import { jsx } from 'theme-ui'
 import { useState } from 'react'
 
-import Person, { personFragment } from './person'
+import Person from './person'
 
 const filter = (people, customFilterFn) => people.filter(customFilterFn)
 

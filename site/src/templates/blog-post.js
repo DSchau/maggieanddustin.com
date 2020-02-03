@@ -10,7 +10,7 @@ import SEO from '../components/seo'
 function BlogPostPage({ data }) {
   const { post } = data
   return (
-    <>
+    <React.Fragment>
       <SEO title={`${post.title} | Blog`} description={post.summary} />
       {post && (
         <BlogPost
@@ -41,7 +41,7 @@ function BlogPostPage({ data }) {
           )}
         </BlogPost>
       )}
-    </>
+    </React.Fragment>
   )
 }
 

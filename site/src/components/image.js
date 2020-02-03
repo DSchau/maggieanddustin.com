@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx, useColorMode } from 'theme-ui'
 import { graphql } from 'gatsby'
-import { useCallback, useState } from 'react'
 import GatsbyImage from 'gatsby-image'
 
 import Zoom from 'react-medium-image-zoom'

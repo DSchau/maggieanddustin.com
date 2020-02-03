@@ -37,7 +37,7 @@ function Page({ data }) {
   }, {})
   const Partial = partials(data.page.slug)
   return (
-    <>
+    <React.Fragment>
       <SEO description={data.page.description} title={data.page.title} />
       {page.hero &&
         page.hero.map(img => (
@@ -54,7 +54,7 @@ function Page({ data }) {
         page.party.map(party => <WeddingParty key={party.id} {...party} />)}
       {page.gallery &&
         page.gallery.map(gallery => <Gallery key={gallery.id} {...gallery} />)}
-    </>
+    </React.Fragment>
   )
 }
 
@@ -66,11 +66,14 @@ export const pageQuery = graphql`
       description
       title
       contentBlocks {
+        # gallery of images -- neat!
         ... on ContentfulGallery {
           __typename
           id
           ...GalleryDetails
         }
+
+        # hero image, of course!
         ... on ContentfulHero {
           __typename
           hero: image {
@@ -85,12 +88,14 @@ export const pageQuery = graphql`
           }
         }
 
+        # section of content
         ... on ContentfulSection {
           id
           __typename
           ...SectionDetails
         }
 
+        # timeline (a la proposal)
         ... on ContentfulTimeline {
           __typename
           moments {
@@ -99,6 +104,7 @@ export const pageQuery = graphql`
           }
         }
 
+        # group of people
         ... on ContentfulWeddingParty {
           __typename
           id

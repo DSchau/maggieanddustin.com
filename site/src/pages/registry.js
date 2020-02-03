@@ -21,7 +21,7 @@ export default () => {
     }
   }, [])
   return (
-    <>
+    <React.Fragment>
       <SEO
         title="Wedding Registry"
         description="The Zola gift registry for the wedding of Maggie Alcorn and Dustin Schau"
@@ -35,6 +35,6 @@ export default () => {
         Our Zola Wedding Registry is loading&hellip;
       </a>
       <div ref={embed} />
-    </>
+    </React.Fragment>
   )
 }

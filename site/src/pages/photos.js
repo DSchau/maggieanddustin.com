@@ -11,12 +11,11 @@ import BlogPostPreview from '../components/blog-post-preview'
 function Photos({ data }) {
   const { archive } = data
   return (
-    <>
+    <React.Fragment>
       <SEO
         title="Photos"
         description="An archive of photos for Maggie and Dustin"
       />
-      s
       {archive.nodes.map(archive => (
         <BlogPostPreview
           key={archive.fields.slug}
@@ -36,7 +35,7 @@ function Photos({ data }) {
           </Grid>
         </BlogPostPreview>
       ))}
-    </>
+    </React.Fragment>
   )
 }
 

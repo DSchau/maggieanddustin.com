@@ -6,7 +6,7 @@ import * as yup from 'yup'
 
 import { Button, Label, Input, Textarea } from '../components/form'
 import SEO from '../components/seo'
-import { api } from '../utils/api'
+// import { api } from '../utils/api'
 
 const formSchema = yup.object().shape({
   name: yup.string().required(),
@@ -46,7 +46,7 @@ const formHandler = (step, actions) => {
         formik.setSubmitting(false)
       }
     case 'GUEST_AND_RSVP':
-      return async (values, formik) => {
+      return async (_, formik) => {
         formik.setSubmitting(true)
         await new Promise(resolve => setTimeout(resolve, 2500))
         // await api({
@@ -71,6 +71,8 @@ const getButtonText = (step, { isSubmitting }) => {
       return isSubmitting ? 'Finding...' : 'Find your RSVP'
     case 'GUEST_AND_RSVP':
       return isSubmitting ? 'Updating RSVP...' : 'Submit'
+    default:
+      return null
   }
 }
 

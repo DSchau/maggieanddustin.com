@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import React from 'react'
 import { graphql } from 'gatsby'
 
 import Image from './image'

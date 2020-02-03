@@ -10,7 +10,7 @@ import SEO from '../components/seo'
 function BlogListing({ data }) {
   const { posts } = data
   return (
-    <>
+    <React.Fragment>
       <SEO title="Blog" description="The blog for Maggie and Dustin" />s
       <Styled.h1>Blog</Styled.h1>
       <Grid>
@@ -18,7 +18,7 @@ function BlogListing({ data }) {
           <BlogPost key={post.fields.slug} {...post} slug={post.fields.slug} />
         ))}
       </Grid>
-    </>
+    </React.Fragment>
   )
 }
 

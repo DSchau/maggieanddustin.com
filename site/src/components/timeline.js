@@ -24,7 +24,7 @@ const Rule = () => (
 
 function Moment({ children, date, description, title, photos }) {
   return (
-    <>
+    <React.Fragment>
       <Styled.div
         sx={{
           borderWidth: 2,
@@ -54,7 +54,7 @@ function Moment({ children, date, description, title, photos }) {
         ))}
       </Styled.div>
       {children}
-    </>
+    </React.Fragment>
   )
 }
 
