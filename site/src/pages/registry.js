@@ -14,9 +14,11 @@ export default () => {
       embed.current.appendChild(s)
     }
 
+    const cur = embed.current
+
     return () => {
-      while (embed.current.firstChild) {
-        embed.current.removeChild(embed.current.firstChild)
+      while (cur.firstChild) {
+        cur.removeChild(cur.firstChild)
       }
     }
   }, [])

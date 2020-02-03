@@ -64,10 +64,6 @@ const closeButtonStyles = theme => ({
   padding: 0,
 })
 
-const whiteLinkStyles = () => ({
-  color: 'inherit',
-})
-
 const availableBanners = {
   announcement: {
     contents: (
