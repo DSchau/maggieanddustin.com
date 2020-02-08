@@ -13,7 +13,11 @@ exports.onCreateNode = function onCreateNode({ actions, node }) {
       name: `slug`,
       value: node.slug === `/` ? node.slug : `/${node.slug}/`,
     })
-  } else if (node.internal.type === `ContentfulSection`) {
+  } else if (
+    node.title &&
+    (node.internal.type === `ContentfulSection` ||
+      node.internal.type === `ContentfulGallery`)
+  ) {
     actions.createNodeField({
       node,
       name: `slug`,

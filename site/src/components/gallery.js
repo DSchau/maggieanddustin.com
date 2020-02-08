@@ -7,10 +7,12 @@ import Masonry from './masonry'
 
 const flatten = arr => arr.reduce((merged, item) => merged.concat(item), [])
 
-function Gallery({ title, photos }) {
+function Gallery({ title, fields, photos }) {
   return (
     <Styled.div sx={{ pt: 4 }}>
-      <Styled.h2 sx={{ textAlign: 'center' }}>{title}</Styled.h2>
+      <Styled.h2 sx={{ textAlign: 'center' }} id={fields.slug}>
+        {title}
+      </Styled.h2>
       <Masonry>
         {flatten(photos).map(photo => (
           <Image
@@ -26,6 +28,9 @@ function Gallery({ title, photos }) {
 export const galleryFragment = graphql`
   fragment GalleryDetails on ContentfulGallery {
     title
+    fields {
+      slug
+    }
     photos {
       localFile {
         id
