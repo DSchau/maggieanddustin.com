@@ -7,7 +7,7 @@ import Masonry from './masonry'
 
 const flatten = arr => arr.reduce((merged, item) => merged.concat(item), [])
 
-function Gallery({ title, fields, photos }) {
+function Gallery({ title, fields = {}, photos }) {
   return (
     <Styled.div sx={{ pt: 4 }}>
       <Styled.h2 sx={{ textAlign: 'center' }} id={fields.slug}>
