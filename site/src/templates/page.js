@@ -5,7 +5,6 @@ import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import { SkipNavContent } from '@reach/skip-nav'
 
-
 import Gallery from '../components/gallery'
 import Timeline from '../components/timeline'
 import Section from '../components/section'
@@ -52,11 +51,15 @@ function Page({ data }) {
             <Timeline key={timeline.id} {...timeline} />
           ))}
         {page.section &&
-          page.section.map(section => <Section key={section.id} {...section} />)}
+          page.section.map(section => (
+            <Section key={section.id} {...section} />
+          ))}
         {page.party &&
           page.party.map(party => <WeddingParty key={party.id} {...party} />)}
         {page.gallery &&
-          page.gallery.map(gallery => <Gallery key={gallery.id} {...gallery} />)}
+          page.gallery.map(gallery => (
+            <Gallery key={gallery.id} {...gallery} />
+          ))}
       </SkipNavContent>
     </React.Fragment>
   )
@@ -112,6 +115,10 @@ export const pageQuery = graphql`
         ... on ContentfulWeddingParty {
           __typename
           id
+          parents {
+            ...PersonDetails
+          }
+
           bridesParty {
             ...PersonDetails
           }

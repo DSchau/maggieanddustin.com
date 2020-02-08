@@ -1,12 +1,31 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Styled } from 'theme-ui'
 import { useState } from 'react'
 
 import Person from './person'
 
 const filter = (people, customFilterFn) => people.filter(customFilterFn)
 
-function WeddingParty({ bridesParty, groomsParty }) {
+const Group = ({ persons }) => (
+  <div
+    sx={{
+      display: 'grid',
+      gridTemplateColumns: ['1fr', null, 'repeat(2, 1fr)'],
+      maxWidth: ['100%', '85%'],
+      margin: '0 auto',
+    }}
+  >
+    {persons.map(person => (
+      <Person
+        sx={{ mt: [2, null, 4], mb: [2, null, 4], ml: 4, mr: 4 }}
+        key={person.name}
+        {...person}
+      />
+    ))}
+  </div>
+)
+
+function WeddingParty({ bridesParty, groomsParty, parents }) {
   const peeps = bridesParty.reduce((merged, member, index) => {
     return merged
       .concat({
@@ -53,20 +72,21 @@ function WeddingParty({ bridesParty, groomsParty }) {
           </button>
         </form>
       )}
-      <div
+      <Group
+        persons={parents.map(parent =>
+          Object.assign({}, parent, { parent: true })
+        )}
+      />
+      <Styled.hr
         sx={{
-          display: 'grid',
-          gridTemplateColumns: ['1fr', null, 'repeat(2, 1fr)'],
+          maxWidth: ['100%', '85%'],
+          margin: '0 auto',
+          backgroundColor: '#eee',
+          height: 1,
+          border: 'none',
         }}
-      >
-        {party.map(person => (
-          <Person
-            sx={{ mt: [2, null, 4], mb: [2, null, 4], ml: 4, mr: 4 }}
-            key={person.name}
-            {...person}
-          />
-        ))}
-      </div>
+      />
+      <Group persons={party} />
     </div>
   )
 }
