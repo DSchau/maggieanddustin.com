@@ -20,13 +20,13 @@ export default {
   initialColorMode: 'light',
   useCustomProperties: true,
   colors: {
-    accent: '#f9ed69',
+    accent: '#247BA0',
     text: '#000',
     background: '#fff',
     primary: '#30e3ca',
     modes: {
       dark: {
-        accent: '#f9ed69',
+        accent: '#F3FFBD',
         text: '#fff',
         background: '#000',
         primary: '#30e3ca',

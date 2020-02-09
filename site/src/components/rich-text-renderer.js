@@ -35,7 +35,16 @@ const options = ({ lang = 'en-US', zoom } = {}) => ({
     [INLINES.HYPERLINK]: (node, children) => {
       const { uri } = node.data
       if (/^https?/.test(uri)) {
-        return <a href={uri}>{children}</a>
+        return (
+          <Styled.a
+            href={uri}
+            sx={{ color: `accent` }}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {children}
+          </Styled.a>
+        )
       }
       return <Link to={uri}>{children}</Link>
     },
