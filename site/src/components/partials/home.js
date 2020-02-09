@@ -2,31 +2,58 @@
 import { jsx, Styled } from 'theme-ui'
 import React from 'react'
 import { Link } from 'gatsby'
+import Countdown from '../countdown'
+
+const Seperator = () => (
+  <Styled.hr
+    sx={{
+      maxWidth: ['100%', '50%'],
+      margin: '0 auto',
+      backgroundColor: '#eee',
+      height: 1,
+      border: 'none',
+    }}
+  />
+)
 
 export default function Home() {
   return (
     <React.Fragment>
-      <Styled.div
-        sx={{ textAlign: `center`, pt: `10vh`, pb: `calc(10vh - 38px)` }}
-      >
+      <Styled.div sx={{ textAlign: `center`, pt: `10vh` }}>
         <Styled.p
-          sx={{ fontStyle: `italic`, fontSize: 24, fontFamily: `heading` }}
+          sx={{
+            fontStyle: `italic`,
+            fontSize: [20, 24],
+            mb: 0,
+            fontFamily: `heading`,
+          }}
         >
           Please join us for our wedding celebration on
         </Styled.p>
         <Styled.h1
           sx={{
-            fontSize: 48,
-            padding: 2,
-            mb: 0,
+            fontSize: [30, 48],
+            padding: [2, 4],
+            mb: [2, 0],
             textTransform: `uppercase`,
           }}
         >
           August 8, 2020
         </Styled.h1>
-        <Styled.h2 sx={{ fontSize: 40, fontFamily: `Parisienne` }}>
+        <Styled.h2 sx={{ fontSize: [30, 48], fontFamily: `Parisienne` }}>
           Minneapolis, MN
         </Styled.h2>
+        <Styled.div sx={{ pt: 4, pb: 4 }}>
+          <Seperator />
+          <Countdown
+            sx={{ pt: 4, pb: 4 }}
+            endTime={new Date('08/08/2020 12:00').getTime()}
+          />
+          <Styled.h3 sx={{ textAlign: `center`, pt: [0, 2] }}>
+            until the big day!
+          </Styled.h3>
+          <Seperator />
+        </Styled.div>
         {process.env.GATSBY_SHOW_RSVP === `true` && (
           <Link
             to="/rsvp/"

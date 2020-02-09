@@ -14,7 +14,6 @@ import SEO from '../components/seo'
 import partials from '../components/partials'
 
 function Page({ data, location }) {
-  const isHome = location.pathname === `/`
   const page = data.page.contentBlocks.reduce((merged, block) => {
     switch (block.__typename) {
       case 'ContentfulTimeline':
