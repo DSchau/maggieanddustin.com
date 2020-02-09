@@ -18,7 +18,7 @@ export default function Proposal({ children }) {
         </Styled.h2>
         <Styled.p>
           Dustin proposed (and Maggie said yes!) with both of their families on
-          January 19th, 2020.
+          January 19th, 2019.
         </Styled.p>
       </Styled.div>
       {children}
