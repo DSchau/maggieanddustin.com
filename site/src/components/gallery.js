@@ -4,10 +4,11 @@ import { graphql } from 'gatsby'
 
 import Image from './image'
 import Masonry from './masonry'
+import richTextRenderer from './rich-text-renderer'
 
 const flatten = arr => arr.reduce((merged, item) => merged.concat(item), [])
 
-function Gallery({ title, fields, photos }) {
+function Gallery({ description, title, fields, photos }) {
   return (
     <Styled.div sx={{ pt: 4 }}>
       <Styled.h2
@@ -24,6 +25,9 @@ function Gallery({ title, fields, photos }) {
           />
         ))}
       </Masonry>
+      <Styled.div sx={{ fontSize: 14, mt: 2, mb: 2, textAlign: `center` }}>
+        {description && richTextRenderer(description.json)}
+      </Styled.div>
     </Styled.div>
   )
 }
@@ -33,6 +37,9 @@ export const galleryFragment = graphql`
     title
     fields {
       slug
+    }
+    description {
+      json
     }
     photos {
       localFile {
