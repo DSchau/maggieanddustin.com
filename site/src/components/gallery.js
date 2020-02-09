@@ -25,7 +25,7 @@ function Gallery({ description, title, fields, photos }) {
           />
         ))}
       </Masonry>
-      <Styled.div sx={{ fontSize: 14, mt: 2, mb: 2, textAlign: `center` }}>
+      <Styled.div sx={{ fontSize: 14, pt: 4, pb: 4, textAlign: `center` }}>
         {description && richTextRenderer(description.json)}
       </Styled.div>
     </Styled.div>
