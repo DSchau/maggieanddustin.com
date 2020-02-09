@@ -9,6 +9,7 @@ function SEO({ description, lang, meta, keywords, title }) {
   const image = data.card.resize
 
   const metaDescription = description || data.site.siteMetadata.description
+  const fullTitle = `${title} | ${data.site.siteMetadata.title}`
   return (
     <Helmet
       htmlAttributes={{
@@ -23,7 +24,7 @@ function SEO({ description, lang, meta, keywords, title }) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: fullTitle,
         },
         {
           property: `og:description`,
@@ -43,7 +44,7 @@ function SEO({ description, lang, meta, keywords, title }) {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: fullTitle,
         },
         {
           name: `twitter:description`,
@@ -78,7 +79,7 @@ function SEO({ description, lang, meta, keywords, title }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  keywords: [],
+  keywords: [`wedding`, `minneapolis`],
 }
 
 SEO.propTypes = {
