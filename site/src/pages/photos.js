@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
+import { SkipNavContent } from '@reach/skip-nav'
 
 import Grid from '../components/grid'
 import Image from '../components/image'
@@ -16,25 +17,27 @@ function Photos({ data }) {
         title="Photos"
         description="An archive of photos for Maggie and Dustin"
       />
-      {archive.nodes.map(archive => (
-        <BlogPostPreview
-          key={archive.fields.slug}
-          {...archive}
-          featuredImage={false}
-          summary={false}
-          readMore={false}
-          slug={archive.fields.slug}
-        >
-          <Grid sx={{ mt: 4, mb: 4 }}>
-            {archive.gallery.map(photo => (
-              <Image
-                key={photo.localFile.id}
-                {...photo.localFile.childImageSharp}
-              />
-            ))}
-          </Grid>
-        </BlogPostPreview>
-      ))}
+      <SkipNavContent>
+        {archive.nodes.map(archive => (
+          <BlogPostPreview
+            key={archive.fields.slug}
+            {...archive}
+            featuredImage={false}
+            summary={false}
+            readMore={false}
+            slug={archive.fields.slug}
+          >
+            <Grid sx={{ mt: 4, mb: 4 }}>
+              {archive.gallery.map(photo => (
+                <Image
+                  key={photo.localFile.id}
+                  {...photo.localFile.childImageSharp}
+                />
+              ))}
+            </Grid>
+          </BlogPostPreview>
+        ))}
+      </SkipNavContent>
     </React.Fragment>
   )
 }

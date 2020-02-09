@@ -3,6 +3,7 @@ import { jsx, Styled } from 'theme-ui'
 import React, { useState } from 'react'
 import { Formik } from 'formik'
 import * as yup from 'yup'
+import { SkipNavContent } from '@reach/skip-nav'
 
 import { Button, Label, Input, Textarea } from '../components/form'
 import SEO from '../components/seo'
@@ -85,91 +86,93 @@ function RSVP() {
         title="RSVP to the Wedding"
         description="Let us know if you're coming to the wedding of Maggie Alcorn and Dustin Schau with this RSVP form."
       />
-      <div
-        sx={{
-          maxWidth: ['100%', `60%`],
-          margin: '0 auto',
-          padding: [0, `1rem`],
-        }}
-      >
-        <Styled.h1>Let us know if you're coming!</Styled.h1>
-        {step === 'SUBMITTED' ? (
-          <Styled.h2>Got it. Thanks!</Styled.h2>
-        ) : (
-          <Formik
-            initialValues={{
-              email: '',
-              name: '',
-              comment: '',
-              guests: [],
-            }}
-            validationSchema={formSchema}
-            onSubmit={formHandler(step, { setStep })}
-            children={({
-              handleBlur,
-              handleChange,
-              handleSubmit,
-              isSubmitting,
-              setFieldValue,
-              values,
-            }) => (
-              <form onSubmit={handleSubmit}>
-                {step === `INITIAL_NAME` && (
-                  <Label htmlFor="name">
-                    Full name
-                    <Input
-                      type="text"
-                      name="name"
-                      id="name"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.name}
-                    />
-                  </Label>
-                )}
-                {step === `GUEST_AND_RSVP` && (
-                  <React.Fragment>
-                    {values.guests.map((guest, index) => (
-                      <React.Fragment key={guest.name}>
-                        <Label htmlFor={`${guest.name}-attending`}>
-                          <Input
-                            type="checkbox"
-                            sx={{ display: `inline-block`, width: `auto` }}
-                            name={`${guest.name}-attending`}
-                            id={`${guest.name}-attending`}
-                            checked={guest.attending}
-                            onChange={() =>
-                              setFieldValue(
-                                `guests[${index}].attending`,
-                                !values.guests[index].attending
-                              )
-                            }
-                          />
-                          {guest.name}
-                        </Label>
-                      </React.Fragment>
-                    ))}
-                    <Label htmlFor="comment">
-                      Comment (optional)
-                      <Textarea
-                        name="comment"
-                        id="comment"
+      <SkipNavContent>
+        <div
+          sx={{
+            maxWidth: ['100%', `60%`],
+            margin: '0 auto',
+            padding: [0, `1rem`],
+          }}
+        >
+          <Styled.h1>Let us know if you're coming!</Styled.h1>
+          {step === 'SUBMITTED' ? (
+            <Styled.h2>Got it. Thanks!</Styled.h2>
+          ) : (
+            <Formik
+              initialValues={{
+                email: '',
+                name: '',
+                comment: '',
+                guests: [],
+              }}
+              validationSchema={formSchema}
+              onSubmit={formHandler(step, { setStep })}
+              children={({
+                handleBlur,
+                handleChange,
+                handleSubmit,
+                isSubmitting,
+                setFieldValue,
+                values,
+              }) => (
+                <form onSubmit={handleSubmit}>
+                  {step === `INITIAL_NAME` && (
+                    <Label htmlFor="name">
+                      Full name
+                      <Input
+                        type="text"
+                        name="name"
+                        id="name"
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        value={values.comment}
+                        value={values.name}
                       />
                     </Label>
-                  </React.Fragment>
-                )}
+                  )}
+                  {step === `GUEST_AND_RSVP` && (
+                    <React.Fragment>
+                      {values.guests.map((guest, index) => (
+                        <React.Fragment key={guest.name}>
+                          <Label htmlFor={`${guest.name}-attending`}>
+                            <Input
+                              type="checkbox"
+                              sx={{ display: `inline-block`, width: `auto` }}
+                              name={`${guest.name}-attending`}
+                              id={`${guest.name}-attending`}
+                              checked={guest.attending}
+                              onChange={() =>
+                                setFieldValue(
+                                  `guests[${index}].attending`,
+                                  !values.guests[index].attending
+                                )
+                              }
+                            />
+                            {guest.name}
+                          </Label>
+                        </React.Fragment>
+                      ))}
+                      <Label htmlFor="comment">
+                        Comment (optional)
+                        <Textarea
+                          name="comment"
+                          id="comment"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.comment}
+                        />
+                      </Label>
+                    </React.Fragment>
+                  )}
 
-                <Button type="submit" disabled={isSubmitting}>
-                  {getButtonText(step, { isSubmitting })}
-                </Button>
-              </form>
-            )}
-          />
-        )}
-      </div>
+                  <Button type="submit" disabled={isSubmitting}>
+                    {getButtonText(step, { isSubmitting })}
+                  </Button>
+                </form>
+              )}
+            />
+          )}
+        </div>
+      </SkipNavContent>
     </>
   )
 }

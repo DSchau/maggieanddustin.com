@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import React, { useEffect, useRef } from 'react'
 import { jsx } from 'theme-ui'
+import { SkipNavContent } from '@reach/skip-nav'
 
 import SEO from '../components/seo'
 
@@ -28,15 +29,17 @@ export default () => {
         title="Wedding Registry"
         description="The Zola gift registry for the wedding of Maggie Alcorn and Dustin Schau"
       />
-      <a
-        className="zola-registry-embed"
-        href="https://zola.com/registry/maggieanddustin2020"
-        data-registry-key="maggieanddustin2020"
-        sx={{ display: `none` }}
-      >
-        Our Zola Wedding Registry is loading&hellip;
-      </a>
-      <div ref={embed} />
+      <SkipNavContent>
+        <a
+          className="zola-registry-embed"
+          href="https://zola.com/registry/maggieanddustin2020"
+          data-registry-key="maggieanddustin2020"
+          sx={{ display: `none` }}
+        >
+          Our Zola Wedding Registry is loading&hellip;
+        </a>
+        <div ref={embed} />
+      </SkipNavContent>
     </React.Fragment>
   )
 }

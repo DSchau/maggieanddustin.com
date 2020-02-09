@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import { graphql } from 'gatsby'
+import { SkipNavContent } from '@reach/skip-nav'
 
 import Image from './image'
 import richTextRenderer from './rich-text-renderer'
@@ -20,27 +21,31 @@ function BlogPost({
   const Wrapper = Styled[as] ? Styled[as] : as
   return (
     <Wrapper {...rest}>
-      <Styled.h1
-        sx={{
-          display: 'block',
-          maxWidth: ['100%', '50%'],
-          mt: 4,
-          mb: 2,
-          ml: 'auto',
-          mr: 'auto',
-          textAlign: 'center',
-        }}
-      >
-        {title}
-      </Styled.h1>
-      <Styled.h2
-        sx={{ fontSize: 2, fontWeight: 'normal', mt: 0, textAlign: 'center' }}
-      >
-        {[startDate, endDate].join(' - ')}
-      </Styled.h2>
-      {featuredImage && <Image {...featuredImage.localFile.childImageSharp} />}
-      {richTextRenderer(body.json, { zoom })}
-      {children}
+      <SkipNavContent>
+        <Styled.h1
+          sx={{
+            display: 'block',
+            maxWidth: ['100%', '50%'],
+            mt: 4,
+            mb: 2,
+            ml: 'auto',
+            mr: 'auto',
+            textAlign: 'center',
+          }}
+        >
+          {title}
+        </Styled.h1>
+        <Styled.h2
+          sx={{ fontSize: 2, fontWeight: 'normal', mt: 0, textAlign: 'center' }}
+        >
+          {[startDate, endDate].join(' - ')}
+        </Styled.h2>
+        {featuredImage && (
+          <Image {...featuredImage.localFile.childImageSharp} />
+        )}
+        {richTextRenderer(body.json, { zoom })}
+        {children}
+      </SkipNavContent>
     </Wrapper>
   )
 }
