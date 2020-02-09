@@ -20,12 +20,13 @@ function Gallery({ description, title, fields, photos }) {
       <Masonry>
         {flatten(photos).map(photo => (
           <Image
+            alt={/^IMG/.test(photo.title) ? photo.description : photo.title}
             key={photo.localFile.id}
             fluid={photo.localFile.childImageSharp.fluid}
           />
         ))}
       </Masonry>
-      <Styled.div sx={{ fontSize: 14, pt: 4, pb: 4, textAlign: `center` }}>
+      <Styled.div sx={{ fontSize: 14, pt: 2, pb: 2, textAlign: `center` }}>
         {description && richTextRenderer(description.json)}
       </Styled.div>
     </Styled.div>
@@ -42,6 +43,8 @@ export const galleryFragment = graphql`
       json
     }
     photos {
+      title
+      description
       localFile {
         id
         childImageSharp {
