@@ -5,7 +5,7 @@ import richTextRenderer from './rich-text-renderer'
 
 import Image from './image'
 
-function Person({ className, name, image, role, bio }) {
+function Person({ className, name, image, role, parent, bio }) {
   return (
     <Styled.div className={className} sx={{ textAlign: `center` }}>
       <Styled.h2>{name}</Styled.h2>
@@ -16,7 +16,7 @@ function Person({ className, name, image, role, bio }) {
           {...image.localFile.childImageSharp}
         />
       )}
-      {bio && richTextRenderer(bio.json)}
+      {!parent && (bio && richTextRenderer(bio.json))}
     </Styled.div>
   )
 }

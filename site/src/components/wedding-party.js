@@ -72,11 +72,7 @@ function WeddingParty({ bridesParty, groomsParty, parents }) {
           </button>
         </form>
       )}
-      <Group
-        persons={parents.map(parent =>
-          Object.assign({}, parent, { parent: true })
-        )}
-      />
+      <Group persons={party} />
       <Styled.hr
         sx={{
           maxWidth: ['100%', '85%'],
@@ -86,7 +82,11 @@ function WeddingParty({ bridesParty, groomsParty, parents }) {
           border: 'none',
         }}
       />
-      <Group persons={party} />
+      <Group
+        persons={parents.map(parent =>
+          Object.assign({}, parent, { parent: true })
+        )}
+      />
     </div>
   )
 }
