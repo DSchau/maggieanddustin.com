@@ -51,15 +51,15 @@ function SEO({ description, lang, meta, keywords, title }) {
           content: metaDescription,
         },
         {
-          name: 'og:image',
+          property: 'og:image',
           content: image.src,
         },
         {
-          name: 'og:image:height',
+          property: 'og:image:height',
           content: image.height,
         },
         {
-          name: 'og:image:width',
+          property: 'og:image:width',
           content: image.width,
         },
       ]
