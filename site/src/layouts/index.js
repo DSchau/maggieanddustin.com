@@ -6,7 +6,7 @@ import { SkipNavLink } from '@reach/skip-nav'
 import Navigation from '../components/navigation'
 import Banner from '../components/banner'
 
-import "@reach/skip-nav/styles.css";
+import '@reach/skip-nav/styles.css'
 
 /* TODO: SkipNavLink, SkipNavContent */
 /* TODO: import "@reach/skip-nav/styles.css"; */
@@ -23,6 +23,6 @@ export default ({ children }) => (
     <Banner id="announcement" />
     <SkipNavLink />
     <Navigation />
-    {children}
+    <main>{children}</main>
   </Styled.root>
 )

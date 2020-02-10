@@ -4,54 +4,23 @@ import { Link } from 'gatsby'
 
 import Image from './image'
 
-function BlogPost({
-  children,
-  title,
-  featuredImage,
-  readMore = true,
-  slug,
-  summary,
-}) {
+function BlogPost({ children, title, featuredImage, slug, summary }) {
   return (
-    <Styled.div
+    <Link
+      to={slug}
       sx={{
-        backgroundColor: 'background',
         padding: 4,
-        margin: 2,
-        borderWidth: 4,
-        borderStyle: 'solid',
+        color: `text`,
+        textDecoration: `none`,
       }}
     >
-      {/* <Link to={slug} sx={{ color: 'text' }}>
-        <Styled.h2 sx={{ textAlign: 'center' }}>{title}</Styled.h2>
-      </Link> */}
-      {featuredImage && <Image {...featuredImage} />}
+      {featuredImage && featuredImage.localFile && (
+        <Image {...featuredImage.localFile.childImageSharp} />
+      )}
+      <Styled.h2 sx={{ textAlign: 'center' }}>{title}</Styled.h2>
       <Styled.p>{summary}</Styled.p>
       {children}
-      {readMore && (
-        <Link
-          to={slug}
-          sx={{
-            display: 'block',
-            backgroundColor: 'text',
-            color: 'background',
-            textAlign: 'center',
-            textDecoration: 'none',
-            padding: 2,
-            borderWidth: 2,
-            borderStyle: 'solid',
-            borderColor: 'transparent',
-            ':hover': {
-              color: 'text',
-              backgroundColor: 'background',
-              borderColor: 'text',
-            },
-          }}
-        >
-          Read more
-        </Link>
-      )}
-    </Styled.div>
+    </Link>
   )
 }
 

@@ -16,12 +16,8 @@ function BlogPostPage({ data }) {
         <BlogPost
           as="article"
           sx={{
-            maxWidth: '100%',
+            maxWidth: ['100%', '60%'],
             margin: '0 auto',
-            '@media only screen and (min-width: 768px)': {
-              padding: '1rem',
-              maxWidth: '60%',
-            },
           }}
           zoom={true}
           {...post}

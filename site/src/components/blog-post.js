@@ -6,6 +6,15 @@ import { SkipNavContent } from '@reach/skip-nav'
 import Image from './image'
 import richTextRenderer from './rich-text-renderer'
 
+const imgStyle = {
+  gridColumn: `1 / 4`,
+  width: `100%`,
+  maxWidth: `100ch`,
+  justifySelf: `center`,
+  mb: [2, `10vh`],
+  mt: [2, `10vh`],
+}
+
 function BlogPost({
   as = 'div',
   children,
@@ -20,33 +29,49 @@ function BlogPost({
 }) {
   const Wrapper = Styled[as] ? Styled[as] : as
   return (
-    <Wrapper {...rest}>
-      <SkipNavContent>
+    <SkipNavContent>
+      <Wrapper
+        {...rest}
+        sx={{
+          display: `grid`,
+          gridTemplateColumns: `minmax(1.2rem, 1fr) minmax(auto, 57ch) minmax(1.2rem, 1fr)`,
+        }}
+      >
         <Styled.h1
           sx={{
-            display: 'block',
-            maxWidth: ['100%', '50%'],
+            fontFamily: 'heading',
+            fontSize: [32, 44, 60],
             mt: 4,
             mb: 2,
             ml: 'auto',
             mr: 'auto',
-            textAlign: 'center',
+            textAlign: `center`,
+            gridColumn: `1 / 4`,
           }}
         >
           {title}
         </Styled.h1>
         <Styled.h2
-          sx={{ fontSize: 2, fontWeight: 'normal', mt: 0, textAlign: 'center' }}
+          sx={{
+            fontSize: 2,
+            fontWeight: 'normal',
+            mt: 0,
+            textAlign: 'center',
+            justifySelf: `center`,
+            gridColumn: `1 / 4`,
+          }}
         >
           {[startDate, endDate].join(' - ')}
         </Styled.h2>
         {featuredImage && (
-          <Image {...featuredImage.localFile.childImageSharp} />
+          <Image sx={imgStyle} {...featuredImage.localFile.childImageSharp} />
         )}
-        {richTextRenderer(body.json, { zoom })}
+        <Styled.div sx={{ gridColumn: 2 }}>
+          {richTextRenderer(body.json, { imgStyle, zoom: false })}
+        </Styled.div>
         {children}
-      </SkipNavContent>
-    </Wrapper>
+      </Wrapper>
+    </SkipNavContent>
   )
 }
 
@@ -58,7 +83,7 @@ export const blogPostFragment = graphql`
     featuredImage {
       localFile {
         childImageSharp {
-          fluid {
+          fluid(maxHeight: 250) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
