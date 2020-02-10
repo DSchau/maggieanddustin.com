@@ -5,6 +5,13 @@ doelgerTheme.headerFontFamily = ['BioRhyme', 'serif']
 
 const typography = toTheme(doelgerTheme)
 
+const lightModeColors = {
+  accent: '#247BA0',
+  text: '#000',
+  background: '#fff',
+  primary: '#30e3ca',
+}
+
 export default {
   ...typography,
   fonts: {
@@ -20,16 +27,20 @@ export default {
   initialColorMode: 'light',
   useCustomProperties: true,
   colors: {
-    accent: '#247BA0',
-    text: '#000',
-    background: '#fff',
-    primary: '#30e3ca',
+    ...lightModeColors,
     modes: {
+      light: lightModeColors,
       dark: {
         accent: '#F3FFBD',
         text: '#fff',
         background: '#000',
         primary: '#30e3ca',
+      },
+      sepia: {
+        accent: '#AFA19A',
+        text: '#423434',
+        background: '#F2ECDC',
+        primary: '#D6CEBE',
       },
     },
   },

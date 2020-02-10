@@ -5,8 +5,11 @@ import { useStaticQuery, graphql } from 'gatsby'
 import ColorMode from './color-mode'
 import Link from './link'
 
+const modes = [`light`, `dark`, `sepia`]
+const defaultMode = `light`
+
 export default function Navigation() {
-  const [mode, setMode] = useColorMode('light')
+  const [mode, setMode] = useColorMode(defaultMode)
   const data = useStaticQuery(graphql`
     {
       nav: contentfulNavigation {
@@ -19,7 +22,7 @@ export default function Navigation() {
       }
     }
   `)
-  const isDark = mode === 'dark'
+  const nextMode = modes[(modes.indexOf(mode) + 1) % modes.length]
   const pages = data.nav.items.map(node => [node.title, node.fields.slug])
   return (
     <nav
@@ -84,10 +87,11 @@ export default function Navigation() {
           ))}
       </Styled.ul>
       <ColorMode
-        isDark={isDark}
-        onClick={() =>
-          console.log(mode) || setMode(mode === 'dark' ? 'light' : 'dark')
-        }
+        mode={mode}
+        nextMode={nextMode}
+        onClick={() => {
+          setMode(nextMode)
+        }}
         sx={{
           position: 'absolute',
           right: [0, 0, 2],
