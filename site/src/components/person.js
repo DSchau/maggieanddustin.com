@@ -12,6 +12,7 @@ function Person({ className, name, image, role, parent, bio }) {
       <Styled.h3>{role}</Styled.h3>
       {image && (
         <Image
+          alt={`${name} - ${role}`}
           sx={{ borderRadius: `100%`, mt: 2, mb: 2 }}
           {...image.localFile.childImageSharp}
         />

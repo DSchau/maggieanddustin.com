@@ -42,7 +42,11 @@ function Page({ data }) {
       <SEO description={data.page.description} title={data.page.title} />
       {page.hero &&
         page.hero.map(img => (
-          <Image key={img.hero.id} {...img.hero.localFile.childImageSharp} />
+          <Image
+            key={img.hero.id}
+            alt={img.hero.title || img.hero.description}
+            {...img.hero.localFile.childImageSharp}
+          />
         ))}
       <SkipNavContent>
         {Partial && <Partial />}
@@ -85,6 +89,8 @@ export const pageQuery = graphql`
           __typename
           hero: image {
             id
+            title
+            description
             localFile {
               childImageSharp {
                 fluid(maxWidth: 1200, quality: 85) {

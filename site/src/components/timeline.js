@@ -46,6 +46,7 @@ function Moment({ children, date, description, title, photos }) {
         {photos.map(photo => (
           <Image
             key={photo.localFile.id}
+            alt={photo.title || photo.description}
             sx={{ margin: '0 auto' }}
             width={[`100vw`, `75vw`, `60vw`]}
             zoom={true}
@@ -78,6 +79,8 @@ export const timelineFragment = graphql`
     }
     title
     photos {
+      title
+      description
       localFile {
         id
         ...LocalImageFluid
