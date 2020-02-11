@@ -17,7 +17,13 @@ function Gallery({ description, title, fields, photos }) {
       >
         {title}
       </Styled.h2>
-      <Masonry>
+      <Masonry
+        sx={{
+          'img, picture img': {
+            objectPosition: 'center 25% !important',
+          },
+        }}
+      >
         {flatten(photos).map(photo => (
           <Image
             alt={/^IMG/.test(photo.title) ? photo.description : photo.title}

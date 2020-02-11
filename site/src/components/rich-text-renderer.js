@@ -48,7 +48,11 @@ const options = ({ lang = 'en-US', imgStyle = {}, zoom } = {}) => ({
           </Styled.a>
         )
       }
-      return <Link to={uri}>{children}</Link>
+      return (
+        <Link to={uri} sx={{ color: `accent` }}>
+          {children}
+        </Link>
+      )
     },
     ...HEADERS,
   },
