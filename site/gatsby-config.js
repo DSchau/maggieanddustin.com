@@ -35,5 +35,11 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GOOGLE_TRACKING_ID,
+      },
+    },
   ],
 }
