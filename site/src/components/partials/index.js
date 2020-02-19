@@ -1,11 +1,11 @@
 import Home from './home'
 import Proposal from './proposal'
-import Venue from './venue'
+import Details from './details'
 
 const lookup = {
   '/': Home,
   proposal: Proposal,
-  venue: Venue,
+  details: Details,
 }
 
 export default path => {
