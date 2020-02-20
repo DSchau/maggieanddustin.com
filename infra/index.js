@@ -4,8 +4,6 @@ const format = require('date-fns/format')
 const levenshtein = require('fast-levenshtein')
 const apolloServer = require('apollo-server-lambda')
 
-console.log(apolloServer)
-
 const getApi = require('./api')
 const log = require('./log')
 const server = require('./server')
@@ -19,20 +17,20 @@ const bodySchema = yup.object().shape({
   ),
   name: yup.string().required(),
   email: yup.string().email(),
-  comment: yup.string()
+  comment: yup.string(),
 })
 
 const formatResponse = guests => ({
   statusCode: 200,
   headers: {
     'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   },
   body: JSON.stringify({
     rsvps: guests.map(guest => ({
       ...guest,
-      attending: guest.attending === `TRUE`
-    }))
+      attending: guest.attending === `TRUE`,
+    })),
   }),
 })
 
@@ -88,7 +86,7 @@ exports.handler = server.createHandler({
 
 //   await Promise.all(
 //     guests.map(guest => {
-      
+
 //     })
 //   )
 

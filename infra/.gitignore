@@ -1,2 +1,4 @@
 # secrets
 credentials.json
+.env*
+!.env.sample
