@@ -39,7 +39,11 @@ function Page({ data }) {
   const Partial = partials(data.page.slug)
   return (
     <React.Fragment>
-      <SEO description={data.page.description} title={data.page.title} />
+      <SEO
+        description={data.page.description}
+        title={data.page.title}
+        image={data.page.featuredImage.localFile.childImageSharp.resize}
+      />
       {page.hero &&
         page.hero.map(img => (
           <Image
@@ -71,11 +75,27 @@ function Page({ data }) {
 
 export const pageQuery = graphql`
   query PageBySlug($slug: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     page: contentfulPage(fields: { slug: { eq: $slug } }) {
       id
       slug
       description
       title
+      featuredImage {
+        localFile {
+          childImageSharp {
+            resize(width: 1200) {
+              src
+              height
+              width
+            }
+          }
+        }
+      }
       contentBlocks {
         # gallery of images -- neat!
         ... on ContentfulGallery {

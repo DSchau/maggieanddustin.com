@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-function SEO({ description, lang, meta, keywords, title }) {
+function SEO({ description, lang, image: seoImage, meta, keywords, title }) {
   const data = useStaticQuery(detailsQuery)
 
-  const image = data.card.resize
+  const image = seoImage || data.card.resize
 
   const metaDescription = description || data.site.siteMetadata.description
   const fullTitle = `${title} | ${data.site.siteMetadata.title}`
