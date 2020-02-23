@@ -42,7 +42,11 @@ function Page({ data }) {
       <SEO
         description={data.page.description}
         title={data.page.title}
-        image={data.page.featuredImage.localFile.childImageSharp.resize}
+        {...(data.page.featuredImage
+          ? {
+              image: data.page.featuredImage.localFile.childImageSharp.resize,
+            }
+          : {})}
       />
       {page.hero &&
         page.hero.map(img => (
