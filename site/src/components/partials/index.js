@@ -1,9 +1,11 @@
+import BachelorParty from './bachelor-party'
 import Home from './home'
 import Proposal from './proposal'
 import Details from './details'
 
 const lookup = {
   '/': Home,
+  'bachelor-party': BachelorParty,
   proposal: Proposal,
   details: Details,
 }
