@@ -29,6 +29,34 @@ export default function Party() {
         <Styled.h2 sx={{ fontSize: [30, 48], fontFamily: `Parisienne` }}>
           Lake Tahoe, NV
         </Styled.h2>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSevJ0jQmzf2I7mkaFiR4TPdlsSVPIMNSAuekUtJx1Z7eCGuUg/viewform"
+          target="_blank"
+          rel="noopener"
+          sx={{
+            ':hover': {
+              borderColor: `text`,
+              backgroundColor: `background`,
+              color: `text`,
+            },
+            borderWidth: 4,
+            borderColor: `transparent`,
+            borderStyle: `solid`,
+            display: `inline-block`,
+            fontSize: 32,
+            textDecoration: `none`,
+            backgroundColor: `text`,
+            color: `background`,
+            pt: 3,
+            pb: 3,
+            pr: 4,
+            pl: 4,
+            mt: 2,
+            mb: 2,
+          }}
+        >
+          RSVP
+        </a>
       </Styled.div>
     </React.Fragment>
   )
