@@ -1,11 +1,13 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import { BLOCKS, INLINES } from '@contentful/rich-text-types'
+import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import qs from 'query-string'
 import { Link } from 'gatsby'
 
-import Image from './image'
+import Embed from './embed'
 
+import Image from './image'
 const HEADERS = new Array(6).fill(undefined).reduce((merged, _, index) => {
   const level = index + 1
   merged[BLOCKS[`HEADING_${level}`]] = (__, children) => {
@@ -16,6 +18,16 @@ const HEADERS = new Array(6).fill(undefined).reduce((merged, _, index) => {
 }, {})
 
 const options = ({ lang = 'en-US', imgStyle = {}, zoom } = {}) => ({
+  renderMark: {
+    [MARKS.CODE]: (node, children) => {
+      if (/^embed/.test(node)) {
+        const params = node.split(':').pop()
+        const props = qs.parse(params)
+        return <Embed {...props} type="airbnb" />
+      }
+      return <code>{node}</code>
+    },
+  },
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: ({ data } = {}) => {
       if (!data || !data.target || !data.target.fields) {
