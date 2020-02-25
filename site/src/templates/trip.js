@@ -4,7 +4,6 @@ import { graphql } from 'gatsby'
 
 import Countdown from '../components/countdown'
 import Page from '../components/page'
-import Seperator from '../components/seperator'
 
 export default ({ data }) => {
   const endTime = new Date(data.trip.startDate).getTime()
@@ -16,12 +15,10 @@ export default ({ data }) => {
       </Styled.h1>
       {inFuture && (
         <Styled.div sx={{ pt: 4, pb: 4 }}>
-          <Seperator />
           <Countdown sx={{ pt: 4, pb: 4 }} endTime={endTime} />
           <Styled.h3 sx={{ textAlign: `center`, pt: [0, 2] }}>
             until the trip!
           </Styled.h3>
-          <Seperator />
         </Styled.div>
       )}
     </Page>
