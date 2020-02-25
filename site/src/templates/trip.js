@@ -46,6 +46,23 @@ export const pageQuery = graphql`
         }
       }
       contentBlocks {
+        # hero image, of course!
+        ... on ContentfulHero {
+          __typename
+          hero: image {
+            id
+            title
+            description
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200, quality: 85) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+        }
+
         # section of content
         ... on ContentfulSection {
           id
