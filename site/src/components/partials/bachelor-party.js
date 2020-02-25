@@ -32,7 +32,7 @@ export default function Party() {
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSevJ0jQmzf2I7mkaFiR4TPdlsSVPIMNSAuekUtJx1Z7eCGuUg/viewform"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           sx={{
             ':hover': {
               borderColor: `text`,

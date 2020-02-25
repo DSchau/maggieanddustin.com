@@ -13,6 +13,12 @@ exports.onCreateNode = function onCreateNode({ actions, node }) {
       name: `slug`,
       value: node.slug === `/` ? node.slug : `/${node.slug}/`,
     })
+  } else if (node.internal.type === `ContentfulTrip`) {
+    actions.createNodeField({
+      node,
+      name: `slug`,
+      value: `/trips/${node.slug}/`,
+    })
   } else if (
     node.title &&
     (node.internal.type === `ContentfulSection` ||
@@ -40,7 +46,7 @@ exports.onCreatePage = function onCreatePage({ actions, page }) {
 
 exports.createPages = async function createPages({ actions, graphql }) {
   const {
-    data: { posts, pages },
+    data: { posts, pages, trips },
   } = await graphql(`
     {
       posts: allContentfulBlogPost {
@@ -52,6 +58,14 @@ exports.createPages = async function createPages({ actions, graphql }) {
       }
 
       pages: allContentfulPage {
+        nodes {
+          fields {
+            slug
+          }
+        }
+      }
+
+      trips: allContentfulTrip {
         nodes {
           fields {
             slug
@@ -81,6 +95,20 @@ exports.createPages = async function createPages({ actions, graphql }) {
 
     actions.createPage({
       component: require.resolve(`./src/templates/page.js`),
+      path: slug,
+      context: {
+        slug,
+      },
+    })
+  })
+
+  trips.nodes.forEach(trip => {
+    const {
+      fields: { slug },
+    } = trip
+
+    actions.createPage({
+      component: require.resolve(`./src/templates/trip.js`),
       path: slug,
       context: {
         slug,

@@ -2,19 +2,9 @@
 import { jsx, Styled } from 'theme-ui'
 import React from 'react'
 import { Link } from 'gatsby'
-import Countdown from '../countdown'
 
-const Seperator = () => (
-  <Styled.hr
-    sx={{
-      maxWidth: ['100%', '50%'],
-      margin: '0 auto',
-      backgroundColor: '#eee',
-      height: 1,
-      border: 'none',
-    }}
-  />
-)
+import Countdown from '../countdown'
+import Seperator from '../seperator'
 
 export default function Home() {
   return (
