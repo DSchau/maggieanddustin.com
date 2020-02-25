@@ -1,4 +1,13 @@
 const slugify = require('limax')
+const path = require('path')
+const fs = require('fs-extra')
+
+exports.onPostBuild = async () => {
+  await fs.copy(
+    path.join(__dirname, `functions`),
+    path.join(__dirname, `public`, `functions`)
+  )
+}
 
 exports.onCreateNode = function onCreateNode({ actions, node }) {
   if (node.internal.type === 'ContentfulBlogPost') {
