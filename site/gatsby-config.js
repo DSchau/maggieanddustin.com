@@ -5,7 +5,7 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    title: `Wedding | Maggie and Dustin`,
+    title: `Maggie and Dustin`,
     description: `Landing page for the wedding of Dustin Schau and Maggie Alcorn`,
     author: `schaudustin`,
     siteUrl: process.env.DEPLOY_URL || 'https://maggieanddustin.com',

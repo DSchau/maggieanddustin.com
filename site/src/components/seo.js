@@ -3,13 +3,21 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
+const useWeddingTitle = (nav, title) => {
+  return (
+    nav.items.includes(item => item.title === title) || title === `Home Page`
+  )
+}
+
 function SEO({ description, lang, image: seoImage, meta, keywords, title }) {
   const data = useStaticQuery(detailsQuery)
 
   const image = seoImage || data.card.resize
 
   const metaDescription = description || data.site.siteMetadata.description
-  const fullTitle = `${title} | ${data.site.siteMetadata.title}`
+  const fullTitle = `${title} | ${
+    useWeddingTitle(data.nav, title) ? `Wedding |` : ``
+  } ${data.site.siteMetadata.title}`
   return (
     <Helmet
       htmlAttributes={{
@@ -79,7 +87,7 @@ function SEO({ description, lang, image: seoImage, meta, keywords, title }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  keywords: [`wedding`, `minneapolis`],
+  keywords: [`wedding`, `minneapolis`, `personal`, `blog`, `gatsby`],
 }
 
 SEO.propTypes = {
@@ -100,6 +108,15 @@ const detailsQuery = graphql`
         title
         description
         author
+      }
+    }
+
+    nav: contentfulNavigation {
+      items {
+        title
+        fields {
+          slug
+        }
       }
     }
 
