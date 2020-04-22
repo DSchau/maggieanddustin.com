@@ -63,9 +63,11 @@ function BlogPost({
         >
           {[startDate, endDate].join(' - ')}
         </Styled.h2>
-        {featuredImage && (
-          <Image sx={imgStyle} {...featuredImage.localFile.childImageSharp} />
-        )}
+        {featuredImage &&
+          featuredImage.localFile &&
+          featuredImage.localFile.childImageSharp && (
+            <Image sx={imgStyle} {...featuredImage.localFile.childImageSharp} />
+          )}
         <Styled.div sx={{ gridColumn: 2 }}>
           {richTextRenderer(body.json, { imgStyle, zoom: false })}
         </Styled.div>
