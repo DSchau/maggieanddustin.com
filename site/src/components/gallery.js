@@ -24,13 +24,15 @@ function Gallery({ description, title, fields, photos }) {
           },
         }}
       >
-        {flatten(photos).map(photo => (
-          <Image
-            alt={/^IMG/.test(photo.title) ? photo.description : photo.title}
-            key={photo.localFile.id}
-            fluid={photo.localFile.childImageSharp.fluid}
-          />
-        ))}
+        {flatten(photos)
+          .filter(photo => photo.localFile && photo.localFile.childImageSharp)
+          .map(photo => (
+            <Image
+              alt={/^IMG/.test(photo.title) ? photo.description : photo.title}
+              key={photo.localFile.id}
+              fluid={photo.localFile.childImageSharp.fluid}
+            />
+          ))}
       </Masonry>
       <Styled.div sx={{ fontSize: 14, pt: 2, pb: 2, textAlign: `center` }}>
         {description && richTextRenderer(description.json)}
