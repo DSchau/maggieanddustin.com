@@ -28,7 +28,7 @@ export default function Home() {
             textTransform: `uppercase`,
           }}
         >
-          August 8, 2020
+          August 8th, 2020
         </Styled.h1>
         <Styled.h2 sx={{ fontSize: [30, 48], fontFamily: `Parisienne` }}>
           Minneapolis, MN
