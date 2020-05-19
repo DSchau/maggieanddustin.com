@@ -66,9 +66,9 @@ const closeButtonStyles = theme => ({
 
 const availableBanners = {
   announcement: {
-    contents: (
+    contents: ({ date }) => (
       <>
-        We can't wait to see you! August 8th, 2020{' '}
+        We can't wait to see you! {date}{' '}
         <span sx={{ display: [`none`, `inline-block`] }}>
           {' '}
           &bull; Minneapolis, MN
@@ -81,8 +81,8 @@ const availableBanners = {
   },
 }
 
-const Banner = ({ id }) => {
-  const { contents, condition } = availableBanners[id]
+const Banner = ({ id, ...props }) => {
+  const { contents: Contents, condition } = availableBanners[id]
 
   const localStorageKey = `${LOCALSTORAGE_PREFIX}-${id}-dismissed`
 
@@ -101,7 +101,9 @@ const Banner = ({ id }) => {
   return (
     <Styled.div sx={wrapperStyles}>
       <Styled.div sx={edgeColumnStyles} />
-      <span sx={textStyles}>{contents}</span>
+      <span sx={textStyles}>
+        <Contents {...props} />
+      </span>
       <span sx={edgeColumnStyles}>
         <button
           sx={closeButtonStyles}

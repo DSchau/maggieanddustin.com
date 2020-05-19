@@ -1,12 +1,22 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 
 import Countdown from '../countdown'
 import Seperator from '../seperator'
 
 export default function Home() {
+  const data = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          weddingDate(formatString: "MMMM DD, YYYY")
+          utcWeddingDate: weddingDate(formatString: "MM/DD/YYYY hh:mm:ss")
+        }
+      }
+    }
+  `)
   return (
     <React.Fragment>
       <Styled.div sx={{ textAlign: `center`, pt: `10vh` }}>
@@ -28,7 +38,7 @@ export default function Home() {
             textTransform: `uppercase`,
           }}
         >
-          August 8, 2020
+          {data.site.siteMetadata.weddingDate}
         </Styled.h1>
         <Styled.h2 sx={{ fontSize: [30, 48], fontFamily: `Parisienne` }}>
           Minneapolis, MN
@@ -37,7 +47,7 @@ export default function Home() {
           <Seperator />
           <Countdown
             sx={{ pt: 4, pb: 4 }}
-            endTime={new Date('08/08/2020 12:00').getTime()}
+            endTime={new Date(data.site.siteMetadata.utcWeddingDate).getTime()}
           />
           <Styled.h3 sx={{ textAlign: `center`, pt: [0, 2] }}>
             until the big day!

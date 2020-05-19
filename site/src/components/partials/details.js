@@ -1,8 +1,18 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
 
 export default function Venue({ children }) {
+  const data = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          weddingDate(formatString: "MMMM DD, YYYY")
+        }
+      }
+    }
+  `)
   return (
     <React.Fragment>
       <Styled.div
@@ -19,7 +29,7 @@ export default function Venue({ children }) {
           Renaissance Minneapolis Hotel, the Depot
         </Styled.h2>
         {[
-          'Saturday, August 8th, 2020',
+          `Saturday, ${data.site.siteMetadata.weddingDate}`,
           '225 3rd Ave S,',
           'Minneapolis, MN 55401',
         ].map(part => (

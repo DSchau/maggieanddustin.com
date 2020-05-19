@@ -9,6 +9,7 @@ module.exports = {
     description: `Landing page for the wedding of Dustin Schau and Maggie Alcorn`,
     author: `schaudustin`,
     siteUrl: process.env.DEPLOY_URL || 'https://maggieanddustin.com',
+    weddingDate: new Date(`06/12/2021 12:00:00Z`),
   },
   plugins: [
     `gatsby-plugin-preact`,
