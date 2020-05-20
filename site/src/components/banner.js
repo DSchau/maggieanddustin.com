@@ -68,7 +68,7 @@ const availableBanners = {
   announcement: {
     contents: ({ date }) => (
       <>
-        We can't wait to see you! {date}{' '}
+        We've changed the date! {date}{' '}
         <span sx={{ display: [`none`, `inline-block`] }}>
           {' '}
           &bull; Minneapolis, MN
