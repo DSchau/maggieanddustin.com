@@ -28,12 +28,14 @@ function Photos({ data }) {
             slug={archive.fields.slug}
           >
             <Grid sx={{ mt: 4, mb: 4 }}>
-              {archive.gallery.map(photo => (
-                <Image
-                  key={photo.localFile.id}
-                  {...photo.localFile.childImageSharp}
-                />
-              ))}
+              {archive.gallery
+                .filter(photo => photo?.localFile?.childImageSharp)
+                .map(photo => (
+                  <Image
+                    key={photo.localFile.id}
+                    {...photo.localFile.childImageSharp}
+                  />
+                ))}
             </Grid>
           </BlogPostPreview>
         ))}
