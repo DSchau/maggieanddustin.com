@@ -10,7 +10,7 @@ function Person({ className, name, image, role, parent, bio }) {
     <Styled.div className={className} sx={{ textAlign: `center` }}>
       <Styled.h2>{name}</Styled.h2>
       <Styled.h3>{role}</Styled.h3>
-      {image && (
+      {image && image.localFile && image.localFile.childImageSharp && (
         <Image
           alt={`${name} - ${role}`}
           sx={{ borderRadius: `100%`, mt: 2, mb: 2 }}
