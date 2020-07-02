@@ -38,7 +38,7 @@ export default function Venue({ children }) {
           </Styled.p>
         ))}
         <a
-          href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1568837961848&key=GRP&app=resvlink"
+          href="https://www.marriott.com/events/start.mi?id=1568837961848&key=GRP"
           sx={{
             ':hover': {
               borderColor: `text`,
