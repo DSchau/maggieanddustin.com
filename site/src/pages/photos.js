@@ -4,7 +4,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { SkipNavContent } from '@reach/skip-nav'
 
-import Grid from '../components/grid'
+import Masonry from '../components/masonry'
 import Image from '../components/image'
 import SEO from '../components/seo'
 import BlogPostPreview from '../components/blog-post-preview'
@@ -27,16 +27,7 @@ function Photos({ data }) {
             readMore={false}
             slug={archive.fields.slug}
           >
-            <Grid sx={{ mt: 4, mb: 4 }}>
-              {archive.gallery
-                .filter(photo => photo?.localFile?.childImageSharp)
-                .map(photo => (
-                  <Image
-                    key={photo.localFile.id}
-                    {...photo.localFile.childImageSharp}
-                  />
-                ))}
-            </Grid>
+            <Masonry photos={archive.gallery} />
           </BlogPostPreview>
         ))}
       </SkipNavContent>
