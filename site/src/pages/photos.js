@@ -5,7 +5,6 @@ import { graphql } from 'gatsby'
 import { SkipNavContent } from '@reach/skip-nav'
 
 import Masonry from '../components/masonry'
-import Image from '../components/image'
 import SEO from '../components/seo'
 import BlogPostPreview from '../components/blog-post-preview'
 
@@ -18,16 +17,16 @@ function Photos({ data }) {
         description="An archive of photos for Maggie and Dustin"
       />
       <SkipNavContent>
-        {archive.nodes.map(archive => (
+        {archive.nodes.map(entity => (
           <BlogPostPreview
-            key={archive.fields.slug}
-            {...archive}
+            key={entity.fields.slug}
+            {...entity}
             featuredImage={false}
             summary={false}
             readMore={false}
-            slug={archive.fields.slug}
+            slug={entity.fields.slug}
           >
-            <Masonry photos={archive.gallery} />
+            <Masonry photos={entity.gallery} />
           </BlogPostPreview>
         ))}
       </SkipNavContent>
