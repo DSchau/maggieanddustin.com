@@ -4,7 +4,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { SkipNavContent } from '@reach/skip-nav'
 
-import Masonry from '../components/masonry'
+import Gallery from '../components/gallery'
 import SEO from '../components/seo'
 import BlogPostPreview from '../components/blog-post-preview'
 
@@ -26,7 +26,7 @@ function Photos({ data }) {
             readMore={false}
             slug={entity.fields.slug}
           >
-            <Masonry photos={entity.gallery} />
+            <Gallery photos={entity.gallery} />
           </BlogPostPreview>
         ))}
       </SkipNavContent>
