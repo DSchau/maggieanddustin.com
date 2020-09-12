@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '@emotion/styled'
+import { Styled } from 'theme-ui'
 import { FaHeart } from 'react-icons/fa'
 
 const Container = styled.footer`
@@ -23,7 +23,7 @@ const Message = styled.p`
 function Footer() {
   return (
     <Container>
-      <Message>
+      <Styled.p>
         <span
           css={{
             display: `block`,
@@ -38,7 +38,7 @@ function Footer() {
         Made with{' '}
         <FaHeart color="#c74444" css={{ position: `relative`, top: 2 }} /> by
         Dustin
-      </Message>
+      </Styled.p>
     </Container>
   )
 }
