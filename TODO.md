@@ -1,0 +1,4 @@
+- [ ] Calendar reminder
+- [ ] The event
+- [ ] Exploring MN on /details/
+- [ ] Put text under august 8th
