@@ -4,6 +4,7 @@ require('dotenv').config({
 const path = require('path')
 
 module.exports = {
+  __experimentalQueryOnDemand: true,
   siteMetadata: {
     title: `Maggie and Dustin`,
     description: `Landing page for the wedding of Dustin Schau and Maggie Alcorn`,
