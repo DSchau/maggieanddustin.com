@@ -29,7 +29,13 @@ function Photos({ data }) {
           >
             <Grid sx={{ mt: 4, mb: 4 }}>
               {archive.gallery
-                .filter(photo => photo?.localFile?.childImageSharp)
+                .filter(photo => {
+                  try {
+                    return photo.localFile.childImageSharp
+                  } catch (e) {
+                    return false
+                  }
+                })
                 .map(photo => (
                   <Image
                     key={photo.localFile.id}
