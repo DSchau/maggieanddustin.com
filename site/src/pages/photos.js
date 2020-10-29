@@ -28,7 +28,7 @@ function Photos({ data }) {
             slug={archive.fields.slug}
           >
             <Grid sx={{ mt: 4, mb: 4 }}>
-              {archive.gallery
+              {(archive.gallery || [])
                 .filter(photo => {
                   try {
                     return photo.localFile.childImageSharp
