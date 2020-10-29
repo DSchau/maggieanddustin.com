@@ -19,12 +19,12 @@ function Photos({ data }) {
       <SkipNavContent>
         {archive.nodes.map(entity => (
           <BlogPostPreview
-            key={entity.fields.slug}
+            key={entity.path}
             {...entity}
             featuredImage={false}
             summary={false}
             readMore={false}
-            slug={entity.fields.slug}
+            slug={entity.path}
           >
             <Gallery photos={entity.gallery} />
           </BlogPostPreview>
@@ -41,7 +41,7 @@ export const photosQuery = graphql`
     ) {
       nodes {
         ...BlogPostDetails
-        path: gatsbyPath(filePath: "/blog/{ContentfulBlogPost.fields__slug}}")
+        path: gatsbyPath(filePath: "/blog/{ContentfulBlogPost.fields__slug}")
         gallery {
           localFile {
             id
