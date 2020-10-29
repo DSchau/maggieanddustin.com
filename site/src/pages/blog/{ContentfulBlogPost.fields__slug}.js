@@ -3,9 +3,9 @@ import { jsx, Styled } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Gallery from '../components/gallery'
-import BlogPost from '../components/blog-post'
-import SEO from '../components/seo'
+import Gallery from '../../components/gallery'
+import BlogPost from '../../components/blog-post'
+import SEO from '../../components/seo'
 
 function BlogPostPage({ data }) {
   const { post } = data
@@ -41,9 +41,9 @@ function BlogPostPage({ data }) {
   )
 }
 
-export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    post: contentfulBlogPost(fields: { slug: { eq: $slug } }) {
+export const query = graphql`
+  query ($id: String) {
+    post: contentfulBlogPost(id: { eq: $id }) {
       ...BlogPostDetails
       gallery {
         localFile {
@@ -56,7 +56,6 @@ export const pageQuery = graphql`
         }
       }
     }
-  }
-`
+}`
 
 export default BlogPostPage

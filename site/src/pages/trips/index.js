@@ -5,9 +5,9 @@ import { graphql } from 'gatsby'
 import { SkipNavContent } from '@reach/skip-nav'
 import { MdViewQuilt, MdViewList } from 'react-icons/md'
 
-import BlogPost from '../components/blog-post-preview'
-import SEO from '../components/seo'
-import Masonry from '../components/masonry'
+import Trip from '../../components/trip'
+import SEO from '../../components/seo'
+import Masonry from '../../components/masonry'
 
 const Button = props => (
   <button
@@ -22,9 +22,9 @@ const Button = props => (
   />
 )
 
-function BlogListing({ data }) {
+function TripListing({ data }) {
   const [view, setView] = useState('grid')
-  const { posts } = data
+  const { trips } = data
   const Wrapper = view === `grid` ? Masonry : Styled.div
   return (
     <React.Fragment>
@@ -45,11 +45,11 @@ function BlogListing({ data }) {
             </Button>
           </Styled.div>
           <Wrapper sx={{ clear: `both` }}>
-            {posts.nodes.map(post => (
-              <BlogPost
-                key={post.fields.slug}
+            {trips.nodes.map(post => (
+              <Trip
+                key={post.path}
+                preview={true}
                 {...post}
-                slug={post.fields.slug}
               />
             ))}
           </Wrapper>
@@ -61,12 +61,12 @@ function BlogListing({ data }) {
 
 export const blogQuery = graphql`
   {
-    posts: allContentfulBlogPost(sort: { fields: endDate, order: ASC }) {
+    trips: allContentfulTrip(sort: { fields: endDate, order: ASC }) {
       nodes {
-        ...BlogPostDetails
+        ...TripDetails
       }
     }
   }
 `
 
-export default BlogListing
+export default TripListing

@@ -1,39 +1,17 @@
-/** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import React from 'react'
 import { graphql } from 'gatsby'
 
-import Countdown from '../components/countdown'
 import Page from '../components/page'
 
-export default ({ data }) => {
-  const endTime = new Date(data.trip.startDate).getTime()
-  const inFuture = Date.now() < endTime
-  return (
-    <Page {...data.trip}>
-      <Styled.h1 sx={{ textAlign: 'center', pt: 2, pb: 2 }}>
-        {data.trip.title}
-      </Styled.h1>
-      {inFuture && (
-        <Styled.div sx={{ pt: 4, pb: 4 }}>
-          <Countdown sx={{ pt: 4, pb: 4 }} endTime={endTime} />
-          <Styled.h3 sx={{ textAlign: `center`, pt: [0, 2] }}>
-            until the trip!
-          </Styled.h3>
-        </Styled.div>
-      )}
-    </Page>
-  )
-}
+export default ({ data }) => <Page {...data.page} />
 
 export const pageQuery = graphql`
-  query TripBySlug($slug: String!) {
-    trip: contentfulTrip(fields: { slug: { eq: $slug } }) {
+  query PageBySlug($id: String!) {
+    page: contentfulPage(id: { eq: $id }) {
       id
       slug
       description
       title
-      startDate(formatString: "MM/DD/YYYY hh:mm")
-      endDate(formatString: "MM/DD/YYYY hh:mm")
       featuredImage {
         localFile {
           childImageSharp {
@@ -46,6 +24,12 @@ export const pageQuery = graphql`
         }
       }
       contentBlocks {
+        # gallery of images -- neat!
+        ... on ContentfulGallery {
+          __typename
+          id
+          ...GalleryDetails
+        }
         # hero image, of course!
         ... on ContentfulHero {
           __typename
@@ -68,6 +52,31 @@ export const pageQuery = graphql`
           id
           __typename
           ...SectionDetails
+        }
+
+        # timeline (a la proposal)
+        ... on ContentfulTimeline {
+          __typename
+          moments {
+            id
+            ...MomentDetails
+          }
+        }
+
+        # group of people
+        ... on ContentfulWeddingParty {
+          __typename
+          id
+          parents {
+            ...PersonDetails
+          }
+
+          bridesParty {
+            ...PersonDetails
+          }
+          groomsParty {
+            ...PersonDetails
+          }
         }
       }
     }
