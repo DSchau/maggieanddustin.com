@@ -41,6 +41,7 @@ export const photosQuery = graphql`
     ) {
       nodes {
         ...BlogPostDetails
+        path: gatsbyPath(filePath: "/blog/{ContentfulBlogPost.fields__slug}}")
         gallery {
           localFile {
             id
