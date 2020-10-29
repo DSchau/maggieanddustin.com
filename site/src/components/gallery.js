@@ -8,7 +8,7 @@ import richTextRenderer from './rich-text-renderer'
 
 const flatten = arr => arr.reduce((merged, item) => merged.concat(item), [])
 
-function Gallery({ description, title, fields, photos }) {
+function Gallery({ description, title, fields, photos = []}) {
   return (
     <Styled.div sx={{ pt: 4 }}>
       <Styled.h2
