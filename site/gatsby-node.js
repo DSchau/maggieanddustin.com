@@ -1,13 +1,11 @@
 const slugify = require('limax')
-const path = require('path')
-const fs = require('fs-extra')
 
 exports.onCreateNode = function onCreateNode({ actions, node }) {
   if (node.internal.type === 'ContentfulBlogPost') {
     actions.createNodeField({
       node,
       name: `slug`,
-      value: `/blog/${node.slug}/`,
+      value: `/${node.slug}/`,
     })
   } else if (node.internal.type === `ContentfulPage`) {
     actions.createNodeField({
@@ -19,7 +17,7 @@ exports.onCreateNode = function onCreateNode({ actions, node }) {
     actions.createNodeField({
       node,
       name: `slug`,
-      value: `/trips/${node.slug}/`,
+      value: `/${node.slug}/`,
     })
   } else if (
     node.title &&
@@ -44,77 +42,4 @@ exports.onCreatePage = function onCreatePage({ actions, page }) {
   if (!showRegistry && page.path === '/registry/') {
     actions.deletePage(page)
   }
-}
-
-exports.createPages = async function createPages({ actions, graphql }) {
-  const {
-    data: { posts, pages, trips },
-  } = await graphql(`
-    {
-      posts: allContentfulBlogPost {
-        nodes {
-          fields {
-            slug
-          }
-        }
-      }
-
-      pages: allContentfulPage {
-        nodes {
-          fields {
-            slug
-          }
-        }
-      }
-
-      trips: allContentfulTrip {
-        nodes {
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  `)
-
-  posts.nodes.forEach(post => {
-    const {
-      fields: { slug },
-    } = post
-    actions.createPage({
-      component: require.resolve(`./src/templates/blog-post.js`),
-      path: slug,
-      context: {
-        slug,
-      },
-    })
-  })
-
-  pages.nodes.forEach(page => {
-    const {
-      fields: { slug },
-    } = page
-
-    actions.createPage({
-      component: require.resolve(`./src/templates/page.js`),
-      path: slug,
-      context: {
-        slug,
-      },
-    })
-  })
-
-  trips.nodes.forEach(trip => {
-    const {
-      fields: { slug },
-    } = trip
-
-    actions.createPage({
-      component: require.resolve(`./src/templates/trip.js`),
-      path: slug,
-      context: {
-        slug,
-      },
-    })
-  })
 }

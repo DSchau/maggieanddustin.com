@@ -1,9 +1,9 @@
 {
   "name": "@maggie-and-dustin/wedding",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "The wedding website for Maggie and Dustin!",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Dustin Schau <dustinschau@gmail.com>",
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.1",
     "@contentful/rich-text-types": "^14.1.1",
@@ -55,8 +55,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build",
-    "develop": "gatsby develop",
+    "build": "GATSBY_EXPERIMENTAL_ROUTING_APIS=1 gatsby build",
+    "develop": "GATSBY_EXPERIMENTAL_ROUTING_APIS=1 gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
