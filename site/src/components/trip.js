@@ -6,16 +6,16 @@ import Image from 'gatsby-image'
 
 import Countdown from './countdown'
 
-const getImage = image => {
+const getImage = (data, accessor) => {
   try {
-    return image.hero.localFile.childImageSharp
+    return accessor(data)
   } catch (e) {
     return null
   }
 }
 
 export default ({ title, path, description, contentBlocks = [], startDate, preview = false, ...props }) => {
-  const image = getImage(contentBlocks.find(block => block.__typename === 'ContentfulHero'))
+  const image = getImage(contentBlocks, _ => _.find(block => block.__typename === 'ContentfulHero').hero.localFile.childImageSharp)
   const endTime = new Date(startDate).getTime()
   const inFuture = Date.now() < endTime
   const Wrapper = preview ? Link : React.Fragment
