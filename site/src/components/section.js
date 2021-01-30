@@ -26,7 +26,7 @@ function Section({ body, fields, title }) {
 export const sectionQuery = graphql`
   fragment SectionDetails on ContentfulSection {
     body {
-      json
+      json: raw
     }
     fields {
       slug

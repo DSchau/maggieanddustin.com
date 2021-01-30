@@ -96,7 +96,7 @@ export const blogPostFragment = graphql`
     startDate(formatString: "MMM Do, YYYY")
     endDate(formatString: "MMM Do, YYYY")
     body {
-      json
+      json: raw
     }
   }
 `

@@ -27,7 +27,7 @@ export const personFragment = graphql`
     name
     role
     bio {
-      json
+      json: raw
     }
     image {
       localFile {

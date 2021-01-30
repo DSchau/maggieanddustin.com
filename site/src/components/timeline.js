@@ -77,7 +77,7 @@ export const timelineFragment = graphql`
   fragment MomentDetails on ContentfulMoment {
     date(formatString: "MMM Do, YYYY")
     description {
-      json
+      json: raw
     }
     title
     photos {

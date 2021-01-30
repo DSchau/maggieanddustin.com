@@ -5,7 +5,6 @@
   "version": "0.1.0",
   "author": "Dustin Schau <dustinschau@gmail.com>",
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^14.1.2",
     "@contentful/rich-text-types": "^14.1.2",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",

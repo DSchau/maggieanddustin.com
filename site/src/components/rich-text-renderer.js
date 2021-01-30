@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import qs from 'query-string'
 import { Link } from 'gatsby'
 
@@ -70,4 +70,9 @@ const options = ({ lang = 'en-US', imgStyle = {}, zoom } = {}) => ({
   },
 })
 
-export default (body, opts) => documentToReactComponents(body, options(opts))
+export default (body, opts = {}) => {
+  if (!body) {
+    return null
+  }
+  return renderRichText({ raw: body }, options(opts))
+}
