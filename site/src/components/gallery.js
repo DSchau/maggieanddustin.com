@@ -60,10 +60,7 @@ export const galleryFragment = graphql`
       localFile {
         id
         childImageSharp {
-          gatsbyImageData(layout: FULL_WIDTH, width: 320, transformOptions: {cropFocus: NORTH})
-          fluid(maxWidth: 320, cropFocus: NORTH) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(width: 320, transformOptions: {cropFocus: NORTH})
         }
       }
     }
