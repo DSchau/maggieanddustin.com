@@ -35,5 +35,6 @@ module.exports = {
         trackingId: process.env.GOOGLE_TRACKING_ID,
       },
     },
+    `gatsby-plugin-gatsby-cloud`,
   ],
 }
