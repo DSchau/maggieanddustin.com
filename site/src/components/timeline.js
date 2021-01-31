@@ -6,7 +6,6 @@ import { graphql } from 'gatsby'
 import Image from './image'
 
 import richTextRenderer from './rich-text-renderer'
-import { getImage } from 'gatsby-plugin-image'
 
 const Rule = () => (
   <Styled.hr
@@ -53,7 +52,7 @@ function Moment({ children, date, description, title, photos }) {
               sx={{ margin: '0 auto' }}
               width={[`100vw`, `75vw`, `60vw`]}
               zoom={true}
-              image={getImage(photo.localFile)}
+              {...photo.localFile.childImageSharp}
             />
           ))}
       </Styled.div>

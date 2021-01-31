@@ -2,7 +2,6 @@
 import { jsx, Styled } from 'theme-ui'
 import { graphql } from 'gatsby'
 import richTextRenderer from './rich-text-renderer'
-import { getImage } from 'gatsby-plugin-image'
 
 import Image from './image'
 
@@ -14,8 +13,8 @@ function Person({ className, name, image, role, parent, bio }) {
       {image && image.localFile && image.localFile.childImageSharp && (
         <Image
           alt={`${name} - ${role}`}
-          sx={{ borderRadius: `100%`, mt: 2, mb: 2, ml: `auto`, mr: `auto` }}
-          image={getImage(image.localFile)}
+          sx={{ borderRadius: `100%`, mt: 2, mb: 2 }}
+          {...image.localFile.childImageSharp}
         />
       )}
       {!parent && (bio && richTextRenderer(bio.json))}
@@ -33,7 +32,9 @@ export const personFragment = graphql`
     image {
       localFile {
         childImageSharp {
-          gatsbyImageData(layout: FIXED, width: 150)
+          fixed(width: 150) {
+            ...GatsbyImageSharpFixed
+          }
         }
       }
     }

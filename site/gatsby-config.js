@@ -26,7 +26,6 @@ module.exports = {
     },
     `gatsby-transformer-yaml`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-sitemap`,
