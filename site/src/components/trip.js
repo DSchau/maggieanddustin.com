@@ -2,11 +2,11 @@
 import { jsx, Styled } from 'theme-ui'
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Image from 'gatsby-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 import Countdown from './countdown'
 
-const getImage = (data, accessor) => {
+const getImageElement = (data, accessor) => {
   try {
     return accessor(data)
   } catch (e) {
@@ -15,7 +15,7 @@ const getImage = (data, accessor) => {
 }
 
 export default ({ title, path, description, contentBlocks = [], startDate, preview = false, ...props }) => {
-  const image = getImage(contentBlocks, _ => _.find(block => block.__typename === 'ContentfulHero').hero.localFile.childImageSharp)
+  const image = getImageElement(contentBlocks, _ => _.find(block => block.__typename === 'ContentfulHero').hero.localFile)
   const endTime = new Date(startDate).getTime()
   const inFuture = Date.now() < endTime
   const Wrapper = preview ? Link : React.Fragment
@@ -27,7 +27,7 @@ export default ({ title, path, description, contentBlocks = [], startDate, previ
         } : {}}>{title}</Wrapper>
       </Styled.h1>
       {preview && image && (
-        <Image {...image} />
+        <GatsbyImage image={getImage(image)} />
       )}
       <p>{description}</p>
       {inFuture && (
@@ -72,9 +72,7 @@ export const tripFragment = graphql`
             description
             localFile {
               childImageSharp {
-                fluid(maxWidth: 1200, quality: 85) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
+                gatsbyImageData(layout: CONSTRAINED, width: 1200)
               }
             }
           }
