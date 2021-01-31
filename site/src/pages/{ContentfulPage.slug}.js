@@ -39,9 +39,7 @@ export const pageQuery = graphql`
             description
             localFile {
               childImageSharp {
-                fluid(maxWidth: 1200, quality: 85) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
+                gatsbyImageData(layout: FULL_WIDTH, width: 1200, quality: 80)
               }
             }
           }
