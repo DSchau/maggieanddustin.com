@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import React from 'react'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Image from 'gatsby-image'
 import { SkipNavContent } from '@reach/skip-nav'
 
 import Gallery from '../components/gallery'
@@ -63,10 +63,10 @@ function Page({
               img.hero.localFile.childImageSharp
           )
           .map(img => (
-            <GatsbyImage
+            <Image
               key={img.hero.id}
               alt={img.hero.title || img.hero.description}
-              image={getImage(img.hero.localFile)}
+              {...img.hero.localFile.childImageSharp}
             />
           ))}
       <SkipNavContent>

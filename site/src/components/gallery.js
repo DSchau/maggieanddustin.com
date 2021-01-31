@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import { graphql } from 'gatsby'
-import { getImage } from "gatsby-plugin-image"
 
 import Image from './image'
 import Masonry from './masonry'
@@ -32,7 +31,7 @@ function Gallery({ description, title, fields, photos }) {
             <Image
               alt={/^IMG/.test(photo.title) ? photo.description : photo.title}
               key={photo.localFile.id}
-              image={getImage(photo.localFile)}
+              fluid={photo.localFile.childImageSharp.fluid}
             />
           ))}
       </Masonry>
@@ -60,7 +59,9 @@ export const galleryFragment = graphql`
       localFile {
         id
         childImageSharp {
-          gatsbyImageData(width: 320, transformOptions: {cropFocus: NORTH})
+          fluid(maxWidth: 320, cropFocus: NORTH) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
         }
       }
     }
