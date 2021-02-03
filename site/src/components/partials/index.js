@@ -4,7 +4,7 @@ import Proposal from './proposal'
 import Details from './details'
 
 const lookup = {
-  '/': Home,
+  'index': Home,
   'bachelor-party': BachelorParty,
   proposal: Proposal,
   details: Details,
