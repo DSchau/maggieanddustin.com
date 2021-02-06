@@ -36,7 +36,7 @@ function Image({ zoom, isZoomed = false, width = '75vw', ...props }) {
 export const imageFragment = graphql`
   fragment LocalImageFluid on File {
     childImageSharp {
-      gatsbyImageData(layout: FULL_WIDTH, width: 600)
+      gatsbyImageData(layout: FULL_WIDTH, width: 600, formats: [AUTO, WEBP, AVIF])
     }
   }
 `

@@ -60,7 +60,7 @@ export const galleryFragment = graphql`
       localFile {
         id
         childImageSharp {
-          gatsbyImageData(width: 320, transformOptions: {cropFocus: NORTH})
+          gatsbyImageData(width: 320, transformOptions: {cropFocus: NORTH}, formats: [AUTO, WEBP, AVIF])
         }
       }
     }
