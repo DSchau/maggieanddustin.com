@@ -5,9 +5,9 @@ import { Formik } from 'formik'
 import * as yup from 'yup'
 import { SkipNavContent } from '@reach/skip-nav'
 
-import { Button, Label, Input, Textarea } from '../components/form'
-import SEO from '../components/seo'
-// import { api } from '../utils/api'
+import { Button, Label, Input, Textarea } from '../../components/form'
+import SEO from '../../components/seo'
+import { useFirestore } from '../../utils/use-firestore'
 
 const formSchema = yup.object().shape({
   name: yup.string().required(),
@@ -19,12 +19,20 @@ const formSchema = yup.object().shape({
   ),
 })
 
-const formHandler = (step, actions) => {
+const formHandler = (step, actions, { db }) => {
   switch (step) {
     case 'INITIAL_NAME':
       return async (values, formik) => {
         formik.setSubmitting(true)
-        await new Promise(resolve => setTimeout(resolve, 2500))
+        const guest = await db.collection('guests').where('name', '==', values.name)
+          .get()
+          .then(collection => {
+            let data = []
+            collection.forEach(snap => {
+              data.push(snap.data())
+            })
+            return data
+          })
         // TODO: look up guest/attending status
         formik.setValues({
           ...values,
@@ -69,7 +77,7 @@ const formHandler = (step, actions) => {
 const getButtonText = (step, { isSubmitting }) => {
   switch (step) {
     case 'INITIAL_NAME':
-      return isSubmitting ? 'Finding...' : 'Find your RSVP'
+      return isSubmitting ? 'Finding...' : 'Continue'
     case 'GUEST_AND_RSVP':
       return isSubmitting ? 'Updating RSVP...' : 'Submit'
     default:
@@ -80,6 +88,7 @@ const getButtonText = (step, { isSubmitting }) => {
 // TODO: show errors
 function RSVP() {
   const [step, setStep] = useState('INITIAL_NAME')
+  const firestore = useFirestore()
   return (
     <>
       <SEO
@@ -94,7 +103,23 @@ function RSVP() {
             padding: [0, `1rem`],
           }}
         >
-          <Styled.h1>Let us know if you're coming!</Styled.h1>
+          <div sx={{ textAlign: 'center' }}>
+          <Styled.h1
+            sx={{
+              fontSize: [30, 48],
+              padding: [2, 4],
+              mb: [2, 0],
+              textTransform: `uppercase`,
+            }}
+          >
+            Come celebrate with us!
+          </Styled.h1>
+          <Styled.h2 sx={{ fontSize: [20, 24] }}>
+            Please RSVP by April 1st, 2021
+          </Styled.h2>
+        </div>
+          <Styled.p sx={{ fontWeight: 'bold', mb: 0  }}>Please enter your first and last name to unlock your RSVP form</Styled.p>
+          <Styled.p sx={{ mt: 0 }}> If you're responding for you and a guest (or your family), you'll be able to RSVP for your entire group.</Styled.p>
           {step === 'SUBMITTED' ? (
             <Styled.h2>Got it. Thanks!</Styled.h2>
           ) : (
@@ -106,7 +131,7 @@ function RSVP() {
                 guests: [],
               }}
               validationSchema={formSchema}
-              onSubmit={formHandler(step, { setStep })}
+              onSubmit={formHandler(step, { setStep }, { db: firestore })}
               children={({
                 handleBlur,
                 handleChange,
@@ -118,11 +143,12 @@ function RSVP() {
                 <form onSubmit={handleSubmit}>
                   {step === `INITIAL_NAME` && (
                     <Label htmlFor="name">
-                      Full name
+                      First and last name
                       <Input
                         type="text"
                         name="name"
                         id="name"
+                        placeholder="Example: John Smith"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.name}
