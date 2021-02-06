@@ -7,6 +7,7 @@ import { SkipNavContent } from '@reach/skip-nav'
 
 import { Button, Label, Input, Textarea } from '../components/form'
 import SEO from '../components/seo'
+import { useFirestore } from '../utils/use-firestore'
 // import { api } from '../utils/api'
 
 const formSchema = yup.object().shape({
@@ -19,11 +20,21 @@ const formSchema = yup.object().shape({
   ),
 })
 
-const formHandler = (step, actions) => {
+const formHandler = (step, actions, { db }) => {
   switch (step) {
     case 'INITIAL_NAME':
       return async (values, formik) => {
         formik.setSubmitting(true)
+        const guest = await db.collection('guests').where('name', '==', values.name)
+          .get()
+          .then(collection => {
+            let data = []
+            collection.forEach(snap => {
+              data.push(snap.data())
+            })
+            return data
+          })
+        console.log(guest)
         await new Promise(resolve => setTimeout(resolve, 2500))
         // TODO: look up guest/attending status
         formik.setValues({
@@ -80,6 +91,7 @@ const getButtonText = (step, { isSubmitting }) => {
 // TODO: show errors
 function RSVP() {
   const [step, setStep] = useState('INITIAL_NAME')
+  const firestore = useFirestore()
   return (
     <>
       <SEO
@@ -106,7 +118,7 @@ function RSVP() {
                 guests: [],
               }}
               validationSchema={formSchema}
-              onSubmit={formHandler(step, { setStep })}
+              onSubmit={formHandler(step, { setStep }, { db: firestore })}
               children={({
                 handleBlur,
                 handleChange,

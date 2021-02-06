@@ -39,7 +39,7 @@ module.exports = {
     `gatsby-plugin-gatsby-cloud`,
     {
       resolve: `gatsby-plugin-functions`,
-      resolve: {
+      options: {
         path: path.join(__dirname, 'src', 'functions')
       }
     }
