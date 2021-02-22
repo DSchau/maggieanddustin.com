@@ -11,7 +11,11 @@ const message = async (req, res) => {
     })
 
     return res.json({
-      success: true
+      success: true,
+      body: req.body,
+      bodyDebug: {
+        type: typeof req.body,
+      }
     })
   } catch (e) {
     return res.json({
