@@ -50,7 +50,7 @@
     "typeface-parisienne": "^1.1.13",
     "typeface-vollkorn": "^1.1.13",
     "typography-theme-doelger": "^0.16.19",
-    "yup": "^0.29.3"
+    "yup": "^0.32.9"
   },
   "keywords": [
     "gatsby"
