@@ -1,3 +1,4 @@
+
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -37,5 +38,11 @@ module.exports = {
       },
     },
     `gatsby-plugin-gatsby-cloud`,
+    {
+      resolve: `gatsby-plugin-functions`,
+      options: {
+        path: path.join(__dirname, `src`, `api`)
+      }
+    }
   ],
 }
