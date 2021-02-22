@@ -15,6 +15,7 @@ const message = async (req, res) => {
       body: req.body,
       bodyDebug: {
         type: typeof req.body,
+        keys: Object.keys(req)
       }
     })
   } catch (e) {
