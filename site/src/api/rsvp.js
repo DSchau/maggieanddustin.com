@@ -46,7 +46,10 @@ const rsvpHandler = async (req, res) => {
    return res.json({
       statusCode: 500,
       message: e,
-      stack: e.stack
+      stack: e.stack,
+      debug: {
+        GATSBY_FIREBASE_CREDENTIALS
+      }
     })
   }
 }
