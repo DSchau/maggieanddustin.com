@@ -7,7 +7,7 @@ const formSchema = yup.object().shape({
   email: yup.string(),
   name: yup.string().required(),
   guests: yup.string(),
-  phone: yup.string().matches(/^[\d-\(\)\.]+$/),
+  phone: yup.string().matches(/^+?[\d-\(\)\.]+$/),
   method: yup.string().oneOf(['lookup', 'update']).required()
 })
 
