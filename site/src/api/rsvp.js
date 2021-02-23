@@ -40,7 +40,13 @@ const lookup = async (req, res, { db }) => {
     guests: guests.map(guest => guest.fields),
     debug: {
       query: req.query,
-      req: Object.keys(req)
+      req: Object.keys(req).reduce((merged, key) => {
+        const value = req[key]
+        if (typeof value === 'string') {
+          merged[key] = value
+        }
+        return merged
+      }, {})
     }
   }
 }
