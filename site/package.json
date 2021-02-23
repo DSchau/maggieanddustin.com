@@ -13,6 +13,7 @@
     "@theme-ui/typography": "^0.3.0",
     "airtable": "0.8.1",
     "autosize": "^4.0.2",
+    "formik": "^2.2.6",
     "gatsby": "^2.32.4",
     "gatsby-image": "^2.10.0",
     "gatsby-plugin-emotion": "^4.1.22",
@@ -51,6 +52,7 @@
     "typeface-parisienne": "^1.1.13",
     "typeface-vollkorn": "^1.1.13",
     "typography-theme-doelger": "^0.16.19",
+    "unfetch": "^4.2.0",
     "yup": "^0.32.9"
   },
   "keywords": [

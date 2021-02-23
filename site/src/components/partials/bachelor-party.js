@@ -2,7 +2,7 @@
 import { jsx, Styled } from 'theme-ui'
 import React from 'react'
 
-export default function Party() {
+export default function Party({ children, content }) {
   return (
     <React.Fragment>
       <Styled.div sx={{ textAlign: `center`, pt: `10vh` }}>
@@ -58,6 +58,8 @@ export default function Party() {
           RSVP
         </a>
       </Styled.div>
+      {children}
+      {content}
     </React.Fragment>
   )
 }

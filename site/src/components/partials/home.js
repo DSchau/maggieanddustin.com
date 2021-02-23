@@ -6,7 +6,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import Countdown from '../countdown'
 import Seperator from '../seperator'
 
-export default function Home() {
+export default function Home({ children, content }) {
   const data = useStaticQuery(graphql`
     {
       site {
@@ -83,6 +83,8 @@ export default function Home() {
           </Link>
         )}
       </Styled.div>
+      {children}
+      {content}
     </React.Fragment>
   )
 }

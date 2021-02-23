@@ -3,7 +3,7 @@ import { jsx, Styled } from 'theme-ui'
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-export default function Venue({ children }) {
+export default function Venue({ children, content }) {
   const data = useStaticQuery(graphql`
     {
       site {
@@ -67,6 +67,7 @@ export default function Venue({ children }) {
         </a>
       </Styled.div>
       {children}
+      {content}
     </React.Fragment>
   )
 }
