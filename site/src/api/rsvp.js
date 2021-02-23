@@ -38,6 +38,10 @@ const lookup = async (req, res, { db }) => {
   return {
     statusCode: 200,
     guests: guests.map(guest => guest.fields),
+    debug: {
+      query: req.query,
+      req: Object.keys(req)
+    }
   }
 }
 
