@@ -46,7 +46,7 @@ const lookup = async (req, res, { db, body }) => {
 const update = async (req, res, { db, body }) => {
   const guests = await getRecordsByName(db)(body.name)
 
-  await base('Guests').update(
+  await db('Guests').update(
     guests.map(guest => {
       return {
         id: guest.id,
