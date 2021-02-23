@@ -11,7 +11,7 @@
     "@mdx-js/react": "^1.6.19",
     "@reach/skip-nav": "^0.11.2",
     "@theme-ui/typography": "^0.3.0",
-    "airtable": "^0.10.1",
+    "airtable": "0.8.1",
     "autosize": "^4.0.2",
     "gatsby": "^2.32.4",
     "gatsby-image": "^2.10.0",
