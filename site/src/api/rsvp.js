@@ -51,7 +51,7 @@ const update = async (req, res, { db, body }) => {
       return {
         id: guest.id,
         fields: {
-          RSVP: body.attending,
+          Attending: body.attending,
           Phone: body.phone,
           Email: body.email
         }
