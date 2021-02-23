@@ -1,5 +1,6 @@
 const yup = require('yup')
-const Airtable = require('airtable')
+const Airtable = require('airtable');
+const { base } = require('airtable');
 
 const formSchema = yup.object().shape({
   attending: yup.bool(),
@@ -7,7 +8,7 @@ const formSchema = yup.object().shape({
   name: yup.string().required(),
   guests: yup.string(),
   phone: yup.string().matches(/^[\d-\(\)\.]+$/),
-  method: yup.string().oneOf(['lookup', 'update'])
+  method: yup.string().oneOf(['lookup', 'update']).required()
 })
 
 Airtable.configure({
@@ -26,8 +27,8 @@ const getRecordsByName = db => {
   }
 }
 
-const lookup = async (req, res, { db }) => {
-  const guests = await getRecordsByName(db)('Maggie Alcorn')
+const lookup = async (req, res, { db, body }) => {
+  const guests = await getRecordsByName(db)(body.name)
 
   if (guests.length === 0) {
     return {
@@ -42,8 +43,21 @@ const lookup = async (req, res, { db }) => {
   }
 }
 
-const update = async (req, res, { db }) => {
+const update = async (req, res, { db, body }) => {
   const guests = await getRecordsByName(db)(body.name)
+
+  await base('Guests').update(
+    guests.map(guest => {
+      return {
+        id: guest.id,
+        fields: {
+          RSVP: body.attending,
+          Phone: body.phone,
+          Email: body.email
+        }
+      }
+    })
+  )
 
   return {
     statusCode: 200,
