@@ -1,24 +1,55 @@
 const yup = require('yup')
-const getFirebase = () => ({ firestore: () => null }) // require('./lib/firebase')
+const Airtable = require('airtable')
 
 const formSchema = yup.object().shape({
   attending: yup.bool(),
   email: yup.string(),
   name: yup.string().required(),
+  guests: yup.string(),
   phone: yup.string().matches(/^[\d-\(\)\.]+$/)
 })
 
-const lookup = async (db) => {
-  return {
-    statusCode: 200,
-    message: 'Looking up'
+Airtable.configure({
+  endpointUrl: 'https://api.airtable.com',
+  apiKey: process.env.GATSBY_AIRTABLE_KEY
+});
+
+const db = Airtable.base('appoCJPQnx8X2UV2A');
+
+const getRecordsByName = db => {
+  return name => {
+    return db('Guests').select({
+      maxRecords: 1,
+      filterByFormula: `OR({Name} = '${name}', FIND('${name}', {Guests}) > 0)`
+    }).firstPage()
   }
 }
 
-const write = async (db) => {
+const lookup = async (req, res, { db }) => {
+  const guests = await getRecordsByName(db)('Maggie Alcorn')
+
+  if (guests.length === 0) {
+    return {
+      statusCode: 200,
+      message: 'Could not retrieve your record!'
+    }
+  }
+
   return {
     statusCode: 200,
-    message: 'Writing'
+    guests: guests.map(guest => guest.fields),
+  }
+}
+
+const write = async (req, res, { db }) => {
+  const body = await formSchema.validate(req.body)
+
+  const guests = await getRecordsByName(db)(body.name)
+
+  return {
+    statusCode: 200,
+    sucess: true,
+    guests: guests.map(guest => guest.fields)
   }
 }
 
@@ -37,9 +68,7 @@ const rsvpHandler = async (req, res) => {
       })
     }
     
-    const db = getFirebase().firestore()
-    
-    const json = await handler(db)
+    const json = await handler(req, res, { db })
 
     return res.json(json)
   } catch (e) {
@@ -48,7 +77,7 @@ const rsvpHandler = async (req, res) => {
       message: e,
       stack: e.stack,
       debug: {
-        GATSBY_FIREBASE_CREDENTIALS
+        body: req.body
       }
     })
   }

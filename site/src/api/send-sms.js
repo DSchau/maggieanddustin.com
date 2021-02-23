@@ -36,8 +36,6 @@ const sendSMS = async (req, res) => {
       message: e
     })
   }
-
-
 }
 
 module.exports = sendSMS
