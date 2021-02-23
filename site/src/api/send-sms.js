@@ -8,7 +8,7 @@ const bodySchema = yup.object().shape({
   to: yup.string().required()
 })
 
-const message = async (req, res) => {
+const sendSMS = async (req, res) => {
   if (req.method !== 'POST') {
     return req.json({
       statusCode: 405,
@@ -20,7 +20,7 @@ const message = async (req, res) => {
      * TODO: validate auth/bearer tokens
      */
     const { message, to } = await bodySchema.validate(req.body)
-    await client.messages.create({
+    const { sid } = await client.messages.create({
       body: message,
       messagingServiceSid: process.env.GATSBY_TWILIO_MESSAGING_SID,
       to
@@ -28,20 +28,16 @@ const message = async (req, res) => {
 
     return res.json({
       success: true,
-      body: req.body,
-      bodyDebug: {
-        type: typeof req.body,
-        keys: Object.keys(req)
-      }
+      sid
     })
   } catch (e) {
     return res.json({
       statusCode: 500,
-      message: e.stack
+      message: e
     })
   }
 
 
 }
 
-module.exports = message
+module.exports = sendSMS
