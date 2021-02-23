@@ -6,7 +6,8 @@ const formSchema = yup.object().shape({
   email: yup.string(),
   name: yup.string().required(),
   guests: yup.string(),
-  phone: yup.string().matches(/^[\d-\(\)\.]+$/)
+  phone: yup.string().matches(/^[\d-\(\)\.]+$/),
+  method: yup.string().oneOf(['lookup', 'update'])
 })
 
 Airtable.configure({
@@ -38,22 +39,10 @@ const lookup = async (req, res, { db }) => {
   return {
     statusCode: 200,
     guests: guests.map(guest => guest.fields),
-    debug: {
-      query: req.query,
-      req: Object.keys(req).reduce((merged, key) => {
-        const value = req[key]
-        if (typeof value === 'string') {
-          merged[key] = value
-        }
-        return merged
-      }, {})
-    }
   }
 }
 
-const write = async (req, res, { db }) => {
-  const body = await formSchema.validate(req.body)
-
+const update = async (req, res, { db }) => {
   const guests = await getRecordsByName(db)(body.name)
 
   return {
@@ -64,21 +53,24 @@ const write = async (req, res, { db }) => {
 }
 
 const handlers = {
-  GET: lookup,
-  POST: write
+  lookup,
+  update
 }
 
 const rsvpHandler = async (req, res) => {
   try {
-    const handler = handlers[req.method]
-    if (!handler) {
+    if (req.method !== 'POST') {
       return res.json({
         statusCode: 405,
         message: `${req.method} not supported`
       })
     }
+
+    const body = await formSchema.validate(req.body)
+
+    const handler = handlers[body.method]
     
-    const json = await handler(req, res, { db })
+    const json = await handler(req, res, { db, body })
 
     return res.json(json)
   } catch (e) {
