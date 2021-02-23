@@ -13,6 +13,7 @@
     "@theme-ui/typography": "^0.3.0",
     "autosize": "^4.0.2",
     "firebase": "^8.2.9",
+    "firebase-admin": "^9.5.0",
     "gatsby": "^2.32.4",
     "gatsby-image": "^2.10.0",
     "gatsby-plugin-emotion": "^4.1.22",
