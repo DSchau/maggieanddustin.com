@@ -1,5 +1,5 @@
 const yup = require('yup')
-const getFirebase = require('./lib/firebase')
+const getFirebase = () => ({ firestore: () => null }) // require('./lib/firebase')
 
 const formSchema = yup.object().shape({
   attending: yup.bool(),
