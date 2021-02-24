@@ -82,6 +82,8 @@ function RSVP({ children, content }) {
   const [step, setStep] = useState('INITIAL_NAME')
   return (
     <React.Fragment>
+      {children}
+      {content}
       <div
         sx={{
           maxWidth: ['100%', `60%`],
@@ -167,8 +169,6 @@ function RSVP({ children, content }) {
           />
         )}
       </div>
-      {children}
-      {content}
     </React.Fragment>
   )
 }
