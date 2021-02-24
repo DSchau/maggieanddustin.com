@@ -55,8 +55,8 @@ const formHandler = (step, actions) => {
           // this is naive
           // presumes that one guest attending means they all are
           attending: values.guests.some(guest => guest.attending),
-          email: values.email,
           method: 'update',
+          ...(values.email ? { email: values.email } : {}),
           ...(values.phone ? { phone: values.phone } : {})
         })
 
