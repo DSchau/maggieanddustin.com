@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 import Page from '../../components/page'
 import Trip from '../../components/trip'
 
-export default ({ data }) => {
+export default function ContentfulTrip() {
   return (
     <Page {...data.trip}>
       <Trip {...data.trip} />
