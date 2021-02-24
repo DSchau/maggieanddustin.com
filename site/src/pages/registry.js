@@ -5,7 +5,7 @@ import { SkipNavContent } from '@reach/skip-nav'
 
 import SEO from '../components/seo'
 
-export default () => {
+const Registry = () => {
   const embed = useRef(null)
   useEffect(() => {
     if (embed.current !== null) {
@@ -43,3 +43,5 @@ export default () => {
     </React.Fragment>
   )
 }
+
+export default Registry

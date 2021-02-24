@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 
 import Page from '../components/page'
 
-export default ({ data }) => <Page {...data.page} />
+const ContentfulPage = ({ data }) => <Page {...data.page} />
 
 export const pageQuery = graphql`
   query PageBySlug($id: String!) {
@@ -85,3 +85,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default ContentfulPage
