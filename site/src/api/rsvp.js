@@ -38,8 +38,8 @@ const toName = slug => {
 }
 
 const getName = (guests, fallback) => {
-  const record = guests.find(guest => guest.Name)
-  return record ? record.Name : fallback
+  const record = guests.find(guest => guest.fields && guest.fields.Name)
+  return record ? record.fields.Name : fallback
 }
 
 const lookup = async (req, res, { db, body }) => {
