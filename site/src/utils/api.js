@@ -10,4 +10,5 @@ export const rsvp = body => {
     },
     body: JSON.stringify(body)
   })
+    .then(res => res.json())
 }

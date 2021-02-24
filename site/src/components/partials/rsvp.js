@@ -17,34 +17,32 @@ const formSchema = yup.object().shape({
   ),
 })
 
-rsvp({
-  name: 'Dustin Schau',
-  method: 'lookup'
-})
-
 const formHandler = (step, actions) => {
   switch (step) {
     case 'INITIAL_NAME':
       return async (values, formik) => {
         formik.setSubmitting(true)
-        await new Promise(resolve => setTimeout(resolve, 2500))
-        // TODO: look up guest/attending status
+        const data = await rsvp({
+          name: values.name,
+          method: 'lookup'
+        })
+
+        const guests = data.guests.reduce((merged, guest) => {
+          return merged.concat([
+            {
+              name: guest.Name,
+              attending: guest.Attending || false
+            }
+          ].concat(guest.Guests ? guest.Guests.split(/,\s*/).map(additional => ({
+            name: additional,
+            attending: guest.Attending || false
+          })): []))
+        }, [])
+        console.log(guests)
+        // TODO: error state?
         formik.setValues({
           ...values,
-          guests: [
-            {
-              name: values.name,
-              attending: false, // TODO: lookup
-            },
-            {
-              name: `Cindy Rust`,
-              attending: false,
-            },
-            {
-              name: `Randy Rust`,
-              attending: false,
-            },
-          ],
+          guests
         })
         actions.setStep('GUEST_AND_RSVP')
         formik.setSubmitting(false)
