@@ -39,7 +39,12 @@ export const pageQuery = graphql`
             description
             localFile {
               childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH, width: 1200, quality: 80, formats: [AUTO, WEBP, AVIF])
+                gatsbyImageData(
+                  layout: FULL_WIDTH
+                  width: 1200
+                  quality: 80
+                  formats: [AUTO, WEBP, AVIF]
+                )
               }
             }
           }

@@ -46,11 +46,7 @@ function TripListing({ data }) {
           </Styled.div>
           <Wrapper sx={{ clear: `both` }}>
             {trips.nodes.map(post => (
-              <Trip
-                key={post.path}
-                preview={true}
-                {...post}
-              />
+              <Trip key={post.path} preview={true} {...post} />
             ))}
           </Wrapper>
         </Styled.div>

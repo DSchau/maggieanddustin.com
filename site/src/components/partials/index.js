@@ -5,11 +5,11 @@ import Details from './details'
 import RSVP from './rsvp'
 
 const lookup = {
-  'index': Home,
+  index: Home,
   'bachelor-party': BachelorParty,
   proposal: Proposal,
   details: Details,
-  'rsvp': RSVP
+  rsvp: RSVP,
 }
 
 export default path => {

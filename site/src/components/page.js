@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import React from 'react'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { SkipNavContent } from '@reach/skip-nav'
 
 import Gallery from '../components/gallery'
@@ -50,15 +50,11 @@ function Page({
           <Timeline key={timeline.id} {...timeline} />
         ))}
       {page.section &&
-        page.section.map(section => (
-          <Section key={section.id} {...section} />
-        ))}
+        page.section.map(section => <Section key={section.id} {...section} />)}
       {page.party &&
         page.party.map(party => <WeddingParty key={party.id} {...party} />)}
       {page.gallery &&
-        page.gallery.map(gallery => (
-          <Gallery key={gallery.id} {...gallery} />
-        ))}
+        page.gallery.map(gallery => <Gallery key={gallery.id} {...gallery} />)}
     </React.Fragment>
   )
   return (
@@ -88,7 +84,9 @@ function Page({
             />
           ))}
       <SkipNavContent>
-        {Partial ? <Partial children={children} content={content} /> : (
+        {Partial ? (
+          <Partial children={children} content={content} />
+        ) : (
           <React.Fragment>
             {children}
             {content}

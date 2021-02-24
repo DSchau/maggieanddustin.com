@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import { graphql } from 'gatsby'
-import { getImage } from "gatsby-plugin-image"
+import { getImage } from 'gatsby-plugin-image'
 
 import Image from './image'
 import Masonry from './masonry'
@@ -60,7 +60,11 @@ export const galleryFragment = graphql`
       localFile {
         id
         childImageSharp {
-          gatsbyImageData(width: 320, transformOptions: {cropFocus: NORTH}, formats: [AUTO, WEBP, AVIF])
+          gatsbyImageData(
+            width: 320
+            transformOptions: { cropFocus: NORTH }
+            formats: [AUTO, WEBP, AVIF]
+          )
         }
       }
     }

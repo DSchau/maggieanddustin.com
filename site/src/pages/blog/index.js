@@ -46,11 +46,7 @@ function BlogListing({ data }) {
           </Styled.div>
           <Wrapper sx={{ clear: `both` }}>
             {posts.nodes.map(post => (
-              <BlogPost
-                key={post.fields.slug}
-                {...post}
-                slug={post.path}
-              />
+              <BlogPost key={post.fields.slug} {...post} slug={post.path} />
             ))}
           </Wrapper>
         </Styled.div>

@@ -42,7 +42,7 @@ function BlogPostPage({ data }) {
 }
 
 export const query = graphql`
-  query ($id: String) {
+  query($id: String) {
     post: contentfulBlogPost(id: { eq: $id }) {
       ...BlogPostDetails
       gallery {
@@ -56,6 +56,7 @@ export const query = graphql`
         }
       }
     }
-}`
+  }
+`
 
 export default BlogPostPage

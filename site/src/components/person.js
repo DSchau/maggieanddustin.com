@@ -33,7 +33,11 @@ export const personFragment = graphql`
     image {
       localFile {
         childImageSharp {
-          gatsbyImageData(layout: FIXED, width: 150, formats: [AUTO, WEBP, AVIF])
+          gatsbyImageData(
+            layout: FIXED
+            width: 150
+            formats: [AUTO, WEBP, AVIF]
+          )
         }
       }
     }

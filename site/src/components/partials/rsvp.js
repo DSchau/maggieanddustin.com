@@ -24,24 +24,30 @@ const formHandler = (step, actions) => {
         formik.setSubmitting(true)
         const data = await rsvp({
           name: values.name,
-          method: 'lookup'
+          method: 'lookup',
         })
 
         const guests = (data.guests || []).reduce((merged, guest) => {
-          return merged.concat([
-            {
-              name: guest.Name,
-              attending: guest.Attending || false
-            }
-          ].concat(guest.Guests ? guest.Guests.split(/,\s*/).map(additional => ({
-            name: additional.trim(),
-            attending: guest.Attending || false
-          })): []))
+          return merged.concat(
+            [
+              {
+                name: guest.Name,
+                attending: guest.Attending || false,
+              },
+            ].concat(
+              guest.Guests
+                ? guest.Guests.split(/,\s*/).map(additional => ({
+                    name: additional.trim(),
+                    attending: guest.Attending || false,
+                  }))
+                : []
+            )
+          )
         }, [])
         // TODO: error state?
         formik.setValues({
           ...values,
-          guests
+          guests,
         })
         actions.setStep('GUEST_AND_RSVP')
         formik.setSubmitting(false)
@@ -57,7 +63,7 @@ const formHandler = (step, actions) => {
           attending: values.guests.some(guest => guest.attending),
           method: 'update',
           ...(values.email ? { email: values.email } : {}),
-          ...(values.phone ? { phone: values.phone } : {})
+          ...(values.phone ? { phone: values.phone } : {}),
         })
 
         actions.setStep('SUBMITTED')
@@ -113,10 +119,13 @@ function RSVP({ children, content }) {
             }) => (
               <form onSubmit={handleSubmit} sx={{ width: `100%` }}>
                 {step === `INITIAL_NAME` && (
-                  <Label htmlFor="name"                  sx={{
-                    width: ['100%', `80%`, `50%`],
-                    mr: 2
-                  }}>
+                  <Label
+                    htmlFor="name"
+                    sx={{
+                      width: ['100%', `80%`, `50%`],
+                      mr: 2,
+                    }}
+                  >
                     Full name
                     <Input
                       type="text"
@@ -128,7 +137,7 @@ function RSVP({ children, content }) {
                       value={values.name}
                       sx={{
                         padding: 2,
-                        margin: 1
+                        margin: 1,
                       }}
                     />
                   </Label>
@@ -156,7 +165,10 @@ function RSVP({ children, content }) {
                       </React.Fragment>
                     ))}
                     <Label htmlFor="phone">
-                      Phone # <small>(We'll text you updates, if you provide this!)</small>
+                      Phone #{' '}
+                      <small>
+                        (We'll text you updates, if you provide this!)
+                      </small>
                       <Input
                         name="phone"
                         id="phone"
@@ -168,7 +180,17 @@ function RSVP({ children, content }) {
                   </React.Fragment>
                 )}
 
-                <Button type="submit" sx={{ display: `inline-block`, fontSize: 3, width: `auto`, padding: 2, margin: 1 }} disabled={isSubmitting}>
+                <Button
+                  type="submit"
+                  sx={{
+                    display: `inline-block`,
+                    fontSize: 3,
+                    width: `auto`,
+                    padding: 2,
+                    margin: 1,
+                  }}
+                  disabled={isSubmitting}
+                >
                   {getButtonText(step, { isSubmitting })}
                 </Button>
               </form>

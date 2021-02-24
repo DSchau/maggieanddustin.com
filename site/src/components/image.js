@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, useColorMode } from 'theme-ui'
 import { graphql } from 'gatsby'
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
@@ -36,7 +36,11 @@ function Image({ zoom, isZoomed = false, width = '75vw', ...props }) {
 export const imageFragment = graphql`
   fragment LocalImageFluid on File {
     childImageSharp {
-      gatsbyImageData(layout: FULL_WIDTH, width: 600, formats: [AUTO, WEBP, AVIF])
+      gatsbyImageData(
+        layout: FULL_WIDTH
+        width: 600
+        formats: [AUTO, WEBP, AVIF]
+      )
     }
   }
 `

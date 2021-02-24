@@ -44,19 +44,25 @@ const options = ({ lang = 'en-US', imgStyle = {}, zoom } = {}) => ({
       )
     },
     [BLOCKS.PARAGRAPH]: (_, children) => (
-      <Styled.p sx={{ lineHeight: 1.6 }}>{
-        Array.isArray(children) ? children.map(child => {
-          if (typeof child === 'string') {
-            const expr = /~(.+)~/g
-            const matches = child.match(expr) || []
-            return matches.reduce((merged, part) => {
-              const [uno, dos] = merged.split(part)
-              return [uno, <del>{part.replace(expr, (_, match) => match)}</del>, dos]
-            }, child)
-          }
-          return child
-        }) : children
-      }</Styled.p>
+      <Styled.p sx={{ lineHeight: 1.6 }}>
+        {Array.isArray(children)
+          ? children.map(child => {
+              if (typeof child === 'string') {
+                const expr = /~(.+)~/g
+                const matches = child.match(expr) || []
+                return matches.reduce((merged, part) => {
+                  const [uno, dos] = merged.split(part)
+                  return [
+                    uno,
+                    <del>{part.replace(expr, (_, match) => match)}</del>,
+                    dos,
+                  ]
+                }, child)
+              }
+              return child
+            })
+          : children}
+      </Styled.p>
     ),
     [INLINES.HYPERLINK]: (node, children) => {
       const { uri } = node.data

@@ -14,8 +14,8 @@ function Button(props) {
         mb: 2,
         width: '100%',
         ':hover, :active': {
-          borderColor: `accent`
-        } 
+          borderColor: `accent`,
+        },
       }}
       {...props}
     />
