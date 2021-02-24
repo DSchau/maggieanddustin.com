@@ -80,6 +80,7 @@ const update = async (req, res, { db, body }) => {
   return {
     statusCode: 200,
     sucess: true,
+    slug: slugify(getName(guests, body.name)),
     guests: guests.map(guest => guest.fields),
   }
 }

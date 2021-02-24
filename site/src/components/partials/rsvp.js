@@ -69,7 +69,7 @@ const formHandler = (step, actions) => {
 
         actions.setStep('SUBMITTED')
         formik.setSubmitting(false)
-        navigate(`/rsvp/${slug}`)
+        navigate(`/rsvp/${slug}/`)
       }
     default:
       return () => {}
