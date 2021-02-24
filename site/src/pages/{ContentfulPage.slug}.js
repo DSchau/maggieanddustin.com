@@ -3,7 +3,9 @@ import { graphql } from 'gatsby'
 
 import Page from '../components/page'
 
-export default ({ data }) => <Page {...data.page} />
+export default function ContentfulPage({ data }) {
+  return <Page {...data.page} />
+}
 
 export const pageQuery = graphql`
   query PageBySlug($id: String!) {
@@ -39,7 +41,7 @@ export const pageQuery = graphql`
             description
             localFile {
               childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH, width: 1200, quality: 80, formats: [AUTO, WEBP, AVIF])
+                gatsbyImageData(layout: FULL_WIDTH, width: 1200, quality: 80)
               }
             }
           }

@@ -5,7 +5,7 @@ import { SkipNavContent } from '@reach/skip-nav'
 
 import SEO from '../components/seo'
 
-export default () => {
+export default function Registry() {
   const embed = useRef(null)
   useEffect(() => {
     if (embed.current !== null) {

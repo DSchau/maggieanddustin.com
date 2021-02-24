@@ -72,7 +72,7 @@ export const tripFragment = graphql`
             description
             localFile {
               childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED, width: 1200, formats: [AUTO, WEBP, AVIF])
+                gatsbyImageData(layout: CONSTRAINED, width: 1200)
               }
             }
           }
