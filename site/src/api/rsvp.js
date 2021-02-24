@@ -37,6 +37,11 @@ const toName = slug => {
   return slug.split('-').map(part => part.slice(0, 1).toUpperCase() + part.slice(1)).join(' ')
 }
 
+const getName = (guests, fallback) => {
+  const record = guests.find(guest => guest.name)
+  return record ? record.name : fallback
+}
+
 const lookup = async (req, res, { db, body }) => {
   const name = body.slug ? toName(body.slug) : body.name
   const guests = await getRecordsByName(db)(name)
@@ -48,9 +53,10 @@ const lookup = async (req, res, { db, body }) => {
     }
   }
 
+
   return {
     statusCode: 200,
-    slug: slugify(guests[0].name),
+    slug: slugify(getName(guests, body.name)),
     guests: guests.map(guest => guest.fields),
   }
 }
