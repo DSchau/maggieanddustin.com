@@ -5,13 +5,17 @@ function Button(props) {
   return (
     <button
       sx={{
-        backgroundColor: 'primary',
-        color: `text`,
+        backgroundColor: 'text',
+        color: `background`,
+        border: `2px solid transparent`,
         fontSize: 5,
         padding: 3,
         mt: 2,
         mb: 2,
         width: '100%',
+        ':hover, :active': {
+          borderColor: `accent`
+        } 
       }}
       {...props}
     />

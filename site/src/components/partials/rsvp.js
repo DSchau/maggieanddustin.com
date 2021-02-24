@@ -27,7 +27,7 @@ const formHandler = (step, actions) => {
           method: 'lookup'
         })
 
-        const guests = data.guests.reduce((merged, guest) => {
+        const guests = (data.guests || []).reduce((merged, guest) => {
           return merged.concat([
             {
               name: guest.Name,
@@ -71,7 +71,7 @@ const formHandler = (step, actions) => {
 const getButtonText = (step, { isSubmitting }) => {
   switch (step) {
     case 'INITIAL_NAME':
-      return isSubmitting ? 'Finding...' : 'Find your RSVP'
+      return isSubmitting ? 'Finding...' : 'Continue'
     case 'GUEST_AND_RSVP':
       return isSubmitting ? 'Updating RSVP...' : 'Submit'
   }
@@ -91,7 +91,6 @@ function RSVP({ children, content }) {
           padding: [0, `1rem`],
         }}
       >
-        <Styled.h1>Let us know if you're coming!</Styled.h1>
         {step === 'SUBMITTED' ? (
           <Styled.h2>Got it. Thanks!</Styled.h2>
         ) : (
@@ -112,17 +111,25 @@ function RSVP({ children, content }) {
               setFieldValue,
               values,
             }) => (
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} sx={{ width: `100%` }}>
                 {step === `INITIAL_NAME` && (
-                  <Label htmlFor="name">
+                  <Label htmlFor="name"                  sx={{
+                    width: ['100%', `80%`, `50%`],
+                    mr: 2
+                  }}>
                     Full name
                     <Input
                       type="text"
                       name="name"
                       id="name"
+                      placeholder="Full name, like John Doe"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.name}
+                      sx={{
+                        padding: 2,
+                        margin: 1
+                      }}
                     />
                   </Label>
                 )}
@@ -149,7 +156,7 @@ function RSVP({ children, content }) {
                       </React.Fragment>
                     ))}
                     <Label htmlFor="phone">
-                      Phone # (We'll text you updates, if you provide this!)
+                      Phone # <small>(We'll text you updates, if you provide this!)</small>
                       <Input
                         name="phone"
                         id="phone"
@@ -161,7 +168,7 @@ function RSVP({ children, content }) {
                   </React.Fragment>
                 )}
 
-                <Button type="submit" disabled={isSubmitting}>
+                <Button type="submit" sx={{ display: `inline-block`, fontSize: 3, width: `auto`, padding: 2, margin: 1 }} disabled={isSubmitting}>
                   {getButtonText(step, { isSubmitting })}
                 </Button>
               </form>
