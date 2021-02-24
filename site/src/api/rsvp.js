@@ -1,6 +1,5 @@
 const yup = require('yup')
 const Airtable = require('airtable');
-const { base } = require('airtable');
 
 const formSchema = yup.object().shape({
   attending: yup.bool(),
