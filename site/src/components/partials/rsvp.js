@@ -87,7 +87,7 @@ const getButtonText = (step, { isSubmitting }) => {
 
 // TODO: show errors
 function RSVP({ children, content }) {
-  const [step, setStep] = useState('SUBMITTED')
+  const [step, setStep] = useState('INITIAL_NAME')
   return (
     <React.Fragment>
       {children}
