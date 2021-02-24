@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import React, { useState } from 'react'
+import { navigate } from 'gatsby'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 
@@ -56,7 +57,7 @@ const formHandler = (step, actions) => {
       return async (values, formik) => {
         formik.setSubmitting(true)
 
-        await rsvp({
+        const { slug } = await rsvp({
           name: values.name,
           // this is naive
           // presumes that one guest attending means they all are
@@ -68,6 +69,7 @@ const formHandler = (step, actions) => {
 
         actions.setStep('SUBMITTED')
         formik.setSubmitting(false)
+        navigate(`/rsvp/${slug}`)
       }
     default:
       return () => {}
@@ -85,7 +87,7 @@ const getButtonText = (step, { isSubmitting }) => {
 
 // TODO: show errors
 function RSVP({ children, content }) {
-  const [step, setStep] = useState('INITIAL_NAME')
+  const [step, setStep] = useState('SUBMITTED')
   return (
     <React.Fragment>
       {children}
