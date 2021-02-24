@@ -52,7 +52,9 @@ const formHandler = (step, actions) => {
         
         await rsvp({
           name: values.name,
-          attending: values.guests.find(guest => guest.attending),
+          // this is naive
+          // presumes that one guest attending means they all are
+          attending: values.guests.some(guest => guest.attending),
           phone: values.phone,
           email: values.email,
           method: 'update'
