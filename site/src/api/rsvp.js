@@ -31,7 +31,7 @@ const lookup = async (req, res, { db, body }) => {
 
   if (guests.length === 0) {
     return {
-      statusCode: 200,
+      statusCode: 404,
       message: 'Could not retrieve your record!'
     }
   }
