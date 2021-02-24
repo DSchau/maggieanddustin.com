@@ -34,11 +34,10 @@ const formHandler = (step, actions) => {
               attending: guest.Attending || false
             }
           ].concat(guest.Guests ? guest.Guests.split(/,\s*/).map(additional => ({
-            name: additional,
+            name: additional.trim(),
             attending: guest.Attending || false
           })): []))
         }, [])
-        console.log(guests)
         // TODO: error state?
         formik.setValues({
           ...values,
@@ -50,15 +49,13 @@ const formHandler = (step, actions) => {
     case 'GUEST_AND_RSVP':
       return async (values, formik) => {
         formik.setSubmitting(true)
-        await new Promise(resolve => setTimeout(resolve, 2500))
-        // await api({
-        //   ...values,
-        //   rsvps: [values.name, values.guest].filter(Boolean).map(name => ({
-        //     name,
-        //     attending: values.attending,
-        //   })),
-        // })
-        // TODO: submit form
+        
+        await rsvp({
+          name: values.name,
+          attending: values.guests.find(guest => guest.attending),
+          method: 'update'
+        })
+
         actions.setStep('SUBMITTED')
         formik.setSubmitting(false)
       }
