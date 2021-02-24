@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Page from '../components/page'
 
 export default function ContentfulPage({ data }) {
-  return  <Page {...data.page} />
+  return <Page {...data.page} />
 }
 
 export const pageQuery = graphql`

@@ -1,0 +1,2 @@
+- [ ] Add error handling to form
+  - > Hm... we can't find your name. Make sure you enter your name exactly as it appears on your invitation.
