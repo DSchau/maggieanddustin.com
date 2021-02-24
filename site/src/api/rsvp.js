@@ -46,15 +46,23 @@ const lookup = async (req, res, { db, body }) => {
 const update = async (req, res, { db, body }) => {
   const guests = await getRecordsByName(db)(body.name)
 
+  const fields = [
+    ['Attending', body.attending],
+    ['Phone', body.phone],
+    ['Email', body.email]
+  ]
+    .reduce((merged, [name, value]) => {
+      if (value) {
+        merged[name] = value
+      }
+      return merged
+    })
+
   await db('Guests').update(
     guests.map(guest => {
       return {
         id: guest.id,
-        fields: {
-          Attending: body.attending,
-          Phone: body.phone,
-          Email: body.email
-        }
+        fields
       }
     })
   )
