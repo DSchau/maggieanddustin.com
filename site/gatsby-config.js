@@ -27,7 +27,14 @@ module.exports = {
     `gatsby-transformer-yaml`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`, `avif`],
+        }
+      }
+    },
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-sitemap`,
     {
