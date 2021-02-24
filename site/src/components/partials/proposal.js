@@ -2,7 +2,7 @@
 import { jsx, Styled } from 'theme-ui'
 import React from 'react'
 
-export default function Proposal({ children }) {
+export default function Proposal({ children, content }) {
   return (
     <React.Fragment>
       <Styled.div
@@ -34,6 +34,7 @@ export default function Proposal({ children }) {
         </Styled.h2>
       </Styled.div>
       {children}
+      {content}
     </React.Fragment>
   )
 }

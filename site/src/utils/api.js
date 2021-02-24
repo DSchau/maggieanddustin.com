@@ -1,13 +1,14 @@
-const API_URL = `https://ej5di6knne.execute-api.us-east-1.amazonaws.com/production`
+import fetch from 'unfetch'
 
-export const api = body => {
-  return fetch(API_URL, {
+const BASE = `/functions`
+
+export const rsvp = body => {
+  return fetch(`${BASE}/rsvp${process.env.NODE_ENV === `production` ? '.js' : ''}`, {
     method: `POST`,
-    body: JSON.stringify(body),
-  }).then(res => {
-    if (res.ok) {
-      return res.json()
-    }
-    return res
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
   })
+    .then(res => res.json())
 }

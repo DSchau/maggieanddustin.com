@@ -43,6 +43,24 @@ function Page({
     return merged
   }, {})
   const Partial = partials(slug)
+  const content = (
+    <React.Fragment>
+      {page.timeline &&
+        page.timeline.map(timeline => (
+          <Timeline key={timeline.id} {...timeline} />
+        ))}
+      {page.section &&
+        page.section.map(section => (
+          <Section key={section.id} {...section} />
+        ))}
+      {page.party &&
+        page.party.map(party => <WeddingParty key={party.id} {...party} />)}
+      {page.gallery &&
+        page.gallery.map(gallery => (
+          <Gallery key={gallery.id} {...gallery} />
+        ))}
+    </React.Fragment>
+  )
   return (
     <React.Fragment>
       <SEO
@@ -70,22 +88,12 @@ function Page({
             />
           ))}
       <SkipNavContent>
-        {Partial && <Partial />}
-        {children}
-        {page.timeline &&
-          page.timeline.map(timeline => (
-            <Timeline key={timeline.id} {...timeline} />
-          ))}
-        {page.section &&
-          page.section.map(section => (
-            <Section key={section.id} {...section} />
-          ))}
-        {page.party &&
-          page.party.map(party => <WeddingParty key={party.id} {...party} />)}
-        {page.gallery &&
-          page.gallery.map(gallery => (
-            <Gallery key={gallery.id} {...gallery} />
-          ))}
+        {Partial ? <Partial children={children} content={content} /> : (
+          <React.Fragment>
+            {children}
+            {content}
+          </React.Fragment>
+        )}
       </SkipNavContent>
     </React.Fragment>
   )
