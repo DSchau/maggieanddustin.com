@@ -53,6 +53,8 @@ const formHandler = (step, actions) => {
         await rsvp({
           name: values.name,
           attending: values.guests.find(guest => guest.attending),
+          phone: values.phone,
+          email: values.email,
           method: 'update'
         })
 
@@ -92,8 +94,8 @@ function RSVP({ children, content }) {
           <Formik
             initialValues={{
               email: '',
+              phone: '',
               name: '',
-              comment: '',
               guests: [],
             }}
             validationSchema={formSchema}
@@ -142,14 +144,14 @@ function RSVP({ children, content }) {
                         </Label>
                       </React.Fragment>
                     ))}
-                    <Label htmlFor="comment">
-                      Comment (optional)
-                      <Textarea
-                        name="comment"
-                        id="comment"
+                    <Label htmlFor="phone">
+                      Phone # (We'll text you updates, if you provide this!)
+                      <Input
+                        name="phone"
+                        id="phone"
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        value={values.comment}
+                        value={values.phone}
                       />
                     </Label>
                   </React.Fragment>
