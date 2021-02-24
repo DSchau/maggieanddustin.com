@@ -23,7 +23,7 @@ function GoldenTicket({ guests = [] }) {
       <p sx={{ textTransform: 'uppercase', fontFamily: 'serif', fontSize: 20 }}>Greetings to the lucky finder of this golden ticket from Mr. Dustin Schau and (the future) Mrs. Maggie Schau.</p>
       {guests.map(guest => {
         return (
-          <Styled.h3 key={guest.name}>{guest.name}</Styled.h3>
+          <Styled.h3 key={guest.Name}>{guest.Name}</Styled.h3>
         )
       })}
       <p sx={{ fontStyle: 'italic', fontFamily: 'serif' }}>We can't wait to see you and celebrate with you!</p>
