@@ -49,15 +49,15 @@ const formHandler = (step, actions) => {
     case 'GUEST_AND_RSVP':
       return async (values, formik) => {
         formik.setSubmitting(true)
-        
+
         await rsvp({
           name: values.name,
           // this is naive
           // presumes that one guest attending means they all are
           attending: values.guests.some(guest => guest.attending),
-          phone: values.phone,
           email: values.email,
-          method: 'update'
+          method: 'update',
+          ...(values.phone ? { phone: values.phone } : {})
         })
 
         actions.setStep('SUBMITTED')
