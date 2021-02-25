@@ -3,6 +3,7 @@ import { jsx, Styled } from 'theme-ui'
 import React from 'react'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { SkipNavContent } from '@reach/skip-nav'
+import { GoChevronDown } from 'react-icons/go'
 
 import Gallery from '../components/gallery'
 import Timeline from '../components/timeline'
@@ -84,6 +85,7 @@ function Page({
                 alt={img.hero.title || img.hero.description}
                 image={getImage(img.hero.localFile)}
               />
+              <Styled.a href="#reach-skip-nav" sx={{ color: 'inherit', textDecoration: 'none' }}><GoChevronDown size={48} sx={{ color: 'background', position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)' }} /></Styled.a>
             </Styled.div>
           ))}
       <SkipNavContent>
