@@ -10,9 +10,6 @@
     "build": "yarn workspace @maggie-and-dustin/wedding run build",
     "start": "yarn workspace @maggie-and-dustin/wedding run start"
   },
-  "resolutions": {
-    "graphql": "^14.7.0"
-  },
   "workspaces": [
     "site",
     "themes/*"
