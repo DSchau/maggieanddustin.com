@@ -78,7 +78,7 @@ function Page({
           )
           .map(img => (
             <Styled.div sx={{ position: 'relative' }}>
-              {img.title && <Styled.h1 sx={{ position: 'absolute', fontWeight: 100, zIndex: 2, top: '50%', left: '50%', transform: 'translateY(-50%) translateX(-50%)', color: 'background', textAlign: 'center', fontSize: [30, 44, 72] }}>{img.title}</Styled.h1>}
+              {img.title && <Styled.h1 sx={{ position: 'absolute', fontWeight: 100, zIndex: 2, top: '75%', left: '50%', transform: 'translateY(-75%) translateX(-50%)', color: 'background', backgroundColor: 'text', padding: [2, 8, 20], textAlign: 'center', fontSize: [20, 44, 72] }}>{img.title}</Styled.h1>}
               <GatsbyImage
                 key={img.hero.id}
                 alt={img.hero.title || img.hero.description}
