@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 import ColorMode from './color-mode'
 import Link from './link'
+import Logo from './logo'
 
 const modes = [`light`, `dark`, `sepia`]
 const defaultMode = `light`
@@ -30,31 +31,7 @@ export default function Navigation() {
         position: 'relative',
       }}
     >
-      <Link
-        to="/"
-        sx={{
-          borderBottomWidth: 0,
-          display: `block`,
-          fontFamily: 'heading',
-          fontWeight: 'heading',
-          fontSize: 4,
-          whiteSpace: `nowrap`,
-          margin: `0 auto`,
-          pt: [2],
-          pb: [2],
-          pl: 0,
-          pr: 0,
-          textAlign: `center`,
-          width: [`100%`, `50%`],
-          maxWidth: `100%`,
-        }}
-      >
-        <span sx={{ display: 'inline-block' }}>
-          Maggie{' '}
-          <em sx={{ fontFamily: `cursive`, fontWeight: 'body' }}>&amp;</em>{' '}
-          Dustin
-        </span>
-      </Link>
+      <Logo />
       <Styled.ul
         sx={{
           display: `flex`,

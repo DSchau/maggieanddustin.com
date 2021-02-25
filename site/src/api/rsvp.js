@@ -1,5 +1,6 @@
 const yup = require('yup')
 const Airtable = require('airtable')
+const slugify = require('@sindresorhus/slugify')
 
 const formSchema = yup.object().shape({
   attending: yup.bool(),
@@ -7,6 +8,7 @@ const formSchema = yup.object().shape({
   name: yup.string().required(),
   guests: yup.string(),
   phone: yup.string().matches(/^\+?[\d-\(\)\.]+$/),
+  slug: yup.string(),
   method: yup
     .string()
     .oneOf(['lookup', 'update'])
@@ -31,8 +33,18 @@ const getRecordsByName = db => {
   }
 }
 
+const toName = slug => {
+  return slug.split('-').map(part => part.slice(0, 1).toUpperCase() + part.slice(1)).join(' ')
+}
+
+const getName = (guests, fallback) => {
+  const record = guests.find(guest => guest.fields && guest.fields.Name)
+  return record ? record.fields.Name : fallback
+}
+
 const lookup = async (req, res, { db, body }) => {
-  const guests = await getRecordsByName(db)(body.name)
+  const name = body.slug ? toName(body.slug) : body.name
+  const guests = await getRecordsByName(db)(name)
 
   if (guests.length === 0) {
     return {
@@ -41,8 +53,10 @@ const lookup = async (req, res, { db, body }) => {
     }
   }
 
+
   return {
     statusCode: 200,
+    slug: slugify(getName(guests, body.name)),
     guests: guests.map(guest => guest.fields),
   }
 }
@@ -66,6 +80,7 @@ const update = async (req, res, { db, body }) => {
   return {
     statusCode: 200,
     sucess: true,
+    slug: slugify(getName(guests, body.name)),
     guests: guests.map(guest => guest.fields),
   }
 }
