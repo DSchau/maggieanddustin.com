@@ -85,7 +85,7 @@ function Page({
                 alt={img.hero.title || img.hero.description}
                 image={getImage(img.hero.localFile)}
               />
-              <Styled.a href="#reach-skip-nav" sx={{ color: 'inherit', textDecoration: 'none' }}><GoChevronDown size={48} sx={{ color: 'background', position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)' }} /></Styled.a>
+              <Styled.a href="#reach-skip-nav" sx={{ color: 'inherit', display: 'block', width: '100%', textDecoration: 'none', position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', textAlign: 'center' }}><GoChevronDown sx={{ color: 'background', height: [24, 32, 48], width: [24, 32, 48] }} /></Styled.a>
             </Styled.div>
           ))}
       <SkipNavContent>
