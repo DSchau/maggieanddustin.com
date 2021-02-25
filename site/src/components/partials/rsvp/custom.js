@@ -4,8 +4,8 @@ import React, { useState } from 'react'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 
-import { Button, Label, Input, Textarea } from '../form/index'
-import { rsvp } from '../../utils/api'
+import { Button, Label, Input, Textarea } from '../../form/index'
+import { rsvp } from '../../../utils/api'
 
 const formSchema = yup.object().shape({
   name: yup.string().required(),

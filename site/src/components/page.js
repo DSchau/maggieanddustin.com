@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Styled } from 'theme-ui'
 import React from 'react'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { SkipNavContent } from '@reach/skip-nav'
@@ -77,11 +77,14 @@ function Page({
               img.hero.localFile.childImageSharp
           )
           .map(img => (
-            <GatsbyImage
-              key={img.hero.id}
-              alt={img.hero.title || img.hero.description}
-              image={getImage(img.hero.localFile)}
-            />
+            <Styled.div sx={{ position: 'relative' }}>
+              {img.title && <Styled.h1 sx={{ position: 'absolute', fontWeight: 100, zIndex: 2, top: '50%', left: '50%', transform: 'translateY(-50%) translateX(-50%)', color: 'background', textAlign: 'center', fontSize: [30, 44, 72] }}>{img.title}</Styled.h1>}
+              <GatsbyImage
+                key={img.hero.id}
+                alt={img.hero.title || img.hero.description}
+                image={getImage(img.hero.localFile)}
+              />
+            </Styled.div>
           ))}
       <SkipNavContent>
         {Partial ? (

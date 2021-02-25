@@ -33,6 +33,7 @@ export const pageQuery = graphql`
         # hero image, of course!
         ... on ContentfulHero {
           __typename
+          title
           hero: image {
             id
             title
