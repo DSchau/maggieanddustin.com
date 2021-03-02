@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import React from 'react'
-import { keyframes } from '@emotion/core'
+import { keyframes } from '@emotion/react'
 import { MdClose } from 'react-icons/md'
 
 const fadeInAnimation = keyframes({

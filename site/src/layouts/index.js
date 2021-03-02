@@ -1,6 +1,6 @@
 import React from 'react'
 import { Styled } from 'theme-ui'
-import { Global } from '@emotion/core'
+import { Global } from '@emotion/react'
 import { SkipNavLink } from '@reach/skip-nav'
 import { useStaticQuery, graphql } from 'gatsby'
 
