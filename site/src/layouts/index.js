@@ -9,9 +9,6 @@ import Banner from '../components/banner'
 
 import '@reach/skip-nav/styles.css'
 
-/* TODO: SkipNavLink, SkipNavContent */
-/* TODO: import "@reach/skip-nav/styles.css"; */
-
 export default ({ children }) => {
   const data = useStaticQuery(graphql`
     {
