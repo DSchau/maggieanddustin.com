@@ -79,9 +79,25 @@ export default function Navigation() {
           )
           .filter(Boolean)
           .map(([title, to]) => (
-            <Styled.li key={title} sx={{ padding: [2, 3] }}>
-              <Link to={to} partiallyActive={true}>
+            <Styled.li key={title} sx={{
+              padding: [2, 3],
+            }}>
+              <Link to={to} partiallyActive={true} sx={{
+                position: 'relative'
+              }}>
                 {title}
+                {title === 'Registry' && (
+                  <span sx={{
+                    position: 'absolute',
+                    top: `-4px`,
+                    right: `-4px`,
+                    backgroundColor: 'accent',
+                    color: 'background',
+                    padding: '2px',
+                    fontSize: 9,
+                    textTransform: `uppercase`
+                  }}>new</span>
+                )}
               </Link>
             </Styled.li>
           ))}
