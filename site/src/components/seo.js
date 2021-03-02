@@ -14,11 +14,6 @@ function SEO({ description, lang, image: seoImage, meta, keywords, title }) {
 
   const image = seoImage || data.card.localFile.childImageSharp.resize
 
-  console.log(        {
-    property: 'og:image',
-    content: /https?/.test(image.src) ? image.src : `${process.env.GATSBY_DEPLOY_URL || ''}${image.src}`,
-  },)
-
   const metaDescription = description || data.site.siteMetadata.description
   const fullTitle = `${title} | ${
     useWeddingTitle(data.nav, title) ? `Wedding |` : ``
