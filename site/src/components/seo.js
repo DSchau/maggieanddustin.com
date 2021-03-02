@@ -12,7 +12,12 @@ const useWeddingTitle = (nav, title) => {
 function SEO({ description, lang, image: seoImage, meta, keywords, title }) {
   const data = useStaticQuery(detailsQuery)
 
-  const image = seoImage || data.card.resize
+  const image = seoImage || data.card.localFile.childImageSharp.resize
+
+  console.log(        {
+    property: 'og:image',
+    content: /https?/.test(image.src) ? image.src : `${process.env.GATSBY_DEPLOY_URL || ''}${image.src}`,
+  },)
 
   const metaDescription = description || data.site.siteMetadata.description
   const fullTitle = `${title} | ${
@@ -60,7 +65,7 @@ function SEO({ description, lang, image: seoImage, meta, keywords, title }) {
         },
         {
           property: 'og:image',
-          content: image.src,
+          content: /https?/.test(image.src) ? image.src : `${process.env.GATSBY_DEPLOY_URL || ''}${image.src}`,
         },
         {
           property: 'og:image:height',
@@ -120,11 +125,13 @@ const detailsQuery = graphql`
       }
     }
 
-    card: contentfulAsset(title: { eq: "Save the Date | August 8, 2020" }) {
-      resize(width: 1500) {
-        height
-        width
-        src
+    card: contentfulAsset(title: {eq: "Save the Date | August 8, 2020"}) {
+      localFile {
+        childImageSharp {
+          resize(width: 1500) {
+            src
+          }
+        }
       }
     }
   }
