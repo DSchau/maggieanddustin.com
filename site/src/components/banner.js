@@ -76,7 +76,7 @@ const availableBanners = {
       </>
     ),
     condition: () => {
-      return true
+      return process.env.GATSBY_SHOW_DATE_CHANGE === 'true'
     },
   },
 }
