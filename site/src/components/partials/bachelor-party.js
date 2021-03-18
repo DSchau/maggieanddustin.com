@@ -24,39 +24,11 @@ export default function Party({ children, content }) {
             textTransform: `uppercase`,
           }}
         >
-          June 25 - 28, 2020
+          April 16th &mdash; 18th, 2021
         </Styled.h1>
         <Styled.h2 sx={{ fontSize: [30, 48], fontFamily: `Parisienne` }}>
-          Lake Tahoe, NV
+          Minneapolis, MN
         </Styled.h2>
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSevJ0jQmzf2I7mkaFiR4TPdlsSVPIMNSAuekUtJx1Z7eCGuUg/viewform"
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{
-            ':hover': {
-              borderColor: `text`,
-              backgroundColor: `background`,
-              color: `text`,
-            },
-            borderWidth: 4,
-            borderColor: `transparent`,
-            borderStyle: `solid`,
-            display: `inline-block`,
-            fontSize: 32,
-            textDecoration: `none`,
-            backgroundColor: `text`,
-            color: `background`,
-            pt: 3,
-            pb: 3,
-            pr: 4,
-            pl: 4,
-            mt: 2,
-            mb: 2,
-          }}
-        >
-          RSVP
-        </a>
       </Styled.div>
       {children}
       {content}

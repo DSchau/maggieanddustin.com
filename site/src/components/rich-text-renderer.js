@@ -5,6 +5,7 @@ import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import qs from 'query-string'
 import { Link } from 'gatsby'
 
+import Callout from './callout'
 import Embed from './embed'
 
 import Image from './image'
@@ -24,6 +25,10 @@ const options = ({ lang = 'en-US', imgStyle = {}, zoom } = {}) => ({
         const params = node.split(':').pop()
         const props = qs.parse(params)
         return <Embed {...props} type="airbnb" />
+      } else if (/^callout/.test(node)) {
+        const params = node.split(':').pop()
+        const props = qs.parse(params)
+        return <Callout>{props.message}</Callout>
       }
       return <code>{node}</code>
     },
