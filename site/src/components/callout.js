@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 
-export default function Callout() {
+export default function Callout(props) {
   return (
     <div
       sx={{
