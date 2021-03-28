@@ -146,9 +146,12 @@ function RSVP({ children, content }) {
                   <React.Fragment>
                     {values.guests.map((guest, index) => (
                       <React.Fragment key={guest.name}>
-                        <Label htmlFor={`${guest.name}-attending`} sx={{
-                          display: 'block'
-                        }}>
+                        <Label
+                          htmlFor={`${guest.name}-attending`}
+                          sx={{
+                            display: 'block',
+                          }}
+                        >
                           <Input
                             type="checkbox"
                             sx={{ display: `inline-block`, width: `auto` }}
@@ -190,8 +193,8 @@ function RSVP({ children, content }) {
                     margin: 1,
                     ...(step === `INITIAL_NAME` && {
                       display: `inline-block`,
-                      width: `auto`
-                    })
+                      width: `auto`,
+                    }),
                   }}
                   disabled={isSubmitting}
                 >

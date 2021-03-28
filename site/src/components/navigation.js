@@ -26,7 +26,11 @@ export default function Navigation() {
   const pagesList = data.nav.items.map(node => [node.title, node.fields.slug])
   const pages = []
     .concat(pagesList.slice(0, 1))
-    .concat(process.env.GATSBY_SHOW_RSVP === 'true' ? [['RSVP', 'https://www.zola.com/wedding/maggieanddustin2020/rsvp']] : [])
+    .concat(
+      process.env.GATSBY_SHOW_RSVP === 'true'
+        ? [['RSVP', 'https://www.zola.com/wedding/maggieanddustin2020/rsvp']]
+        : []
+    )
     .concat(pagesList.slice(1))
 
   return (
@@ -86,20 +90,29 @@ export default function Navigation() {
           .map(([title, to]) => {
             const isExternal = /https?/.test(to)
             const Wrapper = isExternal ? 'a' : Link
-            const props = isExternal ? {
-              href: to,
-              rel: 'noopener noreferrer',
-              target: '_blank'
-            } : { to }
+            const props = isExternal
+              ? {
+                  href: to,
+                  rel: 'noopener noreferrer',
+                  target: '_blank',
+                }
+              : { to }
             return (
-              <Styled.li key={title} sx={{
-                padding: [2, 3],
-              }}>
-                <Wrapper {...props} partiallyActive={true} sx={{
-                  color: 'text',
-                  position: 'relative',
-                  textDecoration: 'none'
-                }}>
+              <Styled.li
+                key={title}
+                sx={{
+                  padding: [2, 3],
+                }}
+              >
+                <Wrapper
+                  {...props}
+                  partiallyActive={true}
+                  sx={{
+                    color: 'text',
+                    position: 'relative',
+                    textDecoration: 'none',
+                  }}
+                >
                   {title}
                   {/*newPages.find(pageTitle => title === pageTitle) && (
                     <span sx={{

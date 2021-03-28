@@ -60,7 +60,9 @@ function SEO({ description, lang, image: seoImage, meta, keywords, title }) {
         },
         {
           property: 'og:image',
-          content: /https?/.test(image.src) ? image.src : `${process.env.GATSBY_DEPLOY_URL || ''}${image.src}`,
+          content: /https?/.test(image.src)
+            ? image.src
+            : `${process.env.GATSBY_DEPLOY_URL || ''}${image.src}`,
         },
         {
           property: 'og:image:height',
@@ -120,7 +122,7 @@ const detailsQuery = graphql`
       }
     }
 
-    card: contentfulAsset(title: {eq: "Save the Date | August 8, 2020"}) {
+    card: contentfulAsset(title: { eq: "Save the Date | August 8, 2020" }) {
       localFile {
         childImageSharp {
           resize(width: 1500) {

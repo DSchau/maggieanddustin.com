@@ -79,13 +79,52 @@ function Page({
           )
           .map(img => (
             <Styled.div sx={{ position: 'relative' }}>
-              {img.title && <Styled.h1 sx={{ position: 'absolute', fontWeight: 100, zIndex: 2, top: '75%', left: '50%', transform: 'translateY(-75%) translateX(-50%)', color: 'background', backgroundColor: 'text', padding: [2, 8, 20], textAlign: 'center', fontSize: [20, 44, 72] }}>{img.title}</Styled.h1>}
+              {img.title && (
+                <Styled.h1
+                  sx={{
+                    position: 'absolute',
+                    fontWeight: 100,
+                    zIndex: 2,
+                    top: '75%',
+                    left: '50%',
+                    transform: 'translateY(-75%) translateX(-50%)',
+                    color: 'background',
+                    backgroundColor: 'text',
+                    padding: [2, 8, 20],
+                    textAlign: 'center',
+                    fontSize: [20, 44, 72],
+                  }}
+                >
+                  {img.title}
+                </Styled.h1>
+              )}
               <GatsbyImage
                 key={img.hero.id}
                 alt={img.hero.title || img.hero.description}
                 image={getImage(img.hero.localFile)}
               />
-              <Styled.a href="#reach-skip-nav" sx={{ color: 'inherit', display: 'block', width: '100%', textDecoration: 'none', position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', textAlign: 'center' }}><GoChevronDown sx={{ color: 'background', height: [24, 32, 48], width: [24, 32, 48] }} /></Styled.a>
+              <Styled.a
+                href="#reach-skip-nav"
+                sx={{
+                  color: 'inherit',
+                  display: 'block',
+                  width: '100%',
+                  textDecoration: 'none',
+                  position: 'absolute',
+                  bottom: 0,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  textAlign: 'center',
+                }}
+              >
+                <GoChevronDown
+                  sx={{
+                    color: 'background',
+                    height: [24, 32, 48],
+                    width: [24, 32, 48],
+                  }}
+                />
+              </Styled.a>
             </Styled.div>
           ))}
       <SkipNavContent>
