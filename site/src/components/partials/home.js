@@ -55,8 +55,10 @@ export default function Home({ children, content }) {
           <Seperator />
         </Styled.div>
         {process.env.GATSBY_SHOW_RSVP === `true` && (
-          <Link
-            to="/rsvp/"
+          <a
+            href="https://www.zola.com/wedding/maggieanddustin2020/rsvp"
+            target="_blank"
+            rel="noopener noreferrer"
             sx={{
               ':hover': {
                 borderColor: `text`,
@@ -80,7 +82,7 @@ export default function Home({ children, content }) {
             }}
           >
             RSVP
-          </Link>
+          </a>
         )}
       </Styled.div>
       {children}
