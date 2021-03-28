@@ -23,7 +23,12 @@ export default function Navigation() {
     }
   `)
   const nextMode = modes[(modes.indexOf(mode) + 1) % modes.length]
-  const pages = data.nav.items.map(node => [node.title, node.fields.slug])
+  const pagesList = data.nav.items.map(node => [node.title, node.fields.slug])
+  const pages = []
+    .concat(pagesList.slice(0, 1))
+    .concat(process.env.GATSBY_SHOW_RSVP === 'true' ? [['RSVP', 'https://www.zola.com/wedding/maggieanddustin2020/rsvp']] : [])
+    .concat(pagesList.slice(1))
+
   return (
     <nav
       sx={{
@@ -70,7 +75,7 @@ export default function Navigation() {
           overflowX: `scroll`,
         }}
       >
-        {[process.env.GATSBY_SHOW_RSVP === `true` && ['RSVP', '/rsvp/']]
+        {[]
           .concat(pages)
           .concat(
             process.env.GATSBY_SHOW_REGISTRY === `true`
@@ -78,29 +83,40 @@ export default function Navigation() {
               : []
           )
           .filter(Boolean)
-          .map(([title, to]) => (
-            <Styled.li key={title} sx={{
-              padding: [2, 3],
-            }}>
-              <Link to={to} partiallyActive={true} sx={{
-                position: 'relative'
+          .map(([title, to]) => {
+            const isExternal = /https?/.test(to)
+            const Wrapper = isExternal ? 'a' : Link
+            const props = isExternal ? {
+              href: to,
+              rel: 'noopener noreferrer',
+              target: '_blank'
+            } : { to }
+            return (
+              <Styled.li key={title} sx={{
+                padding: [2, 3],
               }}>
-                {title}
-                {title === 'Registry' && (
-                  <span sx={{
-                    position: 'absolute',
-                    top: `-4px`,
-                    right: `-4px`,
-                    backgroundColor: 'accent',
-                    color: 'background',
-                    padding: '2px',
-                    fontSize: 9,
-                    textTransform: `uppercase`
-                  }}>new</span>
-                )}
-              </Link>
-            </Styled.li>
-          ))}
+                <Wrapper {...props} partiallyActive={true} sx={{
+                  color: 'text',
+                  position: 'relative',
+                  textDecoration: 'none'
+                }}>
+                  {title}
+                  {/*newPages.find(pageTitle => title === pageTitle) && (
+                    <span sx={{
+                      position: 'absolute',
+                      top: `-4px`,
+                      right: `-4px`,
+                      backgroundColor: 'accent',
+                      color: 'background',
+                      padding: '2px',
+                      fontSize: 9,
+                      textTransform: `uppercase`
+                    }}>new</span>
+                  )*/}
+                </Wrapper>
+              </Styled.li>
+            )
+          })}
       </Styled.ul>
       <ColorMode
         mode={mode}
