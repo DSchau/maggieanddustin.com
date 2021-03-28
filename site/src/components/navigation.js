@@ -109,6 +109,7 @@ export default function Navigation() {
                   partiallyActive={true}
                   sx={{
                     color: 'text',
+                    fontWeight: 'normal',
                     position: 'relative',
                     textDecoration: 'none',
                   }}
