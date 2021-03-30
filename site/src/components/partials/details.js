@@ -35,7 +35,7 @@ export default function Venue({ children, content }) {
           `4:00 PM, Winter Garden`,
           `cocktail hour and reception to immediately follow`,
         ].map(part => (
-          <Styled.p key={part} sx={{ fontSize: [3, 4], pb: 0, mb: 0, textTransform: 'italic', fontStyle: 'italic' }}>
+          <Styled.p key={part} sx={{ fontSize: [3, 4], pb: 0, pl: 1, pr: 1, mb: 0, textTransform: 'italic', fontStyle: 'italic' }}>
             {part}
           </Styled.p>
         ))}
