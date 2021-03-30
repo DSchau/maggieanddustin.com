@@ -55,6 +55,7 @@ export default function Home({ children, content }) {
           <Seperator />
         </Styled.div>
         {process.env.GATSBY_SHOW_RSVP === `true` && (
+          <React.Fragment>
           <a
             href="https://www.zola.com/wedding/maggieanddustin2020/rsvp"
             target="_blank"
@@ -83,6 +84,10 @@ export default function Home({ children, content }) {
           >
             RSVP
           </a>
+          <Styled.p sx={{ fontSize: [2,3], fontStyle: 'italic', pb: 0, mb: 0 }}>
+              kindly reply by May 12th
+            </Styled.p>
+          </React.Fragment>
         )}
       </Styled.div>
       {children}
