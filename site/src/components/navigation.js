@@ -31,6 +31,11 @@ export default function Navigation() {
         ? [['RSVP', 'https://www.zola.com/wedding/maggieanddustin2020/rsvp']]
         : []
     )
+    .concat(
+      process.env.GATSBY_SHOW_REGISTRY === `true`
+      ? [['Registry', `/registry/`]]
+      : []
+    )
     .concat(pagesList.slice(1))
 
   return (
@@ -81,11 +86,6 @@ export default function Navigation() {
       >
         {[]
           .concat(pages)
-          .concat(
-            process.env.GATSBY_SHOW_REGISTRY === `true`
-              ? [['Registry', `/registry/`]]
-              : []
-          )
           .filter(Boolean)
           .map(([title, to]) => {
             const isExternal = /https?/.test(to)
