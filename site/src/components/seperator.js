@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 
-const Seperator = () => (
+const Seperator = props => (
   <Styled.hr
     sx={{
       maxWidth: ['100%', '50%'],
@@ -10,6 +10,7 @@ const Seperator = () => (
       height: 1,
       border: 'none',
     }}
+    {...props}
   />
 )
 
