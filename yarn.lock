@@ -8010,15 +8010,15 @@ gatsby-plugin-functions@^0.1.0-5:
     lodash "^4.17.20"
     webpack "^5.4.0"
 
-gatsby-plugin-gatsby-cloud@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-gatsby-cloud/-/gatsby-plugin-gatsby-cloud-2.0.0.tgz#fadf2e87128ef570f82148fd98938c92291b1fb9"
-  integrity sha512-JXbiQpvoDxrMi28fJ+MJWMo+Yn3c/RML9dZQJZetm7mWrrIAcGWOoT/SaQcvcwuZAloS3LLSWC+CDopBNipm3g==
+gatsby-plugin-gatsby-cloud@^2.4.0-next.0:
+  version "2.4.0-next.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-gatsby-cloud/-/gatsby-plugin-gatsby-cloud-2.4.0-next.0.tgz#6943acf6f4faf4219f9a2111aa6d005ffaf20f0d"
+  integrity sha512-8QiKtVjz7QcvsZXPfLTuAWz8zfZenyQSLj0ghccvQqk4tY89kB7MtJCvs/jo6Up3dOQBYkdMu51s1QdlC2vXzA==
   dependencies:
     "@babel/runtime" "^7.12.5"
     fs-extra "^8.1.0"
     kebab-hash "^0.1.2"
-    lodash "^4.17.20"
+    lodash "^4.17.21"
     webpack-assets-manifest "^5.0.1"
 
 gatsby-plugin-google-analytics@^3.0.0:
@@ -10912,6 +10912,11 @@ lodash@^4.17.19, lodash@^4.17.20:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
+
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 log-symbols@^1.0.2:
   version "1.0.2"
