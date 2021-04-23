@@ -10,6 +10,7 @@ const useWeddingTitle = (nav, title) => {
 }
 
 function SEO({ description, lang, image: seoImage, meta, keywords, title }) {
+  console.log(description)
   const data = useStaticQuery(detailsQuery)
 
   const image = seoImage || data.card.localFile.childImageSharp.resize
