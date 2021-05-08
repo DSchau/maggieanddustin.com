@@ -8,8 +8,6 @@ async function test() {
   })
 
   const rows = await api.getRows()
-
-  console.log(JSON.stringify(rows, null, 2))
 }
 
 test()
