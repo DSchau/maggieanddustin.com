@@ -104,7 +104,7 @@ export default function Venue({ children, content }) {
         ]}/>
         <Section date={new Date('06/13/2021')} blocks={[
           {
-            title: '11:45 AM &mdash; Farewell Breakfast',
+            title: '9:00 AM &mdash; Farewell Breakfast',
             content: [
               'Soo Line Room at Renaissance Minneapolis Hotel, The Depot'
             ]
