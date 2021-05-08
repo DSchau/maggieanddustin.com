@@ -74,9 +74,9 @@ export default function Venue({ children, content }) {
         </Styled.h2>
         <Section date={new Date('06/11/2021')} blocks={[
           {
-            title: '4:00 PM &mdash; Wedding Ceremony',
+            title: '8:00 PM &mdash; Welcome Drinks',
             content: [
-              'Winter Garden at Renaissance Minneapolis Hotel, The Depot',
+              'Renaissance Minneapolis Hotel, The Depot',
               '225 3rd Ave S, Minneapolis, MN 55401'
             ]
           }
