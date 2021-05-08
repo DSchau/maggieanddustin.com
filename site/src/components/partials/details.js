@@ -31,11 +31,16 @@ const Section = ({ date, blocks = [] }) => (
       <span>{format(date, 'LLLL d')}</span>
     </h2>
     {blocks.length > 0 && (
-      <div>
+      <span sx={{
+
+      }}>
         {blocks.map(block => (
           <div key={block.text} sx={{
             textAlign: 'left',
-            paddingBottom: [1, 4]
+            paddingTop: [3, 0],
+            paddingBottom: 3,
+            marginTop: 2,
+            marginBottom: 2
           }}>
             <Styled.strong sx={{
               textTransform: 'uppercase',
@@ -48,7 +53,7 @@ const Section = ({ date, blocks = [] }) => (
             ))}
           </div>
         ))}
-      </div>
+      </span>
     )}
   </section>
 )
