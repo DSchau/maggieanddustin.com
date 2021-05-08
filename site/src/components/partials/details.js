@@ -1,20 +1,59 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import format from 'date-fns/format'
 
 import Seperator from '../seperator'
 
-export default function Venue({ children, content }) {
-  const data = useStaticQuery(graphql`
-    {
-      site {
-        siteMetadata {
-          weddingDate(formatString: "MMMM DD, YYYY")
-        }
+const Section = ({ date, blocks = [] }) => (
+  <section sx={{
+    display: 'flex',
+    flexDirection: ['column', 'row'],
+    justifyContent: 'center',
+    alignItems: ['center', 'flex-start'],
+    padding: [3, 4]
+  }}>
+    <h2 sx={{
+      fontFamily: 'heading',
+      padding: 0,
+      margin: 0,
+      paddingRight: [0, 4],
+      width: ['auto', 200],
+      height: '100%',
+      borderRight: '1px solid #eee',
+      span: {
+        display: 'block'
       }
-    }
-  `)
+    }}>
+      <span sx={{
+        fontWeight: 'normal'
+      }}>{format(date, 'iiii')}</span>
+      <span>{format(date, 'LLLL d')}</span>
+    </h2>
+    {blocks.length > 0 && (
+      <div>
+        {blocks.map(block => (
+          <div key={block.text} sx={{
+            textAlign: 'left',
+            paddingBottom: [1, 4]
+          }}>
+            <Styled.strong sx={{
+              textTransform: 'uppercase',
+            }} dangerouslySetInnerHTML={{ __html: block.title }} />
+            {[].concat(block.content).map(line => (
+              <Styled.p sx={{
+                padding: 0,
+                margin: 0
+              }} key={line}>{line}</Styled.p>
+            ))}
+          </div>
+        ))}
+      </div>
+    )}
+  </section>
+)
+
+export default function Venue({ children, content }) {
   return (
     <React.Fragment>
       <Styled.div
@@ -23,22 +62,49 @@ export default function Venue({ children, content }) {
         <Styled.h1
           sx={{ fontSize: [32, 48], padding: 2, mb: 0, textTransform: `uppercase` }}
         >
-          Ceremony{' '}
-          <em sx={{ fontFamily: `cursive`, fontWeight: 'body' }}>&amp;</em>{' '}
-          Reception
+          Welcome
         </Styled.h1>
         <Styled.h2 sx={{ fontFamily: `body`, fontSize: [24, 40] }}>
-          Renaissance Minneapolis Hotel, the Depot
+          Weekend Schedule
         </Styled.h2>
-        {[
-          `Saturday, ${data.site.siteMetadata.weddingDate}`,
-          `4:00 PM, Winter Garden`,
-          `cocktail hour and reception to immediately follow`,
-        ].map(part => (
-          <Styled.p key={part} sx={{ fontSize: [3, 4], pb: 0, pl: 1, pr: 1, mb: 0, textTransform: 'italic', fontStyle: 'italic' }}>
-            {part}
-          </Styled.p>
-        ))}
+        <Section date={new Date('06/11/2021')} blocks={[
+          {
+            title: '4:00 PM &mdash; Wedding Ceremony',
+            content: [
+              'Winter Garden at Renaissance Minneapolis Hotel, The Depot',
+              '225 3rd Ave S, Minneapolis, MN 55401'
+            ]
+          }
+        ]} />
+        <Section date={new Date('06/12/2021')} blocks={[
+          {
+            title: '4:00 PM &mdash; Wedding Ceremony',
+            content: [
+              'Winter Garden at Renaissance Minneapolis Hotel, The Depot',
+              '225 3rd Ave S, Minneapolis, MN 55401'
+            ]
+          },
+          {
+            title: '5:00 PM &mdash; Cocktail Hour',
+            content: [
+              'Winter Garden at Renaissance Minneapolis Hotel, The Depot',
+            ]
+          },
+          {
+            title: '6:00 PM &mdash; Reception Dinner',
+            content: [
+              'Great Hall at Renaissance Minneapolis Hotel, The Depot',
+            ]
+          }
+        ]}/>
+        <Section date={new Date('06/13/2021')} blocks={[
+          {
+            title: '11:45 AM &mdash; Farewell Breakfast',
+            content: [
+              'Soo Line Room at Renaissance Minneapolis Hotel, The Depot'
+            ]
+          }
+        ]} />
         <Seperator sx={{ mt: 4, mb: 4 }} />
         <a href="https://goo.gl/maps/wvmJmFUY4a8SKbMk7" sx={{ color: 'text', ':hover': { textDecoration: 'none' }}} target="_blank" rel="noopener noreferrer">
           {[
