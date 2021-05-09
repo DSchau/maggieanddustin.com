@@ -7,10 +7,9 @@ import Seperator from '../seperator'
 
 const Section = ({ date, blocks = [] }) => (
   <section sx={{
-    display: 'flex',
-    flexDirection: ['column', 'row'],
+    display: ['block', 'grid'],
+    gridTemplateColumns: [, '200px 0.5fr', '250px 0.5fr'],
     justifyContent: 'center',
-    alignItems: ['center', 'flex-start'],
     padding: [3, 4]
   }}>
     <h2 sx={{
@@ -18,9 +17,7 @@ const Section = ({ date, blocks = [] }) => (
       padding: 0,
       margin: 0,
       paddingRight: [0, 4],
-      width: ['auto', 200],
       height: '100%',
-      borderRight: '1px solid #eee',
       span: {
         display: 'block'
       }
@@ -72,15 +69,15 @@ export default function Venue({ children, content }) {
         <Styled.h2 sx={{ fontFamily: `body`, fontSize: [24, 40] }}>
           Weekend Schedule
         </Styled.h2>
-        <Section date={new Date('06/11/2021')} blocks={[
-          {
-            title: '8:00 PM &mdash; Welcome Drinks',
-            content: [
-              'Renaissance Minneapolis Hotel, The Depot',
-              '225 3rd Ave S, Minneapolis, MN 55401'
-            ]
-          }
-        ]} />
+          <Section date={new Date('06/11/2021')} blocks={[
+            {
+              title: '8:00 PM &mdash; Welcome Drinks',
+              content: [
+                'Renaissance Minneapolis Hotel, The Depot',
+                '225 3rd Ave S, Minneapolis, MN 55401'
+              ]
+            }
+          ]} />
         <Section date={new Date('06/12/2021')} blocks={[
           {
             title: '4:00 PM &mdash; Wedding Ceremony',
