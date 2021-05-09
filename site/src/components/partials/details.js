@@ -40,6 +40,7 @@ const Section = ({ date, blocks = [] }) => (
             marginBottom: 2
           }}>
             <Styled.strong sx={{
+              fontFamily: 'heading',
               textTransform: 'uppercase',
             }} dangerouslySetInnerHTML={{ __html: block.title }} />
             {[].concat(block.content).map(line => (
