@@ -5971,6 +5971,11 @@ date-fns@^2.14.0:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.16.1.tgz#05775792c3f3331da812af253e1a935851d3834b"
   integrity sha512-sAJVKx/FqrLYHAQeN7VpJrPhagZc9R4ImZIWYRFZaaohR3KzmuK88touwsSwSVT8Qcbd4zoDsnGfX4GFB4imyQ==
 
+date-fns@^2.21.1:
+  version "2.21.3"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.21.3.tgz#8f5f6889d7a96bbcc1f0ea50239b397a83357f9b"
+  integrity sha512-HeYdzCaFflc1i4tGbj7JKMjM4cKGYoyxwcIIkHzNgCkX8xXDNJDZXgDDVchIWpN4eQc3lH37WarduXFZJOtxfw==
+
 dayjs@^1.8.29:
   version "1.10.4"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.4.tgz#8e544a9b8683f61783f570980a8a80eaf54ab1e2"
@@ -7995,6 +8000,13 @@ gatsby-core-utils@^2.4.0:
     tmp "^0.2.1"
     xdg-basedir "^4.0.0"
 
+gatsby-design-tokens@^3.4.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/gatsby-design-tokens/-/gatsby-design-tokens-3.5.0.tgz#cbcc062d563d8c08a9d76d8e2660892fdc5521ca"
+  integrity sha512-LezmODCM8oAbA8M0BgoGntTC8cgBaFZKbJNiELHBgrzo/d0lnAoM70KcB3abvXKbQh2POhQ/lW/sYAusGpsnlA==
+  dependencies:
+    hex2rgba "^0.0.1"
+
 gatsby-graphiql-explorer@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/gatsby-graphiql-explorer/-/gatsby-graphiql-explorer-1.4.0.tgz#49b9b6d617dbba3a032bfbc8dfd315754d63cfe3"
@@ -8072,13 +8084,15 @@ gatsby-plugin-functions@^0.1.0-7:
     multer "^1.4.2"
     webpack "^5.4.0"
 
-gatsby-plugin-gatsby-cloud@^2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-gatsby-cloud/-/gatsby-plugin-gatsby-cloud-2.4.1.tgz#e2c5aba4af92c850c3206578f2b1a5730e6c9364"
-  integrity sha512-6qzFTApuu9S85WxMeGTy5eOzPGWdP1EM6wXWG6zi24GkFqVqrhXsD3YF21k0KVDN7A/AR01nHQFCsTvY/BQ4/w==
+gatsby-plugin-gatsby-cloud@2.6.0-alpha-gatsby-plugin-gatsby-cloud.37:
+  version "2.6.0-alpha-gatsby-plugin-gatsby-cloud.37"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-gatsby-cloud/-/gatsby-plugin-gatsby-cloud-2.6.0-alpha-gatsby-plugin-gatsby-cloud.37.tgz#176982d1ca9fbca39480d049bd63dc52196d8818"
+  integrity sha512-RtZmq+7L9rohLktf/zE6ZhMDtXw+0ZY5EBpTCep6plkRibDRT6E6W/WZlTN4jxpGU5C0ru3je9SqQ9mWrsS+qA==
   dependencies:
     "@babel/runtime" "^7.12.5"
+    date-fns "^2.21.1"
     fs-extra "^8.1.0"
+    gatsby-design-tokens "^3.4.0"
     kebab-hash "^0.1.2"
     lodash "^4.17.21"
     webpack-assets-manifest "^5.0.1"
@@ -9160,6 +9174,11 @@ hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
+
+hex2rgba@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/hex2rgba/-/hex2rgba-0.0.1.tgz#8701ba1c6ec02c204504158407c1c4b47a9336ed"
+  integrity sha1-hwG6HG7ALCBFBBWEB8HEtHqTNu0=
 
 hicat@^0.8.0:
   version "0.8.0"
