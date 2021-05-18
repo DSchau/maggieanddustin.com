@@ -41,7 +41,7 @@ export default function Home({ children, content }) {
           {data.site.siteMetadata.weddingDate}
         </Styled.h1>
         <Styled.h2 sx={{ fontSize: [30, 48], fontFamily: `Parisienne` }}>
-          Minneapolis, MN
+          Minneapolis, Minnesota
         </Styled.h2>
         <Styled.div sx={{ pt: 4, pb: 4 }}>
           <Seperator />
