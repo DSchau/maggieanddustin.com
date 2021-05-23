@@ -3,7 +3,7 @@ import { jsx, Styled, useColorMode } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
 
 import ColorMode from './color-mode'
-import Link, { linkStyles } from './link'
+import Link from './link'
 
 const modes = [`light`, `dark`, `sepia`]
 const defaultMode = `light`
@@ -104,11 +104,11 @@ export default function Navigation() {
                   padding: [2, 3],
                 }}
               >
-                <Wrapper
+                <Link
+                  as={Wrapper}
                   {...props}
                   partiallyActive={true}
                   sx={{
-                    ...linkStyles,
                     color: 'text',
                     fontWeight: 'normal',
                     position: 'relative',
@@ -116,7 +116,7 @@ export default function Navigation() {
                   }}
                 >
                   {title}
-                </Wrapper>
+                </Link>
               </Styled.li>
             )
           })}
