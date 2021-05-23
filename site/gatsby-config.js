@@ -5,7 +5,8 @@ const path = require('path')
 
 module.exports = {
   flags: {
-    FUNCTIONS: true
+    FUNCTIONS: true,
+    DEV_SSR: true
   },
   siteMetadata: {
     title: `Maggie and Dustin`,
