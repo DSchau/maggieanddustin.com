@@ -74,7 +74,7 @@ export default function Venue({ children, content }) {
             {
               title: '8:00 PM &mdash; Welcome Drinks',
               content: [
-                'Renaissance Minneapolis Hotel, The Depot',
+                'The Shed at Renaissance Minneapolis Hotel, The Depot',
                 '225 3rd Ave S, Minneapolis, MN 55401'
               ]
             }
@@ -104,7 +104,8 @@ export default function Venue({ children, content }) {
           {
             title: '9:00 AM &mdash; Farewell Breakfast',
             content: [
-              'Soo Line Room at Renaissance Minneapolis Hotel, The Depot'
+              'Milwaukee Road at Renaissance Minneapolis Hotel, The Depot',
+              <em>Meal vouchers provided at check-in, please ask Alcorn or Schau families if needed!</em>
             ]
           }
         ]} />
