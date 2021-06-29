@@ -14,7 +14,7 @@
     "airtable": "0.8.1",
     "autosize": "^4.0.2",
     "formik": "^2.2.6",
-    "gatsby": "^3.5.0",
+    "gatsby": "^3.8.0",
     "gatsby-plugin-emotion": "^6.0.0",
     "gatsby-plugin-functions": "^0.1.0-7",
     "gatsby-plugin-gatsby-cloud": "2.6.0-alpha-gatsby-plugin-gatsby-cloud.37",
