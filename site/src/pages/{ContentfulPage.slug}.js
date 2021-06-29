@@ -12,6 +12,7 @@ export const pageQuery = graphql`
       slug
       description
       title
+      hideFromSEO: hidden
       featuredImage {
         localFile {
           childImageSharp {

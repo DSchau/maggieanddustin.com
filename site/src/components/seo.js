@@ -5,11 +5,19 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 const useWeddingTitle = (nav, title) => {
   return (
-    nav.items.includes(item => item.title === title) || title === `Home Page`
+    nav.items.includes((item) => item.title === title) || title === `Home Page`
   )
 }
 
-function SEO({ description, lang, image: seoImage, meta, keywords, title }) {
+function SEO({
+  description,
+  lang,
+  image: seoImage,
+  meta,
+  keywords,
+  hideFromSEO,
+  title,
+}) {
   const data = useStaticQuery(detailsQuery)
 
   const image = seoImage || data.card.localFile.childImageSharp.resize
@@ -79,6 +87,16 @@ function SEO({ description, lang, image: seoImage, meta, keywords, title }) {
                 name: `keywords`,
                 content: keywords.join(`, `),
               }
+            : []
+        )
+        .concat(
+          hideFromSEO
+            ? [
+                {
+                  name: 'robots',
+                  content: 'noindex, nofollow',
+                },
+              ]
             : []
         )
         .concat(meta)}

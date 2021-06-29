@@ -54,41 +54,6 @@ export default function Home({ children, content }) {
           </Styled.h3>
           <Seperator />
         </Styled.div>
-        {process.env.GATSBY_SHOW_RSVP === `true` && (
-          <React.Fragment>
-          <a
-            href="https://www.zola.com/wedding/maggieanddustin2020/rsvp"
-            target="_blank"
-            rel="noopener noreferrer"
-            sx={{
-              ':hover': {
-                borderColor: `text`,
-                backgroundColor: `background`,
-                color: `text`,
-              },
-              borderWidth: 4,
-              borderColor: `transparent`,
-              borderStyle: `solid`,
-              display: `inline-block`,
-              fontSize: 32,
-              textDecoration: `none`,
-              backgroundColor: `text`,
-              color: `background`,
-              pt: 3,
-              pb: 3,
-              pr: 4,
-              pl: 4,
-              mt: 2,
-              mb: 2,
-            }}
-          >
-            RSVP
-          </a>
-          <Styled.p sx={{ fontSize: [2,3], fontStyle: 'italic', pb: 0, mb: 0 }}>
-              kindly reply by May 12th
-            </Styled.p>
-          </React.Fragment>
-        )}
       </Styled.div>
       {children}
       {content}

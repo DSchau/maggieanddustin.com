@@ -5,8 +5,7 @@ const path = require('path')
 
 module.exports = {
   flags: {
-    FUNCTIONS: true,
-    DEV_SSR: true
+    DEV_SSR: true,
   },
   siteMetadata: {
     title: `Maggie and Dustin`,
@@ -44,8 +43,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-functions`,
       options: {
-        path: path.join(__dirname, `src`, `api`)
-      }
-    }
+        path: path.join(__dirname, `src`, `api`),
+      },
+    },
   ],
 }

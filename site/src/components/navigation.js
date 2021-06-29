@@ -18,25 +18,18 @@ export default function Navigation() {
           fields {
             slug
           }
+          ... on ContentfulPage {
+            hidden
+          }
         }
       }
     }
   `)
   const nextMode = modes[(modes.indexOf(mode) + 1) % modes.length]
-  const pagesList = data.nav.items.map(node => [node.title, node.fields.slug])
-  const pages = []
-    .concat(pagesList.slice(0, 1))
-    .concat(
-      process.env.GATSBY_SHOW_RSVP === 'true'
-        ? [['RSVP', 'https://www.zola.com/wedding/maggieanddustin2020/rsvp']]
-        : []
-    )
-    .concat(
-      process.env.GATSBY_SHOW_REGISTRY === `true`
-      ? [['Registry', `/registry/`]]
-      : []
-    )
-    .concat(pagesList.slice(1))
+  const pagesList = data.nav.items
+    .filter((node) => !node.hidden)
+    .map((node) => [node.title, node.fields.slug])
+  const pages = [].concat(pagesList.slice(0, 1)).concat(pagesList.slice(1))
 
   return (
     <nav

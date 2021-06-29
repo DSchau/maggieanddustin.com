@@ -20,6 +20,7 @@ function Page({
   title,
   featuredImage,
   contentBlocks,
+  hideFromSEO,
 }) {
   const page = contentBlocks.reduce((merged, block) => {
     switch (block.__typename) {
@@ -47,15 +48,19 @@ function Page({
   const content = (
     <React.Fragment>
       {page.timeline &&
-        page.timeline.map(timeline => (
+        page.timeline.map((timeline) => (
           <Timeline key={timeline.id} {...timeline} />
         ))}
       {page.section &&
-        page.section.map(section => <Section key={section.id} {...section} />)}
+        page.section.map((section) => (
+          <Section key={section.id} {...section} />
+        ))}
       {page.party &&
-        page.party.map(party => <WeddingParty key={party.id} {...party} />)}
+        page.party.map((party) => <WeddingParty key={party.id} {...party} />)}
       {page.gallery &&
-        page.gallery.map(gallery => <Gallery key={gallery.id} {...gallery} />)}
+        page.gallery.map((gallery) => (
+          <Gallery key={gallery.id} {...gallery} />
+        ))}
     </React.Fragment>
   )
   return (
@@ -63,6 +68,7 @@ function Page({
       <SEO
         description={description}
         title={title}
+        hideFromSEO={hideFromSEO}
         {...(featuredImage
           ? {
               image: featuredImage.localFile.childImageSharp.resize,
@@ -72,12 +78,12 @@ function Page({
       {page.hero &&
         page.hero
           .filter(
-            img =>
+            (img) =>
               img.hero &&
               img.hero.localFile &&
               img.hero.localFile.childImageSharp
           )
-          .map(img => (
+          .map((img) => (
             <Styled.div sx={{ position: 'relative' }}>
               {img.title && (
                 <Styled.h1
