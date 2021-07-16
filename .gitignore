@@ -52,7 +52,8 @@ typings/
 *.tgz
 
 # dotenv environment variables file
-.env
+.env*
+!.env.sample
 
 # gatsby files
 .cache/
@@ -67,19 +68,3 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
-
-# built files
-*.zip
-
-# terraform stuff
-.terraform
-*.tfvars
-*.tpflan
-
-# env vars
-.env*
-!.env.sample
-
-
-# Local Netlify folder
-.netlify
