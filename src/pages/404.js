@@ -9,8 +9,8 @@ function FourOhFour() {
   return (
     <React.Fragment>
       <SEO
-        title="Photos"
-        description="An archive of photos for Maggie and Dustin"
+        title="404 | Not Found"
+        description="You've reached a page that could not be found. Uh-oh!"
       />
       <SkipNavContent>
         <h1>Oh no, not found!</h1>

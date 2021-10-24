@@ -20,7 +20,7 @@ function SEO({
 }) {
   const data = useStaticQuery(detailsQuery)
 
-  const image = seoImage || data.card.localFile.childImageSharp.resize
+  const image = seoImage || data.card?.localFile.childImageSharp.resize || {}
 
   const metaDescription = description || data.site.siteMetadata.description
   const fullTitle = `${title} | ${
