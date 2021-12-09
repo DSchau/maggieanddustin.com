@@ -69,7 +69,9 @@ function Page({
         description={description}
         title={title}
         hideFromSEO={hideFromSEO}
-        {...(featuredImage
+        {...(featuredImage &&
+        featuredImage.localFile &&
+        featuredImage.localFile.childImageSharp
           ? {
               image: featuredImage.localFile.childImageSharp.resize,
             }

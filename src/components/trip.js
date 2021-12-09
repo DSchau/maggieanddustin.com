@@ -26,7 +26,7 @@ export default ({
   const image = getImageElement(
     contentBlocks,
     (_) =>
-      _.find((block) => block.__typename === 'ContentfulHero').hero.localFile
+      _.find((block) => block.__typename === 'ContentfulHero')?.hero?.localFile
   )
   const endTime = new Date(startDate).getTime()
   const inFuture = Date.now() < endTime

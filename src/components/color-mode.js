@@ -44,7 +44,7 @@ const ColorModeToggle = ({ nextMode, mode, onClick, ...rest }) => {
           borderRadius: `50%`,
           border: (t) => (isDark ? `4px solid ${t.colors.text}` : `none`),
           backgroundColor: isDark
-            ? theme.colors.modes[nextMode].background
+            ? theme.rawColors.modes[nextMode].background
             : `transparent`,
           transform: isDark ? `scale(0.55)` : `scale(1)`,
           transition: `all 0.45s ease`,
