@@ -4,9 +4,6 @@ require('dotenv').config({
 const path = require('path')
 
 module.exports = {
-  flags: {
-    DEV_SSR: true,
-  },
   siteMetadata: {
     title: `Maggie and Dustin`,
     description: `Landing page for the wedding of Dustin Schau and Maggie Alcorn`,
@@ -15,7 +12,6 @@ module.exports = {
     weddingDate: new Date(`06/12/2021 12:00:00Z`),
   },
   plugins: [
-    `gatsby-plugin-preact`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-layout`,
     {
@@ -40,11 +36,5 @@ module.exports = {
       },
     },
     `gatsby-plugin-gatsby-cloud`,
-    {
-      resolve: `gatsby-plugin-functions`,
-      options: {
-        path: path.join(__dirname, `src`, `api`),
-      },
-    },
   ],
 }
