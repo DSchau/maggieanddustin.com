@@ -7,6 +7,7 @@ module.exports = {
   flags: {
     DEV_SSR: true,
   },
+  trailingSlash: 'always',
   siteMetadata: {
     title: `Maggie and Dustin`,
     description: `Landing page for the wedding of Dustin Schau and Maggie Alcorn`,
