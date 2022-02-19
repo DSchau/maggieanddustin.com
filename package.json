@@ -12,7 +12,7 @@
     "@reach/skip-nav": "^0.16.0",
     "@theme-ui/typography": "^0.11.3",
     "autosize": "^4.0.2",
-    "gatsby": "^4.5.2",
+    "gatsby": "^4.7.2",
     "gatsby-plugin-emotion": "^7.4.0",
     "gatsby-plugin-functions": "^0.1.0-7",
     "gatsby-plugin-gatsby-cloud": "4.4.0",
@@ -68,7 +68,7 @@
   "devDependencies": {
     "dotenv": "^8.2.0",
     "fs-extra": "^9.0.1",
-    "husky": "^4.3.0",
+    "husky": "^7.0.4",
     "limax": "^2.1.0",
     "lint-staged": "^10.4.2"
   }
