@@ -1,3 +1,4 @@
+"client export"
 import * as React from 'react'
 
 export function useGeolocation(callback) {

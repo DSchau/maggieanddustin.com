@@ -1,3 +1,4 @@
+"client export"
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import React, { useState } from 'react'
@@ -57,7 +58,7 @@ function TripListing({ data }) {
 
 export const blogQuery = graphql`
   {
-    trips: allContentfulTrip(sort: { fields: endDate, order: ASC }) {
+    trips: allContentfulTrip(sort: {endDate: ASC}) {
       nodes {
         ...TripDetails
       }

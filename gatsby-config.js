@@ -1,7 +1,6 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
-const path = require('path')
 
 module.exports = {
   flags: {
@@ -15,7 +14,6 @@ module.exports = {
     weddingDate: new Date(`06/12/2021 12:00:00Z`),
   },
   plugins: [
-    `gatsby-plugin-preact`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-layout`,
     {
@@ -38,13 +36,6 @@ module.exports = {
       options: {
         trackingId: process.env.GOOGLE_TRACKING_ID,
       },
-    },
-    `gatsby-plugin-gatsby-cloud`,
-    {
-      resolve: `gatsby-plugin-functions`,
-      options: {
-        path: path.join(__dirname, `src`, `api`),
-      },
-    },
+    }
   ],
 }

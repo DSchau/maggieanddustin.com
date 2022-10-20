@@ -1,3 +1,4 @@
+"client export"
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import React, { useState } from 'react'
@@ -57,7 +58,7 @@ function BlogListing({ data }) {
 
 export const blogQuery = graphql`
   {
-    posts: allContentfulBlogPost(sort: { fields: endDate, order: ASC }) {
+    posts: allContentfulBlogPost(sort: {endDate: ASC}) {
       nodes {
         path: gatsbyPath(filePath: "/blog/{ContentfulBlogPost.fields__slug}")
         ...BlogPostDetails

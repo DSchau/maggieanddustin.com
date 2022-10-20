@@ -1,3 +1,4 @@
+"client export"
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { useEffect, useRef } from 'react'
