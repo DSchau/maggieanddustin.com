@@ -9229,13 +9229,13 @@ react-dev-utils@^12.0.1:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
-react-dom@^18.3.0-next-65e32e58b-20221019:
-  version "18.3.0-next-65e32e58b-20221019"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.3.0-next-65e32e58b-20221019.tgz#ab8bb769ea837b767bef3079aa8ce8edc7c78294"
-  integrity sha512-n144beqvZr1xdXmudhCmpPBcMKJwoDjv84cBa+lVcmw+sOrtMCWZaWc/tQAb2CaBPL5QDvzBB1/aBC1OiuDOAw==
+react-dom@^0.0.0-experimental-65e32e58b-20221019:
+  version "0.0.0-experimental-65e32e58b-20221019"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-0.0.0-experimental-65e32e58b-20221019.tgz#aad155536559c530f451e7964c40d6a78a29a894"
+  integrity sha512-p93tvwI/P+y2oCE+Ldr71csvyEmOvuKY7sz9ZWPucIPgu+rpyw9r6V6F/9ZwqdFHtfxd4Hho+Fm/5lL5DRkcqA==
   dependencies:
     loose-envify "^1.1.0"
-    scheduler "0.24.0-next-65e32e58b-20221019"
+    scheduler "0.0.0-experimental-65e32e58b-20221019"
 
 react-error-overlay@^6.0.11:
   version "6.0.11"
@@ -9303,6 +9303,13 @@ react-star-ratings@^2.3.0:
     prop-types "^15.6.0"
     react "^16.1.0"
 
+react@^0.0.0-experimental-65e32e58b-20221019:
+  version "0.0.0-experimental-65e32e58b-20221019"
+  resolved "https://registry.yarnpkg.com/react/-/react-0.0.0-experimental-65e32e58b-20221019.tgz#4c7be9ab306896ff3bf68c5b52a20e717b769847"
+  integrity sha512-tDW7Sq2ajp7/eg1iIkfcRHPc3zhaEAsy9LXrJMTpPcyUBAUrmxFfkIqQEm008fqW/MYXaeFHIda2D67V7psPZA==
+  dependencies:
+    loose-envify "^1.1.0"
+
 react@^16.1.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
@@ -9311,13 +9318,6 @@ react@^16.1.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-
-react@^18.3.0-next-65e32e58b-20221019:
-  version "18.3.0-next-65e32e58b-20221019"
-  resolved "https://registry.yarnpkg.com/react/-/react-18.3.0-next-65e32e58b-20221019.tgz#746de3e89501102e887ec1e93bbc5bf40d315f6b"
-  integrity sha512-xfzi52D7Dc1pyUa9ci5YhpYSZyPFi5tXJHqoMiaQ91yxm9uRQiiChXbrPLiT5CsmZS2ivfN+Ejpi5NLlxiuJTQ==
-  dependencies:
-    loose-envify "^1.1.0"
 
 read@^1.0.7:
   version "1.0.7"
@@ -9665,10 +9665,10 @@ sax@^1.2.4:
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
 
-scheduler@0.24.0-next-65e32e58b-20221019:
-  version "0.24.0-next-65e32e58b-20221019"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.24.0-next-65e32e58b-20221019.tgz#764740dd1de69172f062d639b439abc11cc3b1e1"
-  integrity sha512-A52sPKdfZGfVOyXQRhg4zWap0DwCaeS3jr58FiE52+HgrQCJQ0jFDgVENLTZ4p3aiNwHUYoKPvy6Zo8IemFlGw==
+scheduler@0.0.0-experimental-65e32e58b-20221019:
+  version "0.0.0-experimental-65e32e58b-20221019"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.0.0-experimental-65e32e58b-20221019.tgz#353c43bec931018cb0e563d582117461aacef4e5"
+  integrity sha512-qdiWyt2Dt7XXzXWseFYbQGyWLXzntiPZURh9Gtq0/9zH0z9QWEwnNQGc/gp320jXxohIJtxNB1bSi+n1Ke5qrQ==
   dependencies:
     loose-envify "^1.1.0"
 

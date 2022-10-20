@@ -1,3 +1,4 @@
+"client export"
 /** @jsx jsx */
 import { jsx, Styled, useColorMode } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
