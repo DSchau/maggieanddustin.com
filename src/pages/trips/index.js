@@ -57,7 +57,7 @@ function TripListing({ data }) {
 
 export const blogQuery = graphql`
   {
-    trips: allContentfulTrip(sort: { fields: endDate, order: ASC }) {
+    trips: allContentfulTrip(sort: {endDate: ASC}) {
       nodes {
         ...TripDetails
       }
